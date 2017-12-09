@@ -5,8 +5,8 @@ files.
 
 # Prerequisites 
 1. ruby 
-2. [tlc-article](https://github.com/Traap/tlc-article]
-3. [docbld](https://github.com/Traap/docbld]
+2. [tlc-article](https://github.com/Traap/tlc-article)
+3. [docbld](https://github.com/Traap/docbld)
 
 # Installation
 Copy the text below and paste into a shell.  The commands will:
@@ -17,7 +17,7 @@ Copy the text below and paste into a shell.  The commands will:
 
 ```bash
 $ cd $HOME \
-     && git clone http://github.com/Traap/emend.git \
+     && git clone http://github.com/Traap/autodoc.git \
             && cd autodoc \
             && docbld
 ```
