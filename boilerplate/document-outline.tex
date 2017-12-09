@@ -1,0 +1,23 @@
+\inputIfExists{overview.tex}
+\inputIfExists{\boilerplateSpecificTestDir/purpose.tex}
+\inputIfExists{\boilerplateSpecificTestDir/scope.tex}
+\inputIfExists{\boilerplateSpecificTestDir/objectives.tex}
+\inputIfExists{\boilerplateDir/general-terms.tex}
+\inputIfExists{terms.tex}
+\inputIfExists{\boilerplateDir/general-acronyms.tex}
+\inputIfExists{acronyms.tex}
+\inputIfExists{\boilerplateSpecificTestDir/compliance.tex}
+\inputIfExists{\boilerplateDir/references.tex}
+\inputIfExists{\boilerplateDir/training.tex}
+\inputIfExists{\boilerplateSpecificTestDir/approach.tex}
+\inputIfExists{\boilerplateDir/configuration-management.tex}
+\inputIfExists{\boilerplateSpecificTestDir/instructions.tex}
+\inputIfExists{intended-use.tex}
+\IfFileExists{protocol-overview.tex}
+    {\input{protocol-overview.tex}}
+    {\inputIfExists{\boilerplateSpecificTestDir/protocol-overview.tex}}
+\inputIfExists{protocol-list.tex}
+\inputIfExists{equipment.tex}
+\inputIfExists{\boilerplateSpecificTestDir/conclusion.tex}
+\inputIfExists{appendices.tex}
+\inputIfExists{change-summary}

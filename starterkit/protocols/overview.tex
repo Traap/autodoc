@@ -1,0 +1,44 @@
+\section{Overview}
+Starterkit is a tool validation sample program.
+
+A tool validation package consists of two distinct parts: 1) text and 2) a
+program. Text describes requirements, test expectation, and test results, and
+A program automates running the protocol.
+
+A goal of the Automated Test Framework (ATF) was to establish a common framework
+for generating requirements, protocols and reports.  All text found in
+doc/automated-test/boilerplate is common between all protocols.  The term
+Test has been abstracted to mean any test type including: unit test,
+verification test, validation test, integration test and tool validation test.
+
+A validation package uses the following directory convention:
+
+\begin{verbatim}
+ToolName/
+    validaton-pacakge.tex
+        ../../boilerplate/document-layout.tex
+        ../../boilerplate/tool-validation-package.tex
+        intended-user.tex
+        ../../boilerplate/protocol-overview.tex
+        protocols/protocol-overview.tex
+        protocols/protocol-automation.tex
+        equipment.tex
+        ../../boilerplate/conclusion.tex
+        ..boilerplate/signed-test-results.tex
+protocols/
+    src/
+        CheckInstall/
+            Protocol.hs
+            Protcol.tex
+        ...
+        Settings/
+            Constants.hs
+        Main.hs
+    LICENSE
+    protocol-automation.tex
+    protocol-list.tex
+    protocols.cabal
+        Starterkit executable and starterkit library are produced.
+    Setup.hs
+    test-output/
+\end{verbatim}

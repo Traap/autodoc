@@ -1,0 +1,19 @@
+\newpage
+\subsection{Protocol - Clone a Repository}
+This protocol demonstrates a developer is able to clone a
+remote repository and use it as a local repository.
+
+\subsubsection{Test Steps}
+\IfFileExists{/tmp/test-output/git/protocol/CloneRepo/recipe.tex}
+      {\input{/tmp/test-output/git/protocol/CloneRepo/recipe.tex}}
+      {\input{../../boilerplate/placeholder/recipe.tex}}
+
+\newpage
+\subsubsection{Test Script}
+\lstinputlisting[language=Haskell]{src/CloneRepo/Protocol.hs}
+
+\newpage
+\subsubsection{Test Evidence}
+\IfFileExists{/tmp/test-output/git/protocol/CloneRepo/results.tex}
+      {\input{/tmp/test-output/git/protocol/CloneRepo/results.tex}}
+      {\input{../../boilerplate/placeholder/results.tex}}

@@ -1,0 +1,20 @@
+\newpage
+\subsection{Protocol - Check Install}
+This protocol is used to demonstrate that the GitProtocols software has been
+properly installed and configured.  This is accomplished by asking the operating
+system where the program is installed.
+
+\subsubsection{Test Steps}
+\IfFileExists{/tmp/test-output/git/protocol/CheckInstall/recipe.tex}
+      {\input{/tmp/test-output/git/protocol/CheckInstall/recipe.tex}}
+      {\input{../../boilerplate/placeholder/recipe.tex}}
+
+\newpage
+\subsubsection{Test Script}
+\lstinputlisting[language=Haskell]{src/CheckInstall/Protocol.hs}
+
+\newpage
+\subsubsection{Test Evidence}
+\IfFileExists{/tmp/test-output/git/protocol/CheckInstall/results.tex}
+      {\input{/tmp/test-output/git/protocol/CheckInstall/results.tex}}
+      {\input{../../boilerplate/placeholder/results.tex}}

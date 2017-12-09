@@ -1,0 +1,51 @@
+-- Git Tool Validation Package
+name:                gitprotocols
+version:             1.0.0.0
+synopsis:            Protocols used to validate Git for its intended-use in medical device software development.
+homepage:            http://www.amgen.com/
+license:             AllRightsReserved
+author:              Systems Informatics
+maintainer:          systemsinformatics@amgen.com
+category:            Testing
+build-type:          Simple
+cabal-version:       >=1.10
+
+library
+  exposed-modules:   Settings.Constants
+                    ,CheckInstall.Protocol
+                    ,CloneRepo.Protocol
+                    ,CreateQuickFix.Protocol
+                    ,CreateRepo.Protocol
+                    ,GitConfig.Protocol
+                    ,MergeQuickFix.Protocol
+                    ,RevertDelete.Protocol
+                    ,TagCommits.Protocol
+                    ,UndoQuickFix.Protocol
+  hs-source-dirs:    src
+  build-depends:     base
+                    ,directory
+                    ,process
+                    ,test-runner
+  default-language:  Haskell2010
+  ghc-options:       -Wall -Werror
+
+executable           GitProtocols
+  main-is:           Main.hs
+  hs-source-dirs:    src
+  build-depends:     base
+                    ,directory
+                    ,test-runner
+                    ,process
+                    ,gitprotocols
+  other-modules:     Settings.Constants
+                    ,CheckInstall.Protocol
+                    ,CloneRepo.Protocol
+                    ,CreateQuickFix.Protocol
+                    ,CreateRepo.Protocol
+                    ,GitConfig.Protocol
+                    ,MergeQuickFix.Protocol
+                    ,RevertDelete.Protocol
+                    ,TagCommits.Protocol
+                    ,UndoQuickFix.Protocol
+  default-language:  Haskell2010
+  ghc-options:       -Wall -Werror

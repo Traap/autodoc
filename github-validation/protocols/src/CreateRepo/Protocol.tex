@@ -1,0 +1,22 @@
+\newpage
+\subsection{Protocol - Create a Local Git Repository}
+This protocol is used to demonstrate a local Git repository is properly
+initialized, files are added to a local working copy of the repository
+causing them to become tracked by Git, tracked files are committed to
+the local repository, and files not tracked by Git are removed from the
+Git repository working area.
+
+\subsubsection{Test Steps}
+\IfFileExists{/tmp/test-output/git/protocol/CreateRepo/recipe.tex}
+      {\input{/tmp/test-output/git/protocol/CreateRepo/recipe.tex}}
+      {\input{../../boilerplate/placeholder/recipe.tex}}
+
+\newpage
+\subsubsection{Test Script}
+\lstinputlisting[language=Haskell]{src/CreateRepo/Protocol.hs}
+
+\newpage
+\subsubsection{Test Evidence}
+\IfFileExists{/tmp/test-output/git/protocol/CreateRepo/results.tex}
+      {\input{/tmp/test-output/git/protocol/CreateRepo/results.tex}}
+      {\input{../../boilerplate/placeholder/results.tex}}

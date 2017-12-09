@@ -1,0 +1,54 @@
+\newpage
+\section{Test Protocol Overview}
+This section describes Test Protocols and Test Steps that demonstrate how
+Configuration Item satisfies the IUR.  Each Test Protocol describes any setup
+criteria needed to conduct the Test Steps. Each Test Protocol contains a list of
+IUR and the Test Steps that demonstrate how the Configuration Item satisfies the
+IUR. Each Test Step is marked passed or failed as it is completed.  Each Test
+Protocol is marked passed when all Test Steps pass or failed if a single Test
+Step fails.  This serves as a record of completed Test Protocols and Test Steps.
+
+Each Test Protocol is described in its own section.  The order the Test
+Protocols are listed is the order they are run.  Each Test Protocol defines:
+\begin{description}
+
+\item[Overview] \quad
+Describes the intent and the approach.
+
+\item[Test Steps] \quad
+A unique test identifier with predetermined expectation,
+confirmation criteria, and pass/fail result.
+
+\item[Objective Evidence] \quad
+A record the Test Protocol was run along with any evidence collected while
+the Test Steps were run.
+
+\item[Traceability] \quad
+Test Steps are traced to IUR that is challenged. IUR can be traced to
+multiple Test Protocols and Test Steps.
+
+\end{description}
+
+Test Steps are defined by a step number, a command to run, and arguments to the
+command.  Each Test Protocol and Test Step has been designed to be run by the
+computer.  However, a person may choose to manually run the Test Protocols,
+save the test results, and generate this test report as specified in the
+appropriate design documentation.
+
+The example below is an automated script to that runs two commands: 1) git help
+and 2) cat ~/gitconfig.  The first command is c="git" and its argument is
+a=["help"].  The second command is c="cat" and its arguments is
+a=[".gitconfig"].
+
+\begin{verbatim}
+For example:
+
+  githelp = [(1, Step {r="IUR01", c="git", a=["help"]})
+            ,(2, Step {r="IUR01", c="cat", a=[".gitconfig"]})
+            ]
+
+  Would be entered into an operating system shell console window:
+        git help
+        cat .gitconfig
+\end{verbatim}
+

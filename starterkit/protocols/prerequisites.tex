@@ -1,0 +1,40 @@
+\section{Prerequisites}
+Note: These prerequisites are just example of what you might need to declare to
+the person reviewing or running this protocol.
+
+\begin{enumerate}
+\item
+A valid Git username and password.  Request these from your Git administrator.
+
+\item
+A private / public SSH key.
+
+\item
+Your public key needs to be upload to your Git account.  Request assistance from
+your Git administrator.
+
+\item
+Administrative rights to your computer.  Contact your computer systems
+administrator.
+
+\item
+Your computer requires HTTP, HTTPS, and SSH access to the Internet.  Contact
+your network administrator.
+
+\item
+Configure your ~/.ssh/config file to reference a Git host.  Request this
+information from your network administrator.  Update your ~/.ssh/config file
+with information provided by your network administrator.
+
+\begin{verbatim}
+
+   # Host alias to GitHost
+   Host GitHost
+           HostName githost.amgen.com
+           Port 12345
+           User validStashUsename
+           IdentifyFile ~/.ssh/css_rsa
+
+\end{verbatim}
+
+\end{enumerate}
