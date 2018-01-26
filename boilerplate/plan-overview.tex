@@ -1,0 +1,64 @@
+\newpage
+\section{Test Plan Overview}
+This section describes Test Plans, Test Suites, Test Cases, and Test Steps that
+demonstrate how a Configuration Item satisfies the IUR.  Each Test Plan
+describes any setup criteria needed to conduct the Test Steps. Each Test Plan
+contains a list of IUR and the Test Steps that demonstrate how the Configuration
+Item satisfies the IUR. Each Test Step is marked passed or failed as it is
+completed.  Each Test Plan is marked passed when all Test Steps pass or failed
+if a single Test Step fails.  This serves as a record of completed Test Plans
+and Test Steps.
+
+Each Test Plan is described in its own section.  The order the Test Plans
+are listed is the order they are run.  Each Test Plan defines:
+\begin{description}
+
+\item[name] \quad Each Plan, Suite, and Case has a unique name.
+
+\item[purpose] \quad Each Plan, Suite, and Case has a purpose.
+
+\item[Test Steps] \quad Each step has a confirmation and expectation along with
+  the command needed to challenge the UIR.
+
+\item[Objective Evidence] \quad
+A record the Test Plan was run along with any evidence collected while
+the Test Steps were run.
+
+\item[Traceability] \quad
+Suites and Cases are traced to an IUR that is challenged. IUR can be traced to
+multiple Suites and Cases. 
+
+\end{description}
+
+Each Test Plan, Test Suite, Test Case,  and Test Step has been designed to be
+run by the computer. However, a person may choose to manually run the Test
+Plans, save the test results, and generate this test report as specified in the
+appropriate design documentation.
+
+The example below runs two commands: 1) git help and 2) cat ~/gitconfig.  The
+output from both commands are written to the console
+
+\begin{lstlisting}
+plan: 
+  name: A Test Plan Name 
+  purpose: purpose of the plan
+
+suite: 
+  name: A Test Suite Name 
+  purpose: a suite purpose
+  requirement: UIR01 and UIR02
+
+  - case:
+    name: A Test Case name 
+    purpose: A Test Case purpose
+    steps: 
+      - confirm: Confirm git help is written to the console output.
+        expectation: Git help is displayed.
+        command: git 
+        argument: help
+
+      - confirm: Confirm .git config is written to the console. 
+        expectation: .gitconfig is written to the console output.
+        command: cat 
+        argument: .gitconfig
+\end{lstlisting}

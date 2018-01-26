@@ -1,21 +1,20 @@
-\subsection{Test Protocol Instructions}
-This Protocol Package describes Test Protocols and Test Steps that demonstrate
-how the Configuration Item satisfies the IUR.  Each Test Protocol describes any
-setup criteria needed to conduct the Test Steps. Each Test Protocol contains a
-list of IUR and the Test Steps that demonstrate how the Configuration Item
-satisfies the IUR. Each Test Step is marked passed or failed as it is completed.
-Each Test Protocol is marked passed when all Test Steps pass or failed if a
-single Test Step fails.  This serves as a record of completed Test Protocols and
-Test Steps.
+\subsection{Test Plan Instructions}
+This Test Plan describes Test Suits, Test Cases, and Test Steps that demonstrate
+how the Configuration Item satisfies the IUR.  Each Test Plan describes any
+setup criteria needed to conduct the Test Steps. Each Test Plan contains a list
+of IUR and the Test Steps that demonstrate how the Configuration Item satisfies
+the IUR. Each Test Step is marked passed or failed as it is completed.  Each
+Test Plan is marked passed when all Test Steps pass or failed if a single Test
+Step fails.  This serves as a record of completed Test Plans and Test Steps.
 
-Test Protocols are automatically run by the computer generating a report in PDF
-format.  Test Protocols are code-reviewed prior to use using the same
-code-review practice that is used for the medical device software.  Test
-Protocols are stored in the Configuration Management tool that is used by the
-medical device software.  Test Steps that fail during computer execution or
-observations made during EDMQ document routing, result in JIRA tickets being
-created to address the issue.  This results in another execution of the Protocol
-Package and document routing.
+Test Plans are automatically run by the computer generating a report in PDF
+format.  Test Plans are code-reviewed prior to use using the same code-review
+practice that is used for the medical device software.  Test Protocols are
+stored in the Configuration Management tool that is used by the medical device
+software.  Test Steps that fail during computer execution or observations made
+during EDMQ document routing, result in JIRA tickets being created to address
+the issue.  This results in another execution of the Protocol Package and
+document routing.
 
 When it becomes necessary to annotate a computer generated document, adCompany's
 documentation practices must be followed.  The documentation practices are
@@ -30,33 +29,32 @@ an ink pen.
 \item Any annotation must be signed and dated.
 \end{enumerate}
 
-In most cases, a Test Protocol is to be judged as "fail" if any Test Step within
-that Test Protocol fails. If the failed Test Step does not impact proper
-evaluation of the safety and effectiveness of the device, the Test Protocol in
+In most cases, a Test Plan is to be judged as "fail" if any Test Step within
+that Test Plan fails. If the failed Test Step does not impact proper
+evaluation of the safety and effectiveness of the device, the Test Plan in
 which the Test Step failed may be judged "pass".  For such failed Test Steps a
 rationale will be noted in the comments section and in the final Protocol
-Package.  If a failed Test Protocol is re-executed a record of the failed
-results are included with the Test Protocol when it passes and attached to the
-Protocol Package.  If a Protocol Package is re-executed a new report is
+Package.  If a failed Test Plan is re-executed a record of the failed
+results are included with the Test Plan when it passes and attached to the
+Test Plan.  If a Test Plan is re-executed a new report is
 created and routed for approval in EDM Quality.
 
-\subsection{Test Protocol Storage and Review}
-This Protocol Package is part of adCompany's automated validation framework.  The
+\subsection{Test Plan Storage and Review}
+This Test Plan is part of adCompany's automated validation framework.  The
 framework consists of following parts:
 \begin{description}
   \item[\LaTeX] files are used to provide an Abstract, Introduction, Intended
-    Use Requirements, Test Protocol Overview, Test Equipment, Configuration
+    Use Requirements, Test Plan Overview, Test Equipment, Configuration
     Item Validation, Conclusion, and Change Summary.
 
-  \item[Haskell] software is used to run the automated framework to collect test
+  \item[Ruby] software is used to run the automated framework to collect test
     evidence.
 
-  \item[Bitbucket] (https://stash.amgencss.fpcomplete.com/projects) is used as
-    the storage repository for \LaTeX \& Haskell files.
+  \item[Git] is used as the storage repository for \LaTeX \& Yaml files.
 
-  \item[Stash] (https://stash.amgencss.fpcomplete.com/projects) is used to
+  \item[Git] (https://stash.amgencss.fpcomplete.com/projects) is used to
     create a pull-request to review the \LaTeX \& Haskell files prior to use.
 
-  \item[Evidence] Protocol Package output includes one or more Protocols.  Each
-    protocol has Test Steps, Test Scripts and Test Evidence.
+  \item[Evidence] Test Plan output includes one Test Suite, Test Plan, and Test
+    Step, and Test Evidence.
 \end{description}
