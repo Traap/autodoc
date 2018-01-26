@@ -1,0 +1,18 @@
+case:
+  name: Languages 
+
+  purpose: >
+    This test case is used to demonstrate the Languages page has been translated to
+    English correctly.
+
+  requirement: IUR01
+
+  steps:
+    - confirm: All text object have correct English translations. 
+      expectation: >
+        All textual inspections are correct, and user interface screens are
+        captured.
+      sudo: false
+      command: echo 
+      argument: --arg1=foo --arg2=bar --arg3=baz 
+      evidence: Starts on next line.

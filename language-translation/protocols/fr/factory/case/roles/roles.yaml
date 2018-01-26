@@ -1,0 +1,18 @@
+case:
+  name: Roles 
+
+  purpose: >
+    This test case is used to demonstrate the Roles page has been translated to
+    French correctly.
+
+  requirement: IUR02
+
+  steps:
+    - confirm: All text object have correct French translations. 
+      expectation: >
+        All textual inspections are correct, and user interface screens are
+        captured.
+      sudo: false
+      command: echo 
+      argument: --arg1=foo --arg2=bar --arg3=baz 
+      evidence: Starts on next line.

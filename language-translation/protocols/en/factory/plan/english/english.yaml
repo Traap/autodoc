@@ -1,0 +1,9 @@
+plan:
+  name: English Language Translation Plan 
+  purpose: >
+    This plan uses white box methods to query a Web Browser using the Selenium
+    Web Drive to confirm text objets have been properly translated.
+
+includes:
+  - suite:
+    - name: english 
