@@ -13,6 +13,6 @@ case:
         All textual inspections are correct, and user interface screens are
         captured.
       sudo: false
-      command: echo 
-      argument: --arg1=foo --arg2=bar --arg3=baz 
+      command: gradle 
+      argument: test --test com.centerium.roughwork.en 
       evidence: Starts on next line.
