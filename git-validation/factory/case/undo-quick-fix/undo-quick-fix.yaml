@@ -1,0 +1,123 @@
+case:
+  name: Undo a program change made on branch Quick Fix.
+
+  purpose: > 
+    This test case demonstrates a developers is able to checkout a branch named
+    Quick Fix. The developer is able to reverse the programming change and
+    commit the change to the local git repository and push it to the remote git
+    repository.
+
+  requirement: IUR03, IUR04, IUR05, IUR06, IUR07, IUR08, and IUR09.
+
+  steps:
+    - confirm: A developer is albe to clone a git repository.
+      expectation: No error.
+      sudo: false
+      command: git
+      argument: clone repoURL
+      evidence: Starts on next line.
+
+    - confirm: A developer is able refresh their local repository after a remote repository has been downloaded.
+      expectation: No error.
+      sudo: false
+      command: git
+      argument: pull
+      evidence: Starts on next line.
+
+    - confirm: A developer is able to create a new branch to work on a programming assignment.
+      expectation: No error.
+      sudo: false
+      command: git
+      argument: checkout -b quickfix
+      evidence: Starts on next line.
+
+    - confirm: A developer is able to establish branch tracking between the local and remote branches.
+      expectation: No error.
+      sudo: false
+      command: git
+      argument: checkout branch -u origin/quick-fix quickfix
+      evidence: Starts on next line.
+
+    - confirm: A developer is able to list all branches.
+      expectation: No error.
+      sudo: false
+      command: git
+      argument: branch -a
+      evidence: Starts on next line.
+
+    - confirm: A developer is able to list the status of their local repository. 
+      expectation: No error.
+      sudo: false
+      command: git
+      argument: status
+      evidence: Starts on next line.
+
+    - confirm: A developer is able to refresh the new branch in their local repository.
+      expectation: No error.
+      sudo: false
+      command: git
+      argument: pull
+      evidence: Starts on next line.
+
+    - confirm: A developer is able to make a software change.
+      expectation: No error.
+      sudo: false
+      command: sed 
+      argument: -i.bak -e s/\\[Z\\]/\\[a\\]/g QuickSort.hs
+      evidence: Starts on next line.
+
+    - confirm: A developer is able to remove files that are not being tracked by the local repository.
+      expectation: No error.
+      sudo: false
+      command: git
+      argument: clean -f
+      evidence: Starts on next line.
+
+    - confirm: A developer is able to add changed files to the local repository.
+      expectation: No error.
+      sudo: false
+      command: git
+      argument: add .
+      evidence: Starts on next line.
+
+    - confirm: A developer is able to determine thier change has been added to the local repository.
+      expectation: File changes are being tracked by local repository.
+      sudo: false
+      command: git
+      argument: status
+      evidence: Starts on next line.
+
+    - confirm: A developer is able to commit change to the the local repository.
+      expectation: No error.
+      sudo: false
+      command: git
+      argument: push
+      evidence: Starts on next line.
+
+    - confirm: A developer is able to update a remote Git repository based on changes made to the local repository.
+      expectation: No error.
+      sudo: false
+      command: git
+      argument: push
+      evidence: Starts on next line.
+
+    - confirm: A developer is able to review the differences between their master branch and quick-fix branch.
+      expectation: Differences are displayed.
+      sudo: false
+      command: git
+      argument: diff master..quick-fix 
+      evidence: Starts on next line.
+
+    - confirm: A developer is able to determine their new branch is tracked independently of the master branch.
+      expectation: Branch tracking is displayed. 
+      sudo: false
+      command: git
+      argument: branch -vv
+      evidence: Starts on next line.
+
+    - confirm: A developer is able to review a list of changes made to their repository.
+      expectation: Commits are displayed.
+      sudo: false
+      command: git
+      argument: log --oneline -3
+      evidence: Starts on next line.

@@ -1,0 +1,17 @@
+case:
+  name: Check Install
+
+  purpose: >
+    This protocol is used to demonstrate that the GitProtocols software has been
+    properly installed and configured. This is accomplished by asking the
+    operating system where the program is installed.
+
+  requirement: IUR000
+
+  steps:
+    - confirm: The git client has been installed.
+      expectation:  git installation location is listed.
+      sudo: false
+      command: which
+      argument: git
+      evidence: Starts on next line.

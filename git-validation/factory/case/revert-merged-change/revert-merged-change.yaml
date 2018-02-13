@@ -1,0 +1,66 @@
+case:
+  name: Revert a merged change
+
+  purpose: >
+    This test case demonstrates a developer is able to make a change to a local
+    git repository, push the changes to a remote repository, and then revert the
+    entire change.
+
+  requirement: IUR03, IUR05, IUR07, and IUR08
+
+  steps:
+    - confirm: A developer is able to pull the remote repository to the local repository.
+      expectation: No error.
+      sudo: false
+      command: git
+      argument: pull
+      evidence: Starts on next line.
+
+    - confirm: A developer is able to remove all files from the local repository.
+      expectation: No error.
+      sudo: false
+      command: git
+      argument: rm -r quicksort/
+      evidence: Starts on next line.
+
+    - confirm: A developer is able to commit file removals.
+      expectation: No error.
+      sudo: false
+      command: git
+      argument: commit -m "Remove all quicksort files."
+      evidence: Starts on next line.
+
+    - confirm: A developer is able to review the commits to the repository.
+      expectation: Update has been processed.
+      sudo: false
+      command: git
+      argument: log --oneline -3
+      evidence: Starts on next line.
+
+    - confirm: A developer is able to pull the remote repository to the local repository.
+      expectation: No error.
+      sudo: false
+      command: git
+      argument: pull
+      evidence: Starts on next line.
+
+    - confirm: A developer is able ot undo the delete operation.
+      expectation: No error.
+      sudo: false
+      command: git
+      argument: revert --no-edit HEAD
+      evidence: Starts on next line.
+
+    - confirm: A developer is albe to update the remote repository.
+      expectation: No error.
+      sudo: false
+      command: git
+      argument: push
+      evidence: Starts on next line.
+
+    - confirm: A developer is able to review the commits to the repository.
+      expectation: Update has been processed.
+      sudo: false
+      command: git
+      argument: log --oneline -3
+      evidence: Starts on next line.
