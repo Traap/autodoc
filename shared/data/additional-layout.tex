@@ -1,19 +1,7 @@
-% Macro to include a file if it exists.
-% 1 = the file path to input
-\newcommand{\inputIfExists}[1]{\IfFileExists{#1}{\input{#1}}{}}
-
-% We create definitions to support various relative paths used.
+% ------------------------------------------------------------------------------
+% projectDir MUST point to your github/traap/autodoc location.
 \def\projectDir{..}
-\def\boilerplateDir{\projectDir/boilerplate}
-\def\placeholderDir{\boilerplateDir/placeholder}
-\def\toolTestDir{\boilerplateDir/tool-test}
-\def\unitTestDir{\boilerplateDir/unit-test}
-\def\verTestDir{\boilerplateDir/ver-test}
 
-\global\def\dataDir{\projectDir/data}
-\global\def\sharedDir{\projectDir/shared}
-
-\def\tlc@logoFile{\sharedDir/images/logo.png}
-
-\def\sopSDLC{SOP-000000 Software Developmnet Lifecycle}
-\def\sopSCM{SOP-000001 Software Configuration Management}
+% ------------------------------------------------------------------------------
+% Hook into boilerplate definitions.
+\input{\projectDir/boilerplate/project-directories.tex}
