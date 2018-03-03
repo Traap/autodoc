@@ -1,17 +1,12 @@
 % ------------------------------------------------------------------------------
 % Define Test Plan Output (tpo) commands.
 \newcommand{\tpo}[1]{
-  \clearpage
-  \section{#1}
-  \subsection{Test Plan}
   \input{test-output/factory/plan/#1/#1.tex}
 }
 
 % ------------------------------------------------------------------------------
 % Define Test Suite Output (tso) commands. 
 \newcommand{\tso}[1]{
-  \clearpage
-  \subsection{Test Suite}
   \input{test-output/factory/suite/#1/#1.tex}
 }
 
@@ -36,9 +31,6 @@
   \global\edef\tcLog{\tcPath/#1/#1.tex}
   \global\edef\tcPng{\tcPath/#1/#1.png}
   \global\edef\tcCsv{\tcPath/#1/#1.csv}
-  %`
-  \clearpage
-  \subsection{#1 Test Case}
   %
   \input{\tcLog}
   %
