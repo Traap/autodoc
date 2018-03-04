@@ -1,5 +1,5 @@
 case:
-  name: Merge a programing change made on branch named Quick Fix}
+  name: Merge a programing change made on branch named Quick Fix
 
   purpose: > 
     This test case demonstrates a developer's ability to merge a code change

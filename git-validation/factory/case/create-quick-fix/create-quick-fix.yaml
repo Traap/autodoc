@@ -1,5 +1,5 @@
 case:
-  name: Create a branched named Quick Fix
+  name: Create a branch named Quick Fix
 
   purpose: >
     This test case demonstrates a developer is able to create a new branch to
@@ -9,6 +9,8 @@ case:
     repository.
 
   requirement: IUR02, IUR03, IUR04, IUR05, IUR06, IUR07, IUR08, and IUR09.
+
+  workingdir: nascent
 
   steps:
     - confirm: A developer is albe to download a git repository.
@@ -34,12 +36,13 @@ case:
 
     - confirm: A developer is able to make a code change.
       expectation: No error.
+      workingdir: nascent/quickfix/src
       sudo: false
       command: sed
       argument: -i.bak -e s/\\[a\\]/\\[Z\\]/g QuickSort.hs
       evidence: n/a
 
-    - confirm: A developer is able to remvoe untracked files.
+    - confirm: A developer is able to remove untracked files.
       expectation: No error.
       sudo: false
       command: git
@@ -73,7 +76,7 @@ case:
       expectation: No error.
       sudo: false
       command: git
-      argument: push orign quick-fix
+      argument: push origin quick-fix
       evidence: Starts on next line.
 
     - confirm: >
@@ -92,7 +95,9 @@ case:
       argument: push
       evidence: Starts on next line.
 
-    - confirm: A developer is able to view difference between master and quick-fix branches.
+    - confirm: >
+        A developer is able to view difference between master and quick-fix
+        branches.
       expectation: No error.
       sudo: false
       command: git

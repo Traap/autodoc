@@ -10,6 +10,8 @@ case:
 
   requirement: IUR03, IUR07
 
+  workingdir: package-0 
+
   steps:
     - confirm: Confirm a developer is able to touch a file named f1.
       expectation: No error.
@@ -35,7 +37,7 @@ case:
     - confirm: Confirm a developer is able to initialize a local repo.
       expectation: No error.
       sudo: false
-      command: git,
+      command: git
       argument: init
       evidence: n/a
 

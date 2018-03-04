@@ -17,5 +17,5 @@ includes:
     - name: revert-merged-change
     - name: create-quick-fix
     - name: undo-quick-fix
-    - name: merge-quick-fix
-    - name: tag-commits
+    # - name: merge-quick-fix
+    # - name: tag-commits

@@ -8,6 +8,8 @@ case:
 
   requirement: IUR03, IUR05, IUR07, and IUR08
 
+  workingdir: nascent 
+
   steps:
     - confirm: A developer is able to pull the remote repository to the local repository.
       expectation: No error.

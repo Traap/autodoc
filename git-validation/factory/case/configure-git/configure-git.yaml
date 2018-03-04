@@ -1,5 +1,5 @@
 case:
-  name: Check Install
+  name: Configure Git 
 
   purpose: >
     This protocol is used to demonstrate that the Git software has been properly
