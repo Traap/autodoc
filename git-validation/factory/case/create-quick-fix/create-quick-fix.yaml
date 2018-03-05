@@ -36,7 +36,7 @@ case:
 
     - confirm: A developer is able to make a code change.
       expectation: No error.
-      workingdir: nascent/quickfix/src
+      workingdir: nascent/quicksort/src
       sudo: false
       command: sed
       argument: -i.bak -e s/\\[a\\]/\\[Z\\]/g QuickSort.hs

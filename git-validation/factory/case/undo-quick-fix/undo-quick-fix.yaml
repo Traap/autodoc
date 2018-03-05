@@ -59,7 +59,7 @@ case:
 
     - confirm: A developer is able to make a software change.
       expectation: No error.
-      workingdir: package-1/nascent/quickfix/src
+      workingdir: package-1/nascent/quicksort/src
       sudo: false
       command: sed
       argument: -i.bak -e s/\\[Z\\]/\\[a\\]/g QuickSort.hs

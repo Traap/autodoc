@@ -6,7 +6,7 @@ case:
     git repository, push the changes to a remote repository, and then revert the
     entire change.
 
-  requirement: IUR03, IUR05, IUR07, and IUR08
+  requirement: IUR03, IUR04, IUR05, IUR07, and IUR08
 
   workingdir: nascent 
 
@@ -30,6 +30,13 @@ case:
       sudo: false
       command: git
       argument: commit -m "Remove all quicksort files."
+      evidence: Starts on next line.
+
+    - confirm: A developer is able to commit file removals. 
+      expectation: No error.
+      sudo: false
+      command: git
+      argument: push 
       evidence: Starts on next line.
 
     - confirm: A developer is able to review the commits to the repository.
