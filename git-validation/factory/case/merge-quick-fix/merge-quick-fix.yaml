@@ -8,7 +8,7 @@ case:
 
   requirement: IUR02, IUR03, IUR04, IUR06, IUR07, IUR08, and IUR09.
 
-  workingdir: package-1
+  workingdir: package-1/quicksort
 
   steps:
     - confirm: A developer is able to checkout the master branch to the local repository.

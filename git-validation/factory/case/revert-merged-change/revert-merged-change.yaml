@@ -8,7 +8,7 @@ case:
 
   requirement: IUR03, IUR04, IUR05, IUR07, and IUR08
 
-  workingdir: package-1 
+  workingdir: package-1/quicksort
 
   steps:
     - confirm: A developer is able to pull the remote repository to the local repository.
@@ -22,7 +22,7 @@ case:
       expectation: No error.
       sudo: false
       command: git
-      argument: rm -r quicksort/
+      argument: rm -r src/
       evidence: Starts on next line.
 
     - confirm: A developer is able to commit file removals.
@@ -32,11 +32,11 @@ case:
       argument: commit -m "Remove all quicksort files."
       evidence: Starts on next line.
 
-    - confirm: A developer is able to commit file removals. 
+    - confirm: A developer is able to commit file removals.
       expectation: No error.
       sudo: false
       command: git
-      argument: push 
+      argument: push
       evidence: Starts on next line.
 
     - confirm: A developer is able to review the commits to the repository.

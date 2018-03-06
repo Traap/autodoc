@@ -14,14 +14,14 @@ case:
       expectation: No error.
       sudo: false
       command: git
-      argument: clone git@github.com:Traap/nascent.git
+      argument: clone git@github.com:Traap/quicksort.git
       evidence: Starts on next line.
 
     - confirm: >
         A developer is working on master branch and up-to-date after
         cloning a remote repository.
       expectation: Branch information is displayed.
-      workingdir: package-1/nascent
+      workingdir: package-1/quicksort
       sudo: false
       command: git
       argument: status
@@ -29,7 +29,7 @@ case:
 
     - confirm: A developer is able to review a set of tracked repositories.
       expectation: Fetch and puch URLs are identical
-      workingdir: package-1/nascent
+      workingdir: package-1/quicksort
       sudo: false
       command: git
       argument: remote -v
@@ -37,7 +37,7 @@ case:
 
     - confirm: A developer's local and remote branches are mapped to master branch.
       expectation: Local and remote branche are mapped to master branch..
-      workingdir: package-1/nascent
+      workingdir: package-1/quicksort
       sudo: false
       command: git
       argument: branch -a

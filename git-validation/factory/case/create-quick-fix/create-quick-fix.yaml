@@ -10,7 +10,7 @@ case:
 
   requirement: IUR02, IUR03, IUR04, IUR05, IUR06, IUR07, IUR08, and IUR09.
 
-  workingdir: package-1
+  workingdir: package-1/quicksort
 
   steps:
     - confirm: A developer is albe to download a git repository.

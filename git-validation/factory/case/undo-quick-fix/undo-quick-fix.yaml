@@ -9,21 +9,20 @@ case:
 
   requirement: IUR03, IUR04, IUR05, IUR06, IUR07, IUR08, and IUR09.
 
-  workingdir: package-2
+  workingdir: package-1/quicksort
 
   steps:
-    - confirm: A developer is albe to clone a git repository.
+    - confirm: A developer is able to switch to the master branch.
       expectation: No error.
       sudo: false
       command: git
-      argument: clone git@github.com:Traap/nascent.git
+      argument: checkout master 
       evidence: Starts on next line.
 
     - confirm: >
         A developer is able refresh their local repository after a remote
         repository has been downloaded.
       expectation: No error.
-      workingdir: package-2/nascent
       sudo: false
       command: git
       argument: pull
@@ -34,16 +33,14 @@ case:
         assignment.
       expectation: No error.
       sudo: false
-      workingdir: package-2/nascent
       command: git
-      argument: checkout -b quick-fix
+      argument: checkout quick-fix
       evidence: Starts on next line.
 
     - confirm: >
         A developer is able to establish branch tracking between the local and
         remote branches.
       expectation: No error.
-      workingdir: package-2/nascent
       sudo: false
       command: git
       argument: branch -u origin/quick-fix quick-fix
@@ -51,7 +48,6 @@ case:
 
     - confirm: A developer is able to list all branches.
       expectation: No error.
-      workingdir: package-2/nascent
       sudo: false
       command: git
       argument: branch -a
@@ -59,7 +55,7 @@ case:
 
     - confirm: A developer is able to make a software change.
       expectation: No error.
-      workingdir: package-2/nascent/quicksort/src
+      workingdir: package-1/quicksort/src
       sudo: false
       command: sed
       argument: -i.bak -e s/\\[Z\\]/\\[a\\]/g QuickSort.hs
@@ -69,7 +65,6 @@ case:
         A developer is able to remove files that are not being tracked by the
         local repository.
       expectation: No error.
-      workingdir: package-2/nascent
       sudo: false
       command: git
       argument: clean -f
@@ -77,7 +72,6 @@ case:
 
     - confirm: A developer is able to add changed files to the local repository.
       expectation: No error.
-      workingdir: package-2/nascent
       sudo: false
       command: git
       argument: add .
@@ -87,7 +81,6 @@ case:
         A developer is able to determine thier change has been added to the
         local repository.
       expectation: File changes are being tracked by local repository.
-      workingdir: package-2/nascent
       sudo: false
       command: git
       argument: status
@@ -95,17 +88,15 @@ case:
 
     - confirm: A developer is able to commit change to the the local repository.
       expectation: No error.
-      workingdir: package-2/nascent
       sudo: false
       command: git
-      argument: commit -m "Change all [Z] to [a]" 
+      argument: commit -m "Change all [Z] to [a]"
       evidence: Starts on next line.
 
     - confirm: >
         A developer is able to update a remote Git repository based on changes
         made to the local repository.
       expectation: No error.
-      workingdir: package-2/nascent
       sudo: false
       command: git
       argument: push
@@ -115,7 +106,6 @@ case:
         A developer is able to review the differences between their master
         branch and quick-fix branch.
       expectation: Differences are displayed.
-      workingdir: package-2/nascent
       sudo: false
       command: git
       argument: diff master..quick-fix
@@ -125,7 +115,6 @@ case:
         A developer is able to determine their new branch is tracked
         independently of the master branch.
       expectation: Branch tracking is displayed.
-      workingdir: package-2/nascent
       sudo: false
       command: git
       argument: branch -vv
@@ -135,7 +124,6 @@ case:
         A developer is able to review a list of changes made to their
         repository.
       expectation: Commits are displayed.
-      workingdir: package-2/nascent
       sudo: false
       command: git
       argument: log --oneline -3
