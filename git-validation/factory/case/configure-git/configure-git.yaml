@@ -9,6 +9,8 @@ case:
 
   requirement: IUR01
 
+  workingdir: package-2 
+
   steps:
     - confirm: Confirm a developer is able to access Git Help.
       expectation: Git help is displayed.
@@ -28,28 +30,28 @@ case:
       expectation: No error.
       sudo: false
       command: git
-      argument: config --global code.pager cat
+      argument: config --local code.pager cat
       evidence: n/a
 
     - confirm: A developer is able to configure a Git user name.
       expectation: No error.
       sudo: false
       command: git
-      argument: config --global user.name "Gary A. Howard"
+      argument: config --local user.name "Gary A. Howard"
       evidence: n/a
 
     - confirm: A developer is able to configure a Git user email address.
       expectation: No error.
       sudo: false
       command: git
-      argument: config --global user.email gary.a.howard@mac.com
+      argument: config --local user.email gary.a.howard@mac.com
       evidence: Starts on next line.
 
     - confirm: A developer is able to configure a Git credentials.
       expectation: No error.
       sudo: false
       command: git
-      argument: config --global credential.helper store
+      argument: config --local credential.helper store
       evidence: n/a
 
     - confirm: Confirm a developer has a properly configured .gitconfig file.

@@ -15,3 +15,10 @@ case:
       command: which
       argument: git
       evidence: Starts on next line.
+
+    - confirm: The git client has been installed.
+      expectation:  git installation location is listed.
+      sudo: false
+      command: git 
+      argument: --version 
+      evidence: Starts on next line.

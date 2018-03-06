@@ -12,10 +12,10 @@ includes:
   - case:
     - name: check-install 
     - name: configure-git
-    - name: clone-repo
     - name: create-local-repo
+    - name: clone-repo
     - name: revert-merged-change
     - name: create-quick-fix
     - name: undo-quick-fix
-    # - name: merge-quick-fix
-    # - name: tag-commits
+    - name: merge-quick-fix
+    - name: tag-commits

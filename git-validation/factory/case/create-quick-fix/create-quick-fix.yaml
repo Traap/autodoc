@@ -10,7 +10,7 @@ case:
 
   requirement: IUR02, IUR03, IUR04, IUR05, IUR06, IUR07, IUR08, and IUR09.
 
-  workingdir: nascent
+  workingdir: package-1
 
   steps:
     - confirm: A developer is albe to download a git repository.
@@ -36,7 +36,7 @@ case:
 
     - confirm: A developer is able to make a code change.
       expectation: No error.
-      workingdir: nascent/quicksort/src
+      workingdir: package-1/quicksort/src
       sudo: false
       command: sed
       argument: -i.bak -e s/\\[a\\]/\\[Z\\]/g QuickSort.hs
