@@ -2,12 +2,24 @@
 % This set of commands define the path test-output/factory the amber driver
 % produces as it process YAML files.
 % ------------------------------------------------------------------------------
-\newcommand{\testOutputDir}{test-output/factory}
+\newcommand{\testOutputDir}{test-output}
 \newcommand{\tofPath}{\testOutputDir}
 \newcommand{\tofPathC}{\testOutputDir}
 
 \newcommand{\setTOFPath}{\renewcommand{\testOutputDir}{test-output/factory}}
-\newcommand{\setTOFPathC}[2]{\renewcommand{\testOutputDir}{test-output/factory/#1/#2}}
+\newcommand{\setTOFPathC}[2]{\renewcommand{\testOutputDir}{test-output/#1/#2/factory}}
+
+\newcommand{\tcPath}{}
+\newcommand{\tcLog}{}
+\newcommand{\tcPng}{}
+\newcommand{\tcCsv}{}
+
+\newcommand{\tcPathC}{}
+\newcommand{\tcLogC}{}
+\newcommand{\tcPngC}{}
+\newcommand{\tcCsvC}{}
+\newcounter{FileCnt}\setcounter{FileCnt}{1}
+\newboolean{MoreFiles}\setboolean{MoreFiles}{true}
 
 % ------------------------------------------------------------------------------
 % Comma Separated Variable table definition.  This table is applicable to 1 and
@@ -47,14 +59,14 @@
   %
   \setTOFPath
   %
-  \newcommand{\tcPath}{\tofPath/case}
-  \newcommand{\tcLog}{\tcPath/#1/#1.tex}
-  \newcommand{\tcPng}{\tcPath/#1/#1.png}
-  \newcommand{\tcCsv}{\tcPath/#1/#1.csv}
+  \renewcommand{\tcPath}{\tofPath/case}
+  \renewcommand{\tcLog}{\tcPath/#1/#1.tex}
+  \renewcommand{\tcPng}{\tcPath/#1/#1.png}
+  \renewcommand{\tcCsv}{\tcPath/#1/#1.csv}
   %
   \inputIfExists{\tcLog}
   %
-  IfFileExists{\tcPng}{
+  \IfFileExists{\tcPng}{
     \begin{figure}[ht]
       \centering
       \includegraphics[scale=0.25]{\tcPng}
@@ -74,11 +86,11 @@
 % #3 - filename
 % ------------------------------------------------------------------------------
 % Define Test Plan Output (tpo) commands.
-\newcommand{\tpoC}[3]{\setTOFPathC{#1}{#2}\inputIfExists{\tofPathC/plan/#3/#3.tex}}
+\newcommand{\tpoC}[3]{\setTOFPathC{#1}{#2}\input{\tofPathC/plan/#3/#3.tex}}
 
 % ------------------------------------------------------------------------------
 % Define Test Suite Output (tso3) commands.
-\newcommand{\tsoC}[3]{\setTOFPathC{#1}{#2}\inputIfExists{\tofPathC/suite/#3/#3.tex}}
+\newcommand{\tsoC}[3]{\setTOFPathC{#1}{#2}\input{\tofPathC/suite/#3/#3.tex}}
 
 % ------------------------------------------------------------------------------
 % Zero fill numbers
@@ -92,15 +104,14 @@
   %
   \setTOFPathC{#1}{#2} 
   %
-  \newcounter{FileCnt}\setcounter{FileCnt}{1}
-  \newcommand{\tcPathC}{\tofPathC/case}
-  \newcommand{\tcLogC}{\tcPathC/#3/#3.tex}
-  \newcommand{\tcPngC}{\tcPathC/#3/#3-\zerofill{\theFileCnt}.png}
-  \newcommand{\tcCsvC}{\tcPathC/#3/#3.csv}
+  \renewcommand{\tcPathC}{\tofPathC/case}
+  \renewcommand{\tcLogC}{\tcPathC/#3/#3.tex}
+  \renewcommand{\tcPngC}{\tcPathC/#3/#3-\zerofill{\theFileCnt}.png}
+  \renewcommand{\tcCsvC}{\tcPathC/#3/#3.csv}
   %
   \inputIfExists{\tcLogC}
   %
-  \newboolean{MoreFiles}\setboolean{MoreFiles}{true}
+  \setboolean{MoreFiles}{true}
   \whiledo{\boolean{MoreFiles}}{
     \IfFileExists{\tcPngC}{
       \begin{figure}[ht]
@@ -109,8 +120,9 @@
         \caption{#1 Page}
       \end{figure}
       \addtocounter{FileCnt}{1}
+      FOUND: \tcPngC
     }
-    {\tcPngC\setboolean{MoreFiles}{false}}
+    {\setboolean{MoreFiles}{false}}
   }
   %
   \IfFileExists{\tcCsvC}{
