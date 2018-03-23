@@ -30,7 +30,7 @@
 
 % Define a table style for Test Case results.
 \csvstyle{tcStyle}{
-  longtable=|L{1.5cm}|L{5cm}|L{7cm}|C{1.5cm}|
+  longtable=|L{1.7cm}|L{5cm}|L{7cm}|C{1.3cm}|
   ,table head=\hline REQID & RESKEY & TEXT & STATUS\\\hline\hline\endhead
   ,late after line=\\\hline
   ,tcNames
@@ -75,6 +75,11 @@
   }
   {}
   %
+  \IfFileExists{\tcCsv}{
+  	\csvreader[tcStyle, separator=pipe]
+  	{\tcCsv}{}{\id & \key & \des & \status}
+  }
+  {}
 }
 % ------------------------------------------------------------------------------
 % These commands are used when the amber driver is directed to run a Test Plan,
@@ -120,14 +125,13 @@
         \caption{#1 Page}
       \end{figure}
       \addtocounter{FileCnt}{1}
-      FOUND: \tcPngC
     }
     {\setboolean{MoreFiles}{false}}
   }
   %
   \IfFileExists{\tcCsvC}{
     \csvreader[tcStyle, separator=pipe]
-    {\tcCsv}{}{\id & \key & \des & \status}
+    {\tcCsvC}{}{\id & \key & \des & \status}
   }
   {}
 }
