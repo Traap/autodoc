@@ -28,13 +28,16 @@
 % Define column names use by csvreader for Test Case results.
 \csvnames{tcNames}{1=\id, 2=\key, 3=\des, 4=\status}
 
-% Define a table style for Test Case results.
-\csvstyle{tcStyle}{
-  longtable=|L{1.7cm}|L{5cm}|L{7cm}|C{1.3cm}|
-  ,table head=\hline REQID & RESKEY & TEXT & STATUS\\\hline\hline\endhead
-  ,late after line=\\\hline
+\csvstyle{tcStyle}{before reading=\small,
+   longtable=|L{1.6cm}|L{5.0cm}|L{6.5cm}|C{1.1cm}|
+  ,table head=\hline\rowcolor{cyan!25}REQID & RESKEY & TEXT & STATUS\ER\endhead
+  ,late after line=\ER
   ,tcNames
 }
+
+% ------------------------------------------------------------------------------
+% Zero fill numbers
+\newcommand{\zerofill}[1]{\ifnum#1<10 00#1\else\ifnum#1<100 0#1\else #1\fi\fi}
 
 % ------------------------------------------------------------------------------
 % These commands are used when the amber driver is directed to run a Test Plan,
@@ -61,25 +64,31 @@
   %
   \renewcommand{\tcPath}{\tofPath/case}
   \renewcommand{\tcLog}{\tcPath/#1/#1.tex}
-  \renewcommand{\tcPng}{\tcPath/#1/#1.png}
+  \renewcommand{\tcPng}{\tcPath/#1/#1-\zerofill{\theFileCnt}.png}
   \renewcommand{\tcCsv}{\tcPath/#1/#1.csv}
   %
   \inputIfExists{\tcLog}
-  %
-  \IfFileExists{\tcPng}{
-    \begin{figure}[ht]
-      \centering
-      \includegraphics[scale=0.25]{\tcPng}
-      \caption{#1 Page}
-    \end{figure}
-  }
-  {}
   %
   \IfFileExists{\tcCsv}{
   	\csvreader[tcStyle, separator=pipe]
   	{\tcCsv}{}{\id & \key & \des & \status}
   }
   {}
+  %
+  \setboolean{MoreFiles}{true}
+  \setcounter{FileCnt}{1}
+  \whiledo{\boolean{MoreFiles}}{
+    \IfFileExists{\tcPng}{
+      \clearpage
+      \begin{figure}[ht]
+        \centering
+        \includegraphics[scale=0.25]{\tcPng}
+        \caption{#1}
+      \end{figure}
+      \addtocounter{FileCnt}{1}
+    }
+    {\setboolean{MoreFiles}{false}}
+  }
 }
 % ------------------------------------------------------------------------------
 % These commands are used when the amber driver is directed to run a Test Plan,
@@ -97,9 +106,6 @@
 % Define Test Suite Output (tso3) commands.
 \newcommand{\tsoC}[3]{\setTOFPathC{#1}{#2}\input{\tofPathC/suite/#3/#3.tex}}
 
-% ------------------------------------------------------------------------------
-% Zero fill numbers
-\newcommand{\zerofill}[1]{\ifnum#1<10 00#1\else\ifnum#1<100 0#1\else #1\fi\fi}
 
 % ------------------------------------------------------------------------------
 % Define Test Case Output (tcoC) commands.
@@ -116,23 +122,25 @@
   %
   \inputIfExists{\tcLogC}
   %
-  \setboolean{MoreFiles}{true}
-  \whiledo{\boolean{MoreFiles}}{
-    \IfFileExists{\tcPngC}{
-      \begin{figure}[ht]
-        \centering
-        \includegraphics[scale=0.25]{\tcPngC}
-        \caption{#1 Page}
-      \end{figure}
-      \addtocounter{FileCnt}{1}
-    }
-    {\setboolean{MoreFiles}{false}}
-  }
-  %
   \IfFileExists{\tcCsvC}{
     \csvreader[tcStyle, separator=pipe]
     {\tcCsvC}{}{\id & \key & \des & \status}
   }
   {}
+  %
+  \setboolean{MoreFiles}{true}
+  \setcounter{FileCnt}{1}
+  \whiledo{\boolean{MoreFiles}}{
+    \IfFileExists{\tcPngC}{
+      \clearpage
+      \begin{figure}[ht]
+        \centering
+        \includegraphics[scale=0.25]{\tcPngC}
+        \caption{#3}
+      \end{figure}
+      \addtocounter{FileCnt}{1}
+    }
+    {\setboolean{MoreFiles}{false}}
+  }
 }
 % ------------------------------------------------------------------------------
