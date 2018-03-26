@@ -1,9 +1,15 @@
 \documentclass[10pt]{tlc-article}
 \begin{document}
   \tlcTitlePageAndTableOfContents
-    {Starter Kit \\ Validation Package}
+    {Starter Kit \\ Autodoc}
     {Gary A. Howard}
     {This document demonstrates how-to use an automated documentation
-      frameework.} 
+     (\skAutoDoc) frameework.}
+
   \input{\toolTestDir/main.tex}
+
+  \makeatletter
+  \tlcDebug
+  \autodocDebug
+
 \end{document}

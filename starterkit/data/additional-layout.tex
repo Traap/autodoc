@@ -1,1 +1,31 @@
-\input{../shared/data/additional-layout.tex}
+% ------------------------------------------------------------------------------
+% Commands and definitions I have defined to make writing this document easier.
+\def\skAdditionalLayout{\tlcDarkblue{data/additional-layout.tex~}}
+\def\skAmber{\tlcDarkblue{Amber~}}
+\def\skAutoDocDebug{\tlcDarkblue{autodocDebug~}}
+\def\skAutoDocDir{\tlcDarkblue{autodocDir~}}
+\def\skAutoDoc{\tlcDarkblue{autodoc~}}
+\def\skBoilerplate{\tlcDarkblue{autodoc/boilerplate~}}
+\def\skConclusion{\tlcDarkblue{Conclusion.tex~}}
+\def\skInputFactory{\tlcDarkblue{input factory~}}
+\def\skMain{\tlcDarkblue{toolTestDir/main~}}
+\def\skOutputFactory{\tlcDarkblue{test-output factory~}}
+\def\skProjectDirTex{\tlcDarkblue{project-directories.tex~}}
+\def\skStarterkit{\tlcDarkblue{Starterkit.tex~}}
+\def\skTlcArticle{\tlcDarkblue{tlc-article~}}
+\def\skTlcDebug{\tlcDarkblue{tlcDebug~}}
+\def\skToc{\tlcDarkblue{tlcTitleAndTableOfContents~}}
+\def\skToolTest{\tlcDarkblue{boilerplate/tool-test~}}
+\def\skUnitTest{\tlcDarkblue{boilerplate/unit-test~}}
+\def\skVerTest{\tlcDarkblue{boilerplate/ver-test~}}
+\def\skToolTestTemplate{\tlcDarkblue{Tool Validation~}}
+\def\skUnitTestTemplate{\tlcDarkblue{Unit Test~}}
+\def\skVerTestTemplate{\tlcDarkblue{Verificaiton Test~}}
+
+% ------------------------------------------------------------------------------
+% autodocDir MUST point to your github/traap/autodoc location.
+\def\autodocDir{..}
+
+% ------------------------------------------------------------------------------
+% Hook into boilerplate definitions.
+\input{\autodocDir/boilerplate/project-directories.tex}
