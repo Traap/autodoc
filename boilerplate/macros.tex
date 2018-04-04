@@ -28,10 +28,12 @@
 % Define column names use by csvreader for Test Case results.
 \csvnames{tcNames}{1=\id, 2=\key, 3=\des, 4=\status}
 
-\csvstyle{tcStyle}{before reading=\small,
-   longtable=|L{1.6cm}|L{5.0cm}|L{6.5cm}|C{1.1cm}|
+\csvstyle{tcStyle}{
+   before reading=\small
+  ,longtable=|L{1.6cm}|L{5.0cm}|L{6.5cm}|C{1.1cm}|
   ,table head=\hline\rowcolor{cyan!25}REQID & RESKEY & TEXT & STATUS\ER\endhead
   ,late after line=\ER
+  ,table foot=\caption{\IfFileExists{\tcCsv}{\tcCsv}{\tcCsvC}}
   ,tcNames
 }
 
@@ -82,7 +84,7 @@
       \clearpage
       \begin{figure}[ht]
         \centering
-        \includegraphics[scale=0.25]{\tcPng}
+        \includegraphics[scale=0.32]{\tcPng}
         \caption{#1}
       \end{figure}
       \addtocounter{FileCnt}{1}
@@ -115,6 +117,7 @@
   %
   \setTOFPathC{#1}{#2} 
   %
+  \setcounter{FileCnt}{1}
   \renewcommand{\tcPathC}{\tofPathC/case}
   \renewcommand{\tcLogC}{\tcPathC/#3/#3.tex}
   \renewcommand{\tcPngC}{\tcPathC/#3/#3-\zerofill{\theFileCnt}.png}
@@ -129,14 +132,13 @@
   {}
   %
   \setboolean{MoreFiles}{true}
-  \setcounter{FileCnt}{1}
   \whiledo{\boolean{MoreFiles}}{
     \IfFileExists{\tcPngC}{
       \clearpage
       \begin{figure}[ht]
         \centering
-        \includegraphics[scale=0.25]{\tcPngC}
-        \caption{#3}
+        \includegraphics[scale=0.31]{\tcPngC}
+        \caption{\tcPngC}
       \end{figure}
       \addtocounter{FileCnt}{1}
     }
