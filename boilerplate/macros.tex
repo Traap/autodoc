@@ -2,24 +2,32 @@
 % This set of commands define the path test-output/factory the amber driver
 % produces as it process YAML files.
 % ------------------------------------------------------------------------------
-\newcommand{\testOutputDir}{test-output}
-\newcommand{\tofPath}{\testOutputDir}
-\newcommand{\tofPathC}{\testOutputDir}
+\newcommand{\testOutputDir}{test-output}%
+\newcommand{\tofPath}{\testOutputDir}%
+\newcommand{\tofPathC}{\testOutputDir}%
+\newcommand{\tcStyleCaption}{\tcCsv}%
 
-\newcommand{\setTOFPath}{\renewcommand{\testOutputDir}{test-output/factory}}
-\newcommand{\setTOFPathC}[2]{\renewcommand{\testOutputDir}{test-output/#1/#2/factory}}
+\newcommand{\setTOFPath}{%
+ \renewcommand{\testOutputDir}{test-output/factory}%
+ \renewcommand{\tcStyleCaption}{\caption{\tcCsv}}%
+ }%
 
-\newcommand{\tcPath}{}
-\newcommand{\tcLog}{}
-\newcommand{\tcPng}{}
-\newcommand{\tcCsv}{}
+\newcommand{\setTOFPathC}[2]{%
+ \renewcommand{\testOutputDir}{test-output/#1/#2/factory}%
+ \renewcommand{\tcStyleCaption}{\caption{\tcCsvC}}%
+ }%
 
-\newcommand{\tcPathC}{}
-\newcommand{\tcLogC}{}
-\newcommand{\tcPngC}{}
-\newcommand{\tcCsvC}{}
-\newcounter{FileCnt}\setcounter{FileCnt}{1}
-\newboolean{MoreFiles}\setboolean{MoreFiles}{true}
+\newcommand{\tcPath}{}%
+\newcommand{\tcLog}{}%
+\newcommand{\tcPng}{}%
+\newcommand{\tcCsv}{}%
+
+\newcommand{\tcPathC}{}%
+\newcommand{\tcLogC}{}%
+\newcommand{\tcPngC}{}%
+\newcommand{\tcCsvC}{}%
+\newcounter{FileCnt}\setcounter{FileCnt}{1}%
+\newboolean{MoreFiles}\setboolean{MoreFiles}{true}%
 
 % ------------------------------------------------------------------------------
 % Comma Separated Variable table definition.  This table is applicable to 1 and
@@ -33,7 +41,7 @@
   ,longtable=|L{1.6cm}|L{5.0cm}|L{6.5cm}|C{1.1cm}|
   ,table head=\hline\rowcolor{cyan!25}REQID & RESKEY & TEXT & STATUS\ER\endhead
   ,late after line=\ER
-  ,table foot=\caption{\IfFileExists{\tcCsv}{\tcCsv}{\tcCsvC}}
+  ,table foot=\tcStyleCaption
   ,tcNames
 }
 
