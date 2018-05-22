@@ -1,24 +1,24 @@
 \section{Overview}
 Starterkit is a document that is used to demonstrate how \skAutoDoc can be
-used to setup a unit test, verification test, or a tool validation test
-document.
+used to setup a unit test, verification test, a tool validation test
+document, or a test record document.
 
 An \skAutoDoc report consists of two distinct parts: 1) text and 2) a
 program. Text describes requirements, test expectation, and test results, and
-a program automates running Test Plans, Test Suites, and Test Steps that is
+a program automates running Test Plans, Test Suites, and Test Steps that are
 compliant with the \skOutputFactory specified by the \skAmber driver.
 
-The goal of this report is to demonstrate how to specialize an \skAutoDoc for your
+The goal of this report is to demonstrate how to specialize \skAutoDoc for your
 specific purposes.  This report does not hook into \skAmber.  \skAmber has
 a similar report that describes the requirements for the \skInputFactory and
 the \skOutputFactory.
 
 Several sections in section 1 will seam out of place, and perhaps will read
-award. I have included them so that you will see \skAutoDoc framework reuses
+akward. I have included them so that you will see \skAutoDoc framework reuses
 documentation parts.
 
 \subsection{\skStarterkit}
-The contents of \skStarterkit is listed below.  Page layout, headers, footers,
+The contents of \skStarterkit are listed below.  Page layout, headers, footers,
 and table of contents is driven by the \LaTeX\ document class \skTlcArticle.
 
 \begin{verbatim}
@@ -26,14 +26,17 @@ and table of contents is driven by the \LaTeX\ document class \skTlcArticle.
   \begin{document}
     \tlcTitlePageAndTableOfContents
       {Autodoc \\ Starter Kit}
-      {Gary A. Howard}This
-      {This document demonstrates how-to use an automated documentation
-      (\skAutoDoc) frameework.}
+      {Gary A. Howard}
+      {This document demonstrates how-to use (\skAutoDoc) a \LaTeX\
+      documentation framework. \skAutoDoc declares this a tool-test document
+      type.}
 
     \input{\toolTestDir/main.tex}
+
     \makeatletter
     \tlcDebug
     \autodocDebug
+    \makeatother
 
   \end{document}
 \end{verbatim}
@@ -57,8 +60,8 @@ your documents layout.  The primary contents of this documents
 the \skAutoDoc folder.
 
 \subsection{main}
-All text found in \skBoilerplate is common to all \skAutoDoc documents.  Each
-document consist of four major sections:
+All text files found in \skBoilerplate are common to all \skAutoDoc documents.
+Each document consist of four major sections:
 
 \begin{description}[leftmargin=3cm, style=nextline]
   \item[Overview:] This section provide an overview of the document.  It has
