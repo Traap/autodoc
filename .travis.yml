@@ -16,8 +16,8 @@ addons:
     - latex-xcolor
     - pgf
 script:
-- mkdir _build
 - cd starterkit 
+- mkdir _build
 - pdflatex -interaction=nonstopmode -halt-on-error -output-directory _build starterkit.tex
 deploy:
   provider: releases
