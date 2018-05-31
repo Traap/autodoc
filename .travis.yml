@@ -14,7 +14,6 @@ addons:
     - lmodern
     - latex-xcolor
     - pgf
-    - tlc-article
 before-script:
   - wget https://github.com/Traap/tlc-article/archive/v1.0.10.tar.gz -O starterkit/tlc-article.tar.gz
   - tar -xvf starterkit/tlc-article.tar.gz .
