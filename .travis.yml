@@ -15,10 +15,13 @@ addons:
     - latex-xcolor
     - pgf
     - tlc-article
+before-script:
+  - wget https://github.com/Traap/tlc-article/archive/v1.0.10.tar.gz -O starterkit/tlc-article.tar.gz
+  - tar -xvf starterkit/tlc-article.tar.gz .
+  - mkdir -p starterkit/_build
 script:
-- cd starterkit
-- mkdir _build
-- pdflatex -interaction=nonstopmode -halt-on-error -output-directory _build starterkit.tex
+  - cd starterkit
+  - pdflatex -interaction=nonstopmode -halt-on-error -output-directory _build starterkit.tex
 deploy:
   provider: releases
   api_key:
