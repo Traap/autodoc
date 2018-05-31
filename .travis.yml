@@ -1,0 +1,32 @@
+#Project: tlc-article
+language: generic
+sudo: required
+dist: trusty
+addons:
+  apt:
+    packages:
+    - texlive-base
+    - texlive-font-utils
+    - texlive-fonts-extra
+    - texlive-fonts-recommended
+    - texlive-latex-base
+    - texlive-latex-extra
+    - texlive-latex-recommended
+    - lmodern
+    - latex-xcolor
+    - pgf
+script:
+- mkdir _build
+- cd starterkit 
+- pdflatex -interaction=nonstopmode -halt-on-error -output-directory _build starterkit.tex
+deploy:
+  provider: releases
+  skip_cleanup: true
+  file: _build/starterkit.pdf
+  on:
+    tags: true
+    branch: master
+    repo: Traap/autodoc
+notifications:
+  email: false
+  slack: allanconsulting:FDn63nuwQxikPCD93hza3dk1
