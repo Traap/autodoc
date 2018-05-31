@@ -4,16 +4,18 @@ emit output to the console, web pages, log files, source codr, or other text
 files.
 
 # Prerequisites 
-1. ruby 
-2. [tlc-article](https://github.com/Traap/tlc-article)
-3. [docbld](https://github.com/Traap/docbld)
+1. [Ruby](https://www.ruby-lang.org/en)
+2. [MiKTeX](https://miktex.org/download)
+3. [tlc-article](https://github.com/Traap/tlc-article)
+4. [docbld](https://github.com/Traap/docbld)
 
 # Installation
 Copy the text below and paste into a shell.  The commands will:
 1. Change directory to home
 2. Clone Traap/autodoc
 3. Move to autodoc directory
-4. Assemble static documents 
+4. Assemble StarterKit
+5. View **_build/Starterkit.pdf**
 
 ```bash
 $ cd $HOME \
