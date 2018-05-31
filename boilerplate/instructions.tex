@@ -51,16 +51,19 @@ framework consists of following parts:
 \begin{description}
   \item[\LaTeX] files are used to provide an Abstract, Introduction, Intended
     Use Requirements, Test Plan Overview, Test Equipment, Configuration
-    Item Validation, Conclusion, and Change Summary.
+    Item Validation, Conclusion, and Change Summary.  \LaTeX files are converted
+    assembled into PDF documents.  PDF documents are routed using the Company's
+    document management system for approval.
 
   \item[Ruby] software is used to run the automated framework to collect test
     evidence.
 
-  \item[Git] is used as the storage repository for \LaTeX \& Yaml files.
-
-  \item[Git] (https://github.com/Traap/autodoc) is used to create a pull-request
-    to review the \LaTeX \& YAML files prior to use.
+  \item[Git] is used as the storage repository for \LaTeX \& YAML files, a Git
+    pull-request is used to review the \LaTeX \& YAML files prior to use.
 
   \item[Evidence] Test Plan output includes one Test Suite, Test Plan, and Test
     Step, and Test Evidence.
+
+  \item[YAML] files define the Test Plan, Test Suite, and Test Steps that are
+    processed to generate test evidence.
 \end{description}
