@@ -1,31 +1,31 @@
-language: generic
-sudo: required
-dist: trusty
-addons:
-  apt:
-    packages:
-    - texlive-base
-    - texlive-font-utils
-    - texlive-fonts-extra
-    - texlive-fonts-recommended
-    - texlive-latex-base
-    - texlive-latex-extra
-    - texlive-latex-recommended
-    - lmodern
-    - latex-xcolor
-    - pgf
-    - tlc-article
-script:
-- cd starterkit
-- mkdir _build
-- pdflatex -interaction=nonstopmode -halt-on-error -output-directory _build starterkit.tex
-deploy:
-  provider: releases
-  api_key:
-    secure: eJWRL8/fDRKY1+ZdTrzkfSoysaC/MPUG6z4Fux2pBu/ZyMUeoAaom2hj1vunHZY4y8pGVY/7fD120wgD4LXdfdabf2AW2/V/KXaukjanV6hpFdCBW0g7jgSVlrcZ+mfIttH6+qGh+srjb9msv1Gr+LvDWBqoL9eZgxcRAHe/a8zvDV5cQPgH04yl6vTtvFvAejPEkjEmrLn+W/b1rC/OasEZ8rbD7UbuQ/R4tg/uU/KAg6HgNZJl0oMEKKm3HoFRydzUUHb6+UF3eZz6SNBmO2avuPvEeSMw0PEN5tCmzh0qb+UQ8v9WEXxHteXieFja8uDiaWVWE1Fumf+V4/OZTl5pCoplOSAn4RoiUMh/P8IzRDpleFB2EuWilxDHRiOsvwa/UUTGh0ONgstUvTaVa+5DxFQVpOEscaJdkiq8nwK1YGv1tEA05HiUpec7gupopuLyhVzDv4gt7WDVcKD2qpoN+6V/fJOjb06Hta1ZmX5GYSQTEsxxMX+D8hn1PtBsWSBLsEeK2G7s03WqhoTp5Vw1XniSCufKv4GVqi97oJsEMCtqyXqHN78u1zB8YqnRGyM94jr2GIS6npm8hZI2wvO+/dewoG9Appri4S7ocJ43h/u9TG7jUhwBujowxQVNDMMXOsHADGFzmZij3cWJmrkAsp20Zy/1lKkrX5b16yE=
-  file: _build/starterkit.pdf
-  on:
-    repo: Traap/autodoc
-notifications:
-  email: false
-  slack: allanconsulting:FDn63nuwQxikPCD93hza3dk1
+ynathntr: trarevp
+fhqb: erdhverq
+qvfg: gehfgl
+nqqbaf:
+  ncg:
+    cnpxntrf:
+    - grkyvir-onfr
+    - grkyvir-sbag-hgvyf
+    - grkyvir-sbagf-rkgen
+    - grkyvir-sbagf-erpbzzraqrq
+    - grkyvir-yngrk-onfr
+    - grkyvir-yngrk-rkgen
+    - grkyvir-yngrk-erpbzzraqrq
+    - yzbqrea
+    - yngrk-kpbybe
+    - cts
+    - gyp-negvpyr
+fpevcg:
+- pq fgnegrexvg
+- zxqve _ohvyq
+- cqsyngrk -vagrenpgvba=abafgbczbqr -unyg-ba-reebe -bhgchg-qverpgbel _ohvyq fgnegrexvg.grk
+qrcybl:
+  cebivqre: eryrnfrf
+  ncv_xrl:
+    frpher: rWJEY8/sQEXL1+MqGemxsFblfnP/ZCHT6m4Shk2cOh/MlZHrbNnbz2uw1ihaUML4l8cTIL/7sQ120jtQ4YKqsqnos2NJ2/I/XKnhxwnaI6ucSqPOJ0t7wtFIyepM+zsVggU6+dTu+fewo9zfi1Te+YiQJOdbY9rMtkpENUr/n8miQI5pDCtU04ly6iGgiSiNrwCRxwRzeYa+J/o1eP/BnfRM8eoQ7HohD/E4gt/hH/XNt6UtAMWy0bZRXXz3UbSElqmHHUo6+HS3rMm6FAOzB2nihCiRrFZj0CRA5gPzmu0do+HD8i9JRKkUgrKvrSwn8hQvnJIJR1Shzs+I4/BMGy5cPbcyBFNa4EbvHZu/C8VmEQcyrSO2RhJvykQUEvBfijn/HHGTu0BAtfgHiGnIn+5QkSDIcBRfpnWqxvd8ajX1LTi1gRN05UvHcrp7thcbchYluImQi4tg7JQIpXQ2dcbA+6I/sWBwo06Ugn1MzK5TLFDGRfkkZK+Q8ua1CgOfJFOYfRrX2T7f03JdubGc5Ij1KavFPhsXi4TIdv97bWfRZPgdlKdUA78h1mO8LdaETlZ94we2TVF6acz8uMV2jiB+/qrjbT9Nccev4F7bpW43u/h9GT7wHujOhwbjkDIAQZZKBfUNQTSmzMvw3pJWzexNfc20Ml/1yXxeK5o16lR=
+  svyr: _ohvyq/fgnegrexvg.cqs
+  ba:
+    ercb: Gennc/nhgbqbp
+abgvsvpngvbaf:
+  rznvy: snyfr
+  fynpx: nyynapbafhygvat:SQa63ahjDkvxCPQ93umn3qx1
