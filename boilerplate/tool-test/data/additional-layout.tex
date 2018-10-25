@@ -7,16 +7,16 @@
 % ------------------------------------------------------------------------------
 % The logo applied to all documents
 \newcommand{\useLogo}{%
-\IfFileExists{/tool-test/data/logo.png}{\logosize{/tool-test/data/logo.png}}{%
-  \IfFileExists{../tool-test/data/logo.png}{\logosize{../tool-test/data/logo.png}}{%
-    \IfFileExists{../../tool-test/data/logo.png}{\logosize{../../tool-test/data/logo.png}}{%
-      \IfFileExists{../../../tool-test/data/logo.png}{\logosize{../../../tool-test/data/logo.png}}{%
-        \IfFileExists{../../../../tool-test/data/logo.png}{\logosize{../../../../tool-test/data/logo.png}}{%
-          \IfFileExists{../../../../../tool-test/data/logo.png}{\logosize{../../../../../tool-test/data/logo.png}}{%
-            \IfFileExists{../../../../../../tool-test/data/logo.png}{\logosize{../../../../../../tool-test/data/logo.png}}{%
-              \IfFileExists{../../../../../../../tool-test/data/logo.png}{\logosize{../../../../../../../tool-test/data/logo.png}}{%
-                \IfFileExists{../../../../../../../../tool-test/data/logo.png}{\logosize{../../../../../../../../tool-test/data/logo.png}}{%
-                  \IfFileExists{../../../../../../../../../tool-test/data/logo.png}{\logosize{../../../../../../../../../tool-test/data/logo.png}}{}%
+\IfFileExists{autodoc/boilerplate/tool-test/data/logo.png}{\logosize{autodoc/boilerplate/tool-test/data/logo.png}}{%
+  \IfFileExists{..autodoc/boilerplate/tool-test/data/logo.png}{\logosize{..autodoc/boilerplate/tool-test/data/logo.png}}{%
+    \IfFileExists{../..autodoc/boilerplate/tool-test/data/logo.png}{\logosize{../..autodoc/boilerplate/tool-test/data/logo.png}}{%
+      \IfFileExists{../../..autodoc/boilerplate/tool-test/data/logo.png}{\logosize{../../..autodoc/boilerplate/tool-test/data/logo.png}}{%
+        \IfFileExists{../../../..autodoc/boilerplate/tool-test/data/logo.png}{\logosize{../../../..autodoc/boilerplate/tool-test/data/logo.png}}{%
+          \IfFileExists{../../../../..autodoc/boilerplate/tool-test/data/logo.png}{\logosize{../../../../..autodoc/boilerplate/tool-test/data/logo.png}}{%
+            \IfFileExists{../../../../../..autodoc/boilerplate/tool-test/data/logo.png}{\logosize{../../../../../..autodoc/boilerplate/tool-test/data/logo.png}}{%
+              \IfFileExists{../../../../../../..autodoc/boilerplate/tool-test/data/logo.png}{\logosize{../../../../../../..autodoc/boilerplate/tool-test/data/logo.png}}{%
+                \IfFileExists{../../../../../../../..autodoc/boilerplate/tool-test/data/logo.png}{\logosize{../../../../../../../..autodoc/boilerplate/tool-test/data/logo.png}}{%
+                  \IfFileExists{../../../../../../../../..autodoc/boilerplate/tool-test/data/logo.png}{\logosize{../../../../../../../../..autodoc/boilerplate/tool-test/data/logo.png}}{}%
                   }%
                 }%
               }%

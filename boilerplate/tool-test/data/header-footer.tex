@@ -3,8 +3,9 @@
 \makeatletter
 
 % Header applied to all documents.
-\lhead{\useLogo\\\tiny\hfOrigin\\\hfVV}
-\rhead{\tiny\thetitle\\\hfVersion\\\hfRevision}
+\lhead{\useLogo}
+\chead{\large\thetitle}
+\rhead{\tiny\hfStatus\\\hfDate\\\hfVersion}
 \renewcommand{\headrulewidth}{0.1pt}
 
 % Eliminate headheight too small warning, which is occurring because we are
@@ -13,5 +14,6 @@
 
 % Footer applied to all documents.
 \lfoot{\tiny\hfInstitution}
-\rfoot{\tiny\hfPermission\\\ Page \thepage~of~\pageref{LastPage}}
+\cfoot{\tiny\hfPermission}
+\rfoot{\tiny\ Page \thepage~of~\pageref{LastPage}}
 \renewcommand{\footrulewidth}{0.1pt}
