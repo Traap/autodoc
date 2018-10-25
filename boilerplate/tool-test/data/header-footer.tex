@@ -1,0 +1,17 @@
+% Header applied to all documents.
+\input{data/version.tex}
+\makeatletter
+
+% Header applied to all documents.
+\lhead{\useLogo\\\tiny\hfOrigin}
+\rhead{\tiny\thetitle\\\hfdocNum\hfVersion\\\hfRevise\hfRevision}
+\renewcommand{\headrulewidth}{0.1pt}
+
+% Eliminate headheight too small warning, which is occurring because we are
+% using an image to our header.
+\setlength\headheight{52pt}
+
+% Footer applied to all documents.
+\cfoot{\hfInstitution}
+\rfoot{\tiny\ Page \thepage~of~\pageref{LastPage}}
+\renewcommand{\footrulewidth}{0.01pt}
