@@ -1,3 +1,10 @@
+
+\newcommand{\spAuthor}{n/a}
+\newcommand{\spTrOne}{n/a}
+\newcommand{\spTrTwo}{n/a}
+\newcommand{\spQA}{n/a}
+\newcommand{\spOnFile}{Electronic signature on file.}
+
 \phantomsection
 \addcontentsline{toc}{section}{Approval Signatures}
 \section*{Approval Signatures}
@@ -7,10 +14,9 @@
 	Role & Signature & Date\ER
     \endhead
 
-	Author & . & \today \ER
-	Technical Reviewer & . & \today \ER
-	Technical Reviewer & . & \today \ER
-	QA Reviewer & . & \today \ER
+      Author             & \spOnFile & \spAuthor \ER
+    	Technical Reviewer & \spOnFile  & \spTrOne \ER
+    	Technical Reviewer & \spOnFile  &  \spTrTwo\ER
+    	QA Reviewer        & \spOnFile   &  \spQA \ER
 
 \end{longtable}
-s
