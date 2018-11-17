@@ -11,22 +11,26 @@ and Test Steps.
 
 Each Test Plan is described in its own section.  The order the Test Plans
 are listed is the order they are run.  Each Test Plan defines:
-\begin{description}
 
-\item[name] \quad Each Plan, Suite, and Case has a unique name.
+\begin{description}[labelindent=25pt, style=multiline, leftmargin=4.0cm]
 
-\item[purpose] \quad Each Plan, Suite, and Case has a purpose.
+\item[name]
+  Each Plan, Suite, and Case has a unique name.
 
-\item[Test Steps] \quad Each step has a confirmation and expectation along with
-  the command needed to challenge the IUR.
+\item[purpose]
+  Each Plan, Suite, and Case has a purpose.
 
-\item[Objective Evidence] \quad
-A record the Test Plan was run along with any evidence collected while
-the Test Steps were run.
+\item[Test Steps]
+  Each step has a confirmation and expectation along with the command needed to
+  challenge the IUR.
 
-\item[Traceability] \quad
-Suites and Cases are traced to an IUR that is challenged. IUR can be traced to
-multiple Suites and Cases.
+\item[Objective Evidence]
+  A record the Test Plan was run along with any evidence collected while the
+  Test Steps were run.
+
+\item[Traceability]
+  Suites and Cases are traced to an IUR that is challenged. IUR can be traced to
+  multiple Suites and Cases.
 
 \end{description}
 
@@ -36,7 +40,7 @@ Plans, save the test results, and generate this test report as specified in the
 appropriate design documentation.
 
 The example below runs two commands: 1) git help and 2) cat ~/gitconfig.  The
-output from both commands are written to the console
+output from both commands are written to the system console.
 
 \begin{lstlisting}
 plan:

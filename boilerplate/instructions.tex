@@ -1,49 +1,18 @@
 \subsection{Test Plan Instructions}
 This Test Plan describes Test Suits, Test Cases, and Test Steps that demonstrate
 how the Configuration Item satisfies the IUR.  Each Test Plan describes any
-setup criteria needed to conduct the Test Steps. Each Test Plan contains a list
-of IUR and the Test Steps that demonstrate how the Configuration Item satisfies
-the IUR. Each Test Step is marked passed or failed as it is completed.  Each
-Test Plan is marked passed when all Test Steps pass or failed if a single Test
-Step fails.  This serves as a record of completed Test Plans and Test Steps.
+setup criteria needed to conduct the test.  Each Test Plan contains a list of
+IUR and the steps that demonstrate how the Configuration Item satisfies the IUR.
+Each Test Step is marked passed or failed as it is completed.  Each Test Plan is
+marked passed when all Test Steps pass or failed if a single Test Step fails.
+Failures are addressed per \sopISS. This serves as a record of the completed
+test.
 
 Test Plans are automatically run by the computer generating a report in PDF
-format.  Test Plans are code-reviewed prior to use using the same code-review
-practice that is used for the medical device software.  Test Reports are stored
-in the Configuration Management tool that is used by the medical device
-software.  Test Steps that fail during computer execution or observations made
-during document routing, result in tickets being created to address the issue.
-This results in another execution of the Report Package and document routing.
-
-When it becomes necessary to annotate a computer generated document, a Company's
-documentation practices must be followed.  The documentation practices are
-summarized below:
-
-\begin{enumerate}
-\item When necessary to write down test values, they are written using
-an ink pen.
-
-\item Any cross-outs of results or modifications to any test step shall be
-  initialed and dated.
-
-\item All appropriate blanks shall be filled in or annotated as ``N/A'' (not
-applicable).
-
-\item No whiteout or other text-obscuring technique is to be used.
-
-\item Any annotation must be signed and dated.
-
-\end{enumerate}
-
-In most cases, a Test Plan is to be judged as "fail" if any Test Step within
-that Test Plan fails. If the failed Test Step does not impact proper
-evaluation of the safety and effectiveness of the device, the Test Plan in
-which the Test Step failed may be judged "pass".  For such failed Test Steps a
-rationale will be noted in the comments section and in the final Report
-Package.  If a failed Test Plan is re-executed a record of the failed
-results are included with the Test Plan when it passes and attached to the
-Test Plan.  If a Test Plan is re-executed a new report is
-created and routed for approval in the document management system.
+format.  This Report Package is reviewed prior to execution per \sopSDLC.  The
+Report Package is routed and archived in the Quality Management System.  When it
+becomes necessary to annotate a computer generated document \sopGDP\ must be
+followed.
 
 \subsection{Test Plan Storage and Review}
 This Test Plan is part of a Company's automated validation framework.  The
@@ -51,15 +20,15 @@ framework consists of following parts:
 \begin{description}
   \item[\LaTeX] files are used to provide an Abstract, Introduction, Intended
     Use Requirements, Test Plan Overview, Test Equipment, Configuration
-    Item Validation, Conclusion, and Change Summary.  \LaTeX files are converted
+    Item Validation, Conclusion, and Change Summary.  \LaTeX\ files are converted
     assembled into PDF documents.  PDF documents are routed using the Company's
     document management system for approval.
 
   \item[Ruby] software is used to run the automated framework to collect test
     evidence.
 
-  \item[Git] is used as the storage repository for \LaTeX \& YAML files, a Git
-    pull-request is used to review the \LaTeX \& YAML files prior to use.
+  \item[Git] is used as the storage repository for \LaTeX\ \& YAML files, a Git
+    pull-request is used to review the \LaTeX\ \& YAML files prior to use.
 
   \item[Evidence] Test Plan output includes one Test Suite, Test Plan, and Test
     Step, and Test Evidence.

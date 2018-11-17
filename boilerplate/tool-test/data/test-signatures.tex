@@ -1,9 +1,13 @@
-
+% -----------------------------------------------------------------------------
+% Change the document signers.
 \newcommand{\spAuthor}{n/a}
 \newcommand{\spTrOne}{n/a}
 \newcommand{\spTrTwo}{n/a}
 \newcommand{\spQA}{n/a}
+
+% -----------------------------------------------------------------------------
 \newcommand{\spOnFile}{Electronic signature on file.}
+
 
 \phantomsection
 \addcontentsline{toc}{section}{Approval Signatures}
@@ -14,9 +18,9 @@
 	Role & Signature & Date\ER
     \endhead
 
-      Author             & \spOnFile & \spAuthor \ER
-    	Technical Reviewer & \spOnFile  & \spTrOne \ER
-    	Technical Reviewer & \spOnFile  &  \spTrTwo\ER
-    	QA Reviewer        & \spOnFile   &  \spQA \ER
+      Author             & \spAuthor & \spOnFile \ER
+    	Technical Reviewer & \spTrOne  & \spOnFile \ER
+    	Technical Reviewer & \spTrTwo  & \spOnFile \ER
+    	QA Reviewer        & \spQA     & \spOnFile \ER
 
 \end{longtable}
