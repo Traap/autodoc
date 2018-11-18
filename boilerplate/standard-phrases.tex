@@ -1,0 +1,94 @@
+% ------------------------------------------------------------------------------
+% Standard terminology and phrases used through our Quality Management System
+% documents.
+\newcommand{\stdAuthor}{Data Management Software Solutions}
+\newcommand{\stdCfgItem}{Configuration Item}
+\newcommand{\stdCompanyName}{Fresenius-Kabi}
+\newcommand{\stdIUR}{Intended Use Requirements (IUR)}
+\newcommand{\stdSyRS}{System Requirements (SyRS)}
+\newcommand{\stdREQ}{Softare Requirements (SRS)}
+\newcommand{\stdQMS}{Quality Management System}
+\newcommand{\stdRptPkg}{Report Package}
+
+% ------------------------------------------------------------------------------
+% Standard Test Record Abstract. 
+\newcommand{\stdTestRec}[1]{#1 Test Record}
+
+\newcommand{\stdTestRecAbstract}[1]{%
+  In this document #1 is the \stdCfgItem\ being verified and \stdRptPkg\ is the
+  #1 \stdRptPkg. #1 is verified after this \stdRptPkg\ has been executed,
+  test evidence has been obtained, and test evidence supports the conclusion
+  \stdSyRS\ are satisfied. This document is stored in \stdCompanyName's (Company)
+  \stdQMS\ after #1 has been verified.
+}%
+
+\newcommand{\stdTestRecDoc}[1]{%
+  \stdAutoDocLayout{\stdTestRec{#1}}%
+                   {\stdTestRecAbstract{#1}}%
+                   {\testRecordDir/main.tex}%
+}%
+
+% ------------------------------------------------------------------------------
+% Standard Tool Validation Abstract. 
+\newcommand{\stdToolVal}[1]{#1 Tool Validation}
+
+\newcommand{\stdToolValAbstract}[1]{%
+  In this document #1 is the \stdCfgItem\ being validated and \stdRptPkg\ is the
+  #1 \stdRptPkg. #1 is validated after this \stdRptPkg\ has been executed,
+  test evidence has been obtained, and test evidence supports the conclusion
+  \stdIUR\ are satisfied. This document is stored in \stdCompanyName's (Company)
+  \stdQMS\ after #1 has been validated.
+}%
+
+\newcommand{\stdToolTestDoc}[1]{%
+  \stdAutoDocLayout{\stdToolVal{#1}}%
+                   {\stdToolValAbstract{#1}}%
+                   {\toolTestDir/main.tex}%
+}%
+
+% ------------------------------------------------------------------------------
+% Standard Unit Test Abstract. 
+\newcommand{\stdUnitTest}[1]{#1 Unit Test}
+
+\newcommand{\stdUnitTestAbstract}[1]{%
+  In this document #1 is the \stdCfgItem\ being unit tested and \stdRptPkg\ is the
+  #1 \stdRptPkg. #1 is unit tested after this \stdRptPkg\ has been executed,
+  test evidence has been obtained, and test evidence supports the conclusion
+  \stdSRS\ are satisfied. This document is stored in \stdCompanyName's (Company)
+  \stdQMS\ after #1 has been unit tested.
+}
+
+\newcommand{\stdUnitTestDoc}[1]{%
+  \stdAutoDocLayout{\stdUnitTest{#1}}%
+                   {\stdUnitTestAbstract{#1}}%
+                   {\unitTestDir/main.tex}%
+}%
+
+% ------------------------------------------------------------------------------
+% Standard Ver Test Abstract. 
+\newcommand{\stdVerTest}[1]{#1 Verification Test}
+
+\newcommand{\stdVerTestAbstract}[1]{%
+  In this document #1 is the \stdCfgItem\ being verified and \stdRptPkg\ is the
+  #1 \stdRptPkg. #1 is verified after this \stdRptPkg\ has been executed,
+  test evidence has been obtained, and test evidence supports the conclusion
+  \stdSyRS\ and \stdSRS\ are satisfied. This document is stored in
+  \stdCompanyName's (Company) \stdQMS\ after #1 has been verified.
+}%
+
+\newcommand{\stdVerTestDoc}[1]{%
+  \stdAutoDocLayout{\stdVerTest{#1}}%
+                   {\stdVerTestAbstract{#1}}%
+                   {\verTestDir/main.tex}%
+}%
+
+% ------------------------------------------------------------------------------
+% Standard AutoDoc Layout. 
+% #1 - Name     + [Test Record | Tool Validation | Unit Test | Ver Test]
+% #2 - Abstract + [Test Record | Tool Validation | Unit Test | Ver Test]
+% #3 - main.tex + [Test Record | Tool Validation | Unit Test | Ver Test]
+\newcommand{\stdAutoDocLayout}[3]{%
+  \tlcTitlePageAndTableOfContents{#1}{\stdAuthor}{#2}%
+  \input{#3}%
+}%
+% ------------------------------------------------------------------------------
