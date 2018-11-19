@@ -1,0 +1,178 @@
+% ------------------------------------------------------------------------------
+% Standard terminology and phrases used through our Quality Management System
+% documents.
+\newcommand{\stdAuthor}{Data Management Software Solutions}
+\newcommand{\stdCfgItem}{Configuration Item}
+\newcommand{\stdCompanyName}{Fresenius-Kabi}
+\newcommand{\stdIUR}{Intended Use Requirements (IUR)}
+\newcommand{\stdSyRS}{System Requirements (SyRS)}
+\newcommand{\stdREQ}{Softare Requirements (SRS)}
+\newcommand{\stdQMS}{Quality Management System}
+\newcommand{\stdRptPkg}{Report Package}
+
+% ------------------------------------------------------------------------------
+% Standard Test Record Abstract.
+\newcommand{\stdTestRec}[1]{#1 Test Record}
+
+\newcommand{\stdTestRecAbstract}[1]{%
+  In this document #1 is the \stdCfgItem\ being verified and \stdRptPkg\ is the
+  #1 \stdRptPkg. #1 is verified after this \stdRptPkg\ has been executed,
+  test evidence has been obtained, and test evidence supports the conclusion
+  \stdSyRS\ are satisfied. This document is stored in \stdCompanyName's (Company)
+  \stdQMS\ after #1 has been verified.
+}%
+
+\newcommand{\stdTestRecDoc}[1]{%
+  \stdAutoDocLayout{\stdTestRec{#1}}%
+                   {\stdTestRecAbstract{#1}}%
+                   {\testRecordDir/main.tex}%
+}%
+
+% ------------------------------------------------------------------------------
+% Standard Tool Validation Abstract.
+\newcommand{\stdToolVal}[1]{#1 Tool Validation}
+
+\newcommand{\stdToolValAbstract}[1]{%
+  In this document #1 is the \stdCfgItem\ being validated and \stdRptPkg\ is the
+  #1 \stdRptPkg. #1 is validated after this \stdRptPkg\ has been executed,
+  test evidence has been obtained, and test evidence supports the conclusion
+  \stdIUR\ are satisfied. This document is stored in \stdCompanyName's (Company)
+  \stdQMS\ after #1 has been validated.
+}%
+
+\newcommand{\stdToolTestDoc}[1]{%
+  \stdAutoDocLayout{\stdToolVal{#1}}%
+                   {\stdToolValAbstract{#1}}%
+                   {\toolTestDir/main.tex}%
+}%
+
+% ------------------------------------------------------------------------------
+% Standard Unit Test Abstract.
+\newcommand{\stdUnitTest}[1]{#1 Unit Test}
+
+\newcommand{\stdUnitTestAbstract}[1]{%
+  In this document #1 is the \stdCfgItem\ being unit tested and \stdRptPkg\ is the
+  #1 \stdRptPkg. #1 is unit tested after this \stdRptPkg\ has been executed,
+  test evidence has been obtained, and test evidence supports the conclusion
+  \stdSRS\ are satisfied. This document is stored in \stdCompanyName's (Company)
+  \stdQMS\ after #1 has been unit tested.
+}
+
+\newcommand{\stdUnitTestDoc}[1]{%
+  \stdAutoDocLayout{\stdUnitTest{#1}}%
+                   {\stdUnitTestAbstract{#1}}%
+                   {\unitTestDir/main.tex}%
+}%
+
+% ------------------------------------------------------------------------------
+% Standard Ver Test Abstract.
+\newcommand{\stdVerTest}[1]{#1 Verification Test}
+
+\newcommand{\stdVerTestAbstract}[1]{%
+  In this document #1 is the \stdCfgItem\ being verified and \stdRptPkg\ is the
+  #1 \stdRptPkg. #1 is verified after this \stdRptPkg\ has been executed,
+  test evidence has been obtained, and test evidence supports the conclusion
+  \stdSyRS\ and \stdSRS\ are satisfied. This document is stored in
+  \stdCompanyName's (Company) \stdQMS\ after #1 has been verified.
+}%
+
+\newcommand{\stdVerTestDoc}[1]{%
+  \stdAutoDocLayout{\stdVerTest{#1}}%
+                   {\stdVerTestAbstract{#1}}%
+                   {\verTestDir/main.tex}%
+}%
+
+% ------------------------------------------------------------------------------
+% Standard AutoDoc Layout.
+% #1 - Name     + [Test Record | Tool Validation | Unit Test | Ver Test]
+% #2 - Abstract + [Test Record | Tool Validation | Unit Test | Ver Test]
+% #3 - main.tex + [Test Record | Tool Validation | Unit Test | Ver Test]
+\newcommand{\stdAutoDocLayout}[3]{%
+  \tlcTitlePageAndTableOfContents{#1}{\stdAuthor}{#2}%
+  \input{#3}%
+}%
+
+% ------------------------------------------------------------------------------
+% Standard prerequisite definitions.
+\newcommand{\stdPreReq}{%
+  \clearpage%
+  \section{Prerequisites}%
+  The Company's automated test system is pre-configured with the following
+  components:
+}%
+
+\newcommand{\stdPreReqBegin}{%
+  \stdPreReq%
+  \begin{description}[labelindent=25pt,style=multiline,leftmargin=4.0cm]%
+}%
+
+\newcommand{\stdPreReqEnd}{\end{description}}%
+
+\newcommand{\stdAdminRights}{\item[Administrative Rights]
+  Administrative rights to your computer.  Contact your computer systems
+  administrator.
+}
+
+\newcommand{\stdAmber}{\item[amber]
+  a Ruby Gem that is used for automated testing.
+}
+
+\newcommand{\stdAutodoc}{\item[autodoc]
+  a dynamic and static \LaTeX\ documentation provider.
+}
+
+\newcommand{\stdBamboo}{\item[Bamboo]
+  an Atlassian Bamboo Server.
+}
+
+\newcommand{\stdBitbucket}{\item[Bitbucket]
+  an Atlassian Bitbucket Server.
+}
+
+\newcommand{\stdBundler}{\item[Bundler]
+  a Ruby Gem package manager.
+}
+
+\newcommand{\stdDocbld}{\item[docbld]
+  a dynamic and static \LaTeX\ documentation assembler.
+}
+
+\newcommand{\stdGitAccount}{\item[Git Account]
+  A valid Git username and password.  Request these from your Git administrator.
+}
+
+\newcommand{\stdJira}{\item[JIRA]
+  a project and issue-tracking platform.
+}
+
+\newcommand{\stdNetworkAccess}{\item[Network access]
+  Your computer requires HTTP and HTTPS access to the Internet.  Contact your
+  network administrator.
+}
+
+\newcommand{\stdRake}{\item[Rake]
+  a Ruby build system.
+}
+
+\newcommand{\stdRspec}{\item[Rspec]
+  a Ruby Gem that provides behavior development test driven development.
+}
+
+\newcommand{\stdRuby}{\item[Ruby]
+  a dynamic programming language.
+}
+
+\newcommand{\stdQuickSortRepo}{\item[quicksort repository]
+  Read and write access to
+  \url{https://bitbucket-vial.intra.fresenius.com/projects/SAN/repos/quicksort}
+}
+
+\newcommand{\stdTlcArticle}{\item[tlc-article]
+  a \LaTeX\ document class used to simplify document layout.
+}
+
+\newcommand{\stdWatir}{\item[Watir]
+  a Ruby Gem that is used to interact with a browser.
+}
+
+% ------------------------------------------------------------------------------
