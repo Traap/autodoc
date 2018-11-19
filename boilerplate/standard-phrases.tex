@@ -11,7 +11,7 @@
 \newcommand{\stdRptPkg}{Report Package}
 
 % ------------------------------------------------------------------------------
-% Standard Test Record Abstract. 
+% Standard Test Record Abstract.
 \newcommand{\stdTestRec}[1]{#1 Test Record}
 
 \newcommand{\stdTestRecAbstract}[1]{%
@@ -29,7 +29,7 @@
 }%
 
 % ------------------------------------------------------------------------------
-% Standard Tool Validation Abstract. 
+% Standard Tool Validation Abstract.
 \newcommand{\stdToolVal}[1]{#1 Tool Validation}
 
 \newcommand{\stdToolValAbstract}[1]{%
@@ -47,7 +47,7 @@
 }%
 
 % ------------------------------------------------------------------------------
-% Standard Unit Test Abstract. 
+% Standard Unit Test Abstract.
 \newcommand{\stdUnitTest}[1]{#1 Unit Test}
 
 \newcommand{\stdUnitTestAbstract}[1]{%
@@ -65,7 +65,7 @@
 }%
 
 % ------------------------------------------------------------------------------
-% Standard Ver Test Abstract. 
+% Standard Ver Test Abstract.
 \newcommand{\stdVerTest}[1]{#1 Verification Test}
 
 \newcommand{\stdVerTestAbstract}[1]{%
@@ -83,7 +83,7 @@
 }%
 
 % ------------------------------------------------------------------------------
-% Standard AutoDoc Layout. 
+% Standard AutoDoc Layout.
 % #1 - Name     + [Test Record | Tool Validation | Unit Test | Ver Test]
 % #2 - Abstract + [Test Record | Tool Validation | Unit Test | Ver Test]
 % #3 - main.tex + [Test Record | Tool Validation | Unit Test | Ver Test]
@@ -91,4 +91,88 @@
   \tlcTitlePageAndTableOfContents{#1}{\stdAuthor}{#2}%
   \input{#3}%
 }%
+
+% ------------------------------------------------------------------------------
+% Standard prerequisite definitions.
+\newcommand{\stdPreReq}{%
+  \clearpage%
+  \section{Prerequisites}%
+  The Company's automated test system is pre-configured with the following
+  components:
+}%
+
+\newcommand{\stdPreReqBegin}{%
+  \stdPreReq%
+  \begin{description}[labelindent=25pt,style=multiline,leftmargin=4.0cm]%
+}%
+
+\newcommand{\stdPreReqEnd}{\end{description}}%
+
+\newcommand{\stdAdminRights}{\item[Administrative Rights]
+  Administrative rights to your computer.  Contact your computer systems
+  administrator.
+}
+
+\newcommand{\stdAmber}{\item[amber]
+  a Ruby Gem that is used for automated testing.
+}
+
+\newcommand{\stdAutodoc}{\item[autodoc]
+  a dynamic and static \LaTeX\ documentation provider.
+}
+
+\newcommand{\stdBamboo}{\item[Bamboo]
+  an Atlassian Bamboo Server.
+}
+
+\newcommand{\stdBitbucket}{\item[Bitbucket]
+  an Atlassian Bitbucket Server.
+}
+
+\newcommand{\stdBundler}{\item[Bundler]
+  a Ruby Gem package manager.
+}
+
+\newcommand{\stdDocbld}{\item[docbld]
+  a dynamic and static \LaTeX\ documentation assembler.
+}
+
+\newcommand{\stdGitAccount}{\item[Git Account]
+  A valid Git username and password.  Request these from your Git administrator.
+}
+
+\newcommand{\stdJira}{\item[JIRA]
+  a project and issue-tracking platform.
+}
+
+\newcommand{\stdNetworkAccess}{\item[Network access]
+  Your computer requires HTTP and HTTPS access to the Internet.  Contact your
+  network administrator.
+}
+
+\newcommand{\stdRake}{\item[Rake]
+  a Ruby build system.
+}
+
+\newcommand{\stdRspec}{\item[Rspec]
+  a Ruby Gem that provides behavior development test driven development.
+}
+
+\newcommand{\stdRuby}{\item[Ruby]
+  a dynamic programming language.
+}
+
+\newcommand{\stdQuickSortRepo}{\item[quicksort repository]
+  Read and write access to
+  \url{https://bitbucket-vial.intra.fresenius.com/projects/SAN/repos/quicksort}
+}
+
+\newcommand{\stdTlcArticle}{\item[tlc-article]
+  a \LaTeX\ document class used to simplify document layout.
+}
+
+\newcommand{\stdWatir}{\item[Watir]
+  a Ruby Gem that is used to interact with a browser.
+}
+
 % ------------------------------------------------------------------------------
