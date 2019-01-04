@@ -1,0 +1,38 @@
+% ------------------------------------------------------------------------------
+% Set table of contents depth.   The standard is three and I want four.
+\setcounter{tocdepth}{4}
+
+% ------------------------------------------------------------------------------
+% Used in \hfLogo command to include the logo and set the logo to the correct size.
+\newcommand{\logosize}{\includegraphics[width=3cm, height=1cm]}
+
+% ------------------------------------------------------------------------------
+% The logo applied to all documents
+\newcommand{\useLogo}{%
+\IfFileExists{/autodoc/boilerplate/data/logo.png}{\logosize{/autodoc/boilerplate/data/logo.png}}{%
+  \IfFileExists{../autodoc/boilerplate/data/logo.png}{\logosize{../autodoc/boilerplate/data/logo.png}}{%
+    \IfFileExists{../../autodoc/boilerplate/data/logo.png}{\logosize{../../autodoc/boilerplate/data/logo.png}}{%
+      \IfFileExists{../../../autodoc/boilerplate/data/logo.png}{\logosize{../../../autodoc/boilerplate/data/logo.png}}{%
+        \IfFileExists{../../../../autodoc/boilerplate/data/logo.png}{\logosize{../../../../autodoc/boilerplate/data/logo.png}}{%
+          \IfFileExists{../../../../../autodoc/boilerplate/data/logo.png}{\logosize{../../../../../autodoc/boilerplate/data/logo.png}}{%
+            \IfFileExists{../../../../../../autodoc/boilerplate/data/logo.png}{\logosize{../../../../../../autodoc/boilerplate/data/logo.png}}{%
+              \IfFileExists{../../../../../../../autodoc/boilerplate/data/logo.png}{\logosize{../../../../../../../autodoc/boilerplate/data/logo.png}}{%
+                \IfFileExists{../../../../../../../../autodoc/boilerplate/data/logo.png}{\logosize{../../../../../../../../autodoc/boilerplate/data/logo.png}}{%
+                  \IfFileExists{../../../../../../../../../autodoc/boilerplate/data/logo.png}{\logosize{../../../../../../../../../autodoc/boilerplate/data/logo.png}}{}%
+                  }%
+                }%
+              }%
+            }%
+          }%
+        }%
+      }%
+    }%
+  }%
+}%
+
+% ------------------------------------------------------------------------------
+% We want our header and footer to remain consistent with table of contents
+% that span multiple pages.
+\AtBeginDocument{\addtocontents{toc}{\protect\thispagestyle{fancy}}}
+
+% ------------------------------------------------------------------------------
