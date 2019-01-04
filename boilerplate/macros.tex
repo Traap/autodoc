@@ -8,12 +8,12 @@
 \newcommand{\tcStyleCaption}{\tcCsv}%
 
 \newcommand{\setTOFPath}{%
- \renewcommand{\testOutputDir}{test-output/factory}%
+ \renewcommand{\testOutputDir}{test-output}%
  \renewcommand{\tcStyleCaption}{\caption{\tcCsv}}%
  }%
 
 \newcommand{\setTOFPathC}[2]{%
- \renewcommand{\testOutputDir}{test-output/#1/#2/factory}%
+ \renewcommand{\testOutputDir}{test-output/#1/#2}%
  \renewcommand{\tcStyleCaption}{\caption{\tcCsvC}}%
  }%
 
@@ -58,11 +58,11 @@
 % #1 - filename
 % ------------------------------------------------------------------------------
 % Define Test Plan Output (tpo) commands.
-\newcommand{\tpo}[1]{\setTOFPath\inputIfExists{\tofPath/plan/#1/#1.tex}}
+\newcommand{\tpo}[1]{\setTOFPath\inputIfExists{\tofPath/#1.tex}}
 
 % ------------------------------------------------------------------------------
 % Define Test Suite Output (tso) commands.
-\newcommand{\tso}[1]{\setTOFPath\inputIfExists{\tofPath/suite/#1/#1.tex}}
+\newcommand{\tso}[1]{\setTOFPath\inputIfExists{\tofPath/#1.tex}}
 
 % ------------------------------------------------------------------------------
 % Define Test Case Output (tco) commands.
@@ -72,10 +72,10 @@
   %
   \setTOFPath
   %
-  \renewcommand{\tcPath}{\tofPath/case}
-  \renewcommand{\tcLog}{\tcPath/#1/#1.tex}
-  \renewcommand{\tcPng}{\tcPath/#1/#1-\zerofill{\theFileCnt}.png}
-  \renewcommand{\tcCsv}{\tcPath/#1/#1.csv}
+  \renewcommand{\tcPath}{\tofPath}
+  \renewcommand{\tcLog}{\tcPath/#1.tex}
+  \renewcommand{\tcPng}{\tcPath/#1-\zerofill{\theFileCnt}.png}
+  \renewcommand{\tcCsv}{\tcPath/#1.csv}
   %
   \inputIfExists{\tcLog}
   %
@@ -110,11 +110,11 @@
 % #3 - filename
 % ------------------------------------------------------------------------------
 % Define Test Plan Output (tpo) commands.
-\newcommand{\tpoC}[3]{\setTOFPathC{#1}{#2}\input{\tofPathC/plan/#3/#3.tex}}
+\newcommand{\tpoC}[3]{\setTOFPathC{#1}{#2}\input{\tofPathC/#3.tex}}
 
 % ------------------------------------------------------------------------------
 % Define Test Suite Output (tso3) commands.
-\newcommand{\tsoC}[3]{\setTOFPathC{#1}{#2}\input{\tofPathC/suite/#3/#3.tex}}
+\newcommand{\tsoC}[3]{\setTOFPathC{#1}{#2}\input{\tofPathC/#3.tex}}
 
 
 % ------------------------------------------------------------------------------
@@ -126,10 +126,10 @@
   \setTOFPathC{#1}{#2}
   %
   \setcounter{FileCnt}{1}
-  \renewcommand{\tcPathC}{\tofPathC/case}
-  \renewcommand{\tcLogC}{\tcPathC/#3/#3.tex}
-  \renewcommand{\tcPngC}{\tcPathC/#3/#3-\zerofill{\theFileCnt}.png}
-  \renewcommand{\tcCsvC}{\tcPathC/#3/#3.csv}
+  \renewcommand{\tcPathC}{\tofPathC}
+  \renewcommand{\tcLogC}{\tcPathC/#3.tex}
+  \renewcommand{\tcPngC}{\tcPathC/#3-\zerofill{\theFileCnt}.png}
+  \renewcommand{\tcCsvC}{\tcPathC/#3.csv}
   %
   \inputIfExists{\tcLogC}
   %

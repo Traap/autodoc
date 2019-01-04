@@ -1,0 +1,25 @@
+% ------------------------------------------------------------------------------
+% The defaults are set to N/A.  Each document must override these values.
+\newcommand{\sgNA}    {N/A}
+\newcommand{\sgAuthor}{\sgNA}
+\newcommand{\sgTrOne} {\sgNA}
+\newcommand{\sgTrTwo} {\sgNA}
+\newcommand{\sgQA}    {\sgNA}
+\newcommand{\sgOnFile}{Electronic signature on file.}
+% ------------------------------------------------------------------------------
+\newcommand{\sgApplySignatures}{%
+  \phantomsection%
+  \addcontentsline{toc}{section}{Approval Signatures}%
+   \section*{Approval Signatures}%
+   \begin{longtable}[ht]{|L{3.5cm}|L{5.5cm}|L{5.5cm}|}\hline%
+     \rowcolor{cyan}%
+       Role               & Name       & Signature\ER%
+     \endhead%
+       Author             & \sgAuthor\ & \sgOnFile\ \ER%
+       Technical Reviewer & \sgTrOne\  & \sgOnFile\ \ER%
+       Technical Reviewer & \sgTrTwo\  & \sgOnFile\ \ER%
+       QA Reviewer        & \sgQA\     & \sgOnFile\ \ER%
+   \end{longtable}%
+}%
+
+% ------------------------------------------------------------------------------

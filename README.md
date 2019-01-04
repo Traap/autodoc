@@ -6,8 +6,8 @@ files.
 # Prerequisites 
 1. [Ruby](https://www.ruby-lang.org/en)
 2. [MiKTeX](https://miktex.org/download)
-3. [tlc-article](https://github.com/Traap/tlc-article)
-4. [docbld](https://github.com/Traap/docbld)
+3. [tlc-article](https://bitbucket-vial.intra.fresenius.com/scm/soup/tlc-article.git)
+4. [docbld](https://bitbucket-vial.intra.fresenius.com/scm/soup/docbld)
 
 # Installation
 Copy the text below and paste into a shell.  The commands will:
@@ -19,7 +19,7 @@ Copy the text below and paste into a shell.  The commands will:
 
 ```bash
 $ cd $HOME \
-     && git clone http://github.com/Traap/autodoc.git \
+     && git clone https://bitbucket-vial.intra.fresenius.com/scm/soup/autodoc.git \
             && cd autodoc \
             && docbld
 ```
