@@ -14,6 +14,7 @@
 \newcommand{\stdTypeVerTest}{Verification Test}
 \newcommand{\stdTypeValTest}{Validation Test}
 \newcommand{\stdTypeTestRecord}{Test Record}
+\newcommand{\stdTypeTestReport}{Test Report}
 \newcommand{\stdTypeUnitTest}{Unit Test}
 
 % ------------------------------------------------------------------------------
@@ -31,6 +32,24 @@
 \newcommand{\stdTestRecDoc}[1]{%
   \stdAutoDocLayout{\stdTestRec{#1}}%
                    {\stdTestRecAbstract{#1}}%
+                   {\testRecordDir/main.tex}%
+}%
+
+% ------------------------------------------------------------------------------
+% Standard Test Report Abstract.
+\newcommand{\stdTestRep}[1]{#1 Test Report}
+
+\newcommand{\stdTestRepAbstract}[1]{%
+  In this document #1 is the \stdCfgItem\ being verified and \stdRptPkg\ is the
+  #1 \stdRptPkg. #1 is verified after this \stdRptPkg\ has been executed,
+  test evidence has been obtained, and test evidence supports the conclusion
+  \stdSyRS\ are satisfied. This document is stored in \stdCompanyName's (Company)
+  \stdQMS\ after #1 has been verified.
+}%
+
+\newcommand{\stdTestRepDoc}[1]{%
+  \stdAutoDocLayout{\stdTestRep{#1}}%
+                   {\stdTestRepAbstract{#1}}%
                    {\testRecordDir/main.tex}%
 }%
 
