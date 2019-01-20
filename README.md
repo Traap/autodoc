@@ -4,22 +4,23 @@ emit output to the console, web pages, log files, source codr, or other text
 files.
 
 # Prerequisites 
-1. [Ruby](https://www.ruby-lang.org/en)
-2. [MiKTeX](https://miktex.org/download)
-3. [tlc-article](https://bitbucket-vial.intra.fresenius.com/scm/soup/tlc-article.git)
-4. [docbld](https://bitbucket-vial.intra.fresenius.com/scm/soup/docbld)
+1. [autodoc](https://GitHub.com/Traap/autodoc.git)
+1. [docbld](https://GitHub.com/Traap/docbld.git)
+1. [MiKTeX](https://miktex.org/download)
+1. [tlc-article](https://GitHub.com/Traap/tlc-article.git)
+
 
 # Installation
 Copy the text below and paste into a shell.  The commands will:
 1. Change directory to home
-2. Clone Traap/autodoc
-3. Move to autodoc directory
-4. Assemble StarterKit
-5. View **_build/Starterkit.pdf**
+1. Clone Traap/autodoc
+1. Move to autodoc directory
+1. Assemble StarterKit
+1. View **_build/Starterkit.pdf**
 
 ```bash
 $ cd $HOME \
-     && git clone https://bitbucket-vial.intra.fresenius.com/scm/soup/autodoc.git \
+     && git clone https://github.com/Traap/autodoc.git \
             && cd autodoc \
             && docbld
 ```
