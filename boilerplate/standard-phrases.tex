@@ -37,19 +37,20 @@
 
 % ------------------------------------------------------------------------------
 % Standard Test Report Abstract.
-\newcommand{\stdTestRep}[1]{#1 Test Report}
+\newcommand{\stdTestRep}[2]{#1 Software Application for the #2 Test Report}
 
-\newcommand{\stdTestRepAbstract}[1]{%
-  In this document #1 is the \stdCfgItem\ being verified and \stdRptPkg\ is the
-  #1 \stdRptPkg. #1 is verified after this \stdRptPkg\ has been executed,
+\newcommand{\stdTestRepAbstract}[2]{%
+  In this document #1 software application for the #2 is the \stdCfgItem\ being
+  verified and \stdRptPkg\ is the #1 software application for the #2 \stdRptPkg.
+  #1 software application for the #2 is verified after this \stdRptPkg\ has been executed,
   test evidence has been obtained, and test evidence supports the conclusion
   \stdSyRS\ are satisfied. This document is stored in \stdCompanyName's (Company)
-  \stdQMS\ after #1 has been verified.
+  \stdQMS\ after #1 software application for the #2 has been verified.
 }%
 
-\newcommand{\stdTestRepDoc}[1]{%
-  \stdAutoDocLayout{\stdTestRep{#1}}%
-                   {\stdTestRepAbstract{#1}}%
+\newcommand{\stdTestRepDoc}[2]{%
+  \stdAutoDocLayout{\stdTestRep{#1}{#2}}%
+                   {\stdTestRepAbstract{#1}{#2}}%
                    {\testRecordDir/main.tex}%
 }%
 
