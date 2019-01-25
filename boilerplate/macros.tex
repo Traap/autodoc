@@ -20,6 +20,7 @@
 \newcommand{\tcPath}{}%
 \newcommand{\tcLog}{}%
 \newcommand{\tcPng}{}%
+\newcommand{\tcPngName}{}%
 \newcommand{\tcCsv}{}%
 
 \newcommand{\tcPathC}{}%
@@ -34,7 +35,7 @@
 % 3 argument commands.
 % ------------------------------------------------------------------------------
 % Define column names use by csvreader for Test Case results.
-\csvnames{tcNames}{1=\id, 2=\key, 3=\des, 4=\status}
+\csvnames{tcNames}{1=\id, 2=\key, 3=\des, 4=\status, 5=\imgname}
 
 \csvstyle{tcStyle}{
    before reading=\small
@@ -50,18 +51,18 @@
 % 3 argument commands.
 % ------------------------------------------------------------------------------
 % Define column names use by csvreader for Test Case results filtered by image name.
+% I want the csv reader to read in the new fifth column, and drop it.
+%
 \csvnames{tcNamesFiltered}{1=\id, 2=\key, 3=\des, 4=\status, 5=\imgname}
 
 \csvstyle{tcStyleFiltered}{
 	before reading=\small
-	,longtable=|L{1.6cm}|L{5.0cm}|L{6.5cm}|C{1.1cm}|
+	,longtable=|L{2.0cm}|L{4.5cm}|L{6.4cm}|C{1.1cm}|
 	,table head=\hline\rowcolor{cyan!25}REQID & RESKEY & TEXT & STATUS\ER\endhead
 	,late after line=\ER
 	,table foot=\tcStyleCaption
 	,tcNamesFiltered
 }
-
-
 
 % ------------------------------------------------------------------------------
 % Zero fill numbers
@@ -85,14 +86,69 @@
 % ------------------------------------------------------------------------------
 % Extract Method to include CSV:
 \newcommand{\tcIncludeCsv}{
-  \IfFileExists{\tcCsv}{
-	\csvreader[tcStyle, separator=pipe, filter equal={\imgname}{#1}]
-	{\tcCsv}{}{\id & \key & \des & \status}
-}
-{}
-%
+	% ------------------------------------------------------------------------------
+	% Comma Separated Variable table definition.  This table is applicable to 1 and
+	% 3 argument commands.
+	% ------------------------------------------------------------------------------
+	% Define column names use by csvreader for Test Case results.
+	\csvnames{tcNames}{1=\id, 2=\key, 3=\des, 4=\status, 5=\imgname}
+	
+	\csvstyle{tcStyle}{
+		before reading=\small
+		,longtable=|L{1.6cm}|L{5.0cm}|L{6.5cm}|C{0.9cm}|
+		,table head=\hline\rowcolor{cyan!25}REQID & RESKEY & TEXT & STATE\ER\endhead
+		,late after line=\ER
+		,table foot=\tcStyleCaption
+		,tcNames
+	}%
+		
+	\IfFileExists{\tcCsv}{
+		\csvreader[tcStyle, separator=pipe]
+		{\tcCsv}{}{\id & \key & \des & \status}
+	}
+	{}%
 }
 
+\makeatletter
+\def\instring#1#2{TT\fi\begingroup
+	\edef\x{\endgroup\noexpand\in@{#1}{#2}}\x\ifin@}
+\makeatother
+
+% ------------------------------------------------------------------------------
+% Extract Method to include filtered CSV:
+\newcommand{\tcIncludeFilteredCsv}[1]{
+	
+	% ------------------------------------------------------------------------------
+	% Comma Separated Variable table definition.  This table is applicable to 1 and
+	% 3 argument commands.
+	% ------------------------------------------------------------------------------
+	% Define column names use by csvreader for Test Case results filtered by image name.
+	% I want the csv reader to read in the new fifth column, and drop it.
+	%
+	
+	\subsection{Parameter: {#1}}% for debugging purposes.
+	
+	\csvnames{tcNamesFiltered}{1=\id, 2=\key, 3=\des, 4=\status, 5=\imgname}
+	
+	\csvstyle{tcStyleFiltered}{
+		before reading=\small
+		,longtable=|L{2.2cm}|L{5.0cm}|L{6.4cm}|C{0.9cm}|
+		,table head=\hline\rowcolor{cyan!25}REQID & RESKEY & TEXT & STATE\ER\endhead
+		,late after line=\ER
+		,table foot=\tcStyleCaption
+		,tcNamesFiltered
+	}
+	
+	\IfFileExists{\tcCsv}{
+		%\csvreader[tcStyleFiltered, separator=pipe]
+		\csvreader[tcStyleFiltered, separator=pipe, filter test=\ifcsvstrcmp{\imgname}{#1}]
+		{\tcCsv}{}{\id & \key & \imgname & \status}
+		%{\tcCsv}{}{\id & \key & \des & \status}
+	}
+	{}
+	%
+	
+}
 
 % ------------------------------------------------------------------------------
 % Define Test Case Output (tco) commands.
@@ -105,15 +161,13 @@
   \renewcommand{\tcPath}{\tofPath}
   \renewcommand{\tcLog}{\tcPath/#1.tex}
   \renewcommand{\tcPng}{\tcPath/#1-\zerofill{\theFileCnt}.png}
+  \renewcommand{\tcPngName}{{#1}-\zerofill{\theFileCnt}.png}
   \renewcommand{\tcCsv}{\tcPath/#1.csv}
   %
   \inputIfExists{\tcLog}
   %
-  \IfFileExists{\tcCsv}{
-  	\csvreader[tcStyle, separator=pipe, filter equal={\imgname}{#1}]
-  	{\tcCsv}{}{\id & \key & \des & \status}
-  }
-  {}
+  % Comment out in order to apply filtered CSV files per image.
+  % \tcIncludeCsv
   %
   \setboolean{MoreFiles}{true}
   \setcounter{FileCnt}{1}
@@ -125,6 +179,8 @@
         \includegraphics[scale=0.32]{\tcPng}
         \caption{#1}
       \end{figure}
+      \tcIncludeFilteredCsv{\tcPngName} above uses tcPngName method. 
+      \tcIncludeFilteredCsv{factory/case/bed-create/bed-create-001.png} above uses Hardcoded String name.
       \addtocounter{FileCnt}{1}
     }
     {\setboolean{MoreFiles}{false}}
