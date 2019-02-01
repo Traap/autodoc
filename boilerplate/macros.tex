@@ -34,7 +34,7 @@
 % 3 argument commands.
 % ------------------------------------------------------------------------------
 % Define column names use by csvreader for Test Case results.
-\csvnames{tcNames}{1=\id, 2=\key, 3=\des, 4=\status, 5=\imgname}
+\csvnames{tcNames}{1=\id, 2=\key, 3=\des, 4=\status}
 
 \csvstyle{tcStyle}{
    before reading=\small
@@ -52,7 +52,7 @@
 % Define column names use by csvreader for Test Case results filtered by image name.
 % I want the csv reader to read in the new fifth column, and drop it.
 %
-\csvnames{tcNamesFiltered}{1=\id, 2=\key, 3=\des, 4=\status, 5=\imgname}
+\csvnames{tcNamesFiltered}{1=\id, 2=\key, 3=\des, 4=\status}
 
 \csvstyle{tcStyleFiltered}{
 	before reading=\small
@@ -90,8 +90,8 @@
 	% 3 argument commands.
 	% ------------------------------------------------------------------------------
 	% Define column names use by csvreader for Test Case results.
-	\csvnames{tcNames}{1=\id, 2=\key, 3=\content, 4=\status, 5=\imgname}
-	
+	\csvnames{tcNames}{1=\id, 2=\key, 3=\content, 4=\status}
+
 	\csvstyle{tcStyle}{
 		before reading=\small
 		,longtable=|L{2.6cm}|L{5.0cm}|L{5.5cm}|C{0.9cm}|
@@ -100,7 +100,7 @@
 		,table foot=\tcStyleCaption
 		,tcNames
 	}%
-		
+
 	\IfFileExists{#1}{
 		\csvreader[tcStyle, separator=pipe]{#1}{}{\id & \key & \content & \status}
 	}
@@ -134,7 +134,7 @@
         \centering
         \includegraphics[scale=0.32]{\tcPng}
         \caption{\tcPng}
-      \end{figure}      
+      \end{figure}
       \tcIncludeCsv{\tcCsv}%
       \addtocounter{FileCnt}{1}
     }
@@ -173,7 +173,7 @@
   \renewcommand{\tcCsvC}{\tcPathC/#3.csv}
   %
   \inputIfExists{\tcLogC}
-  
+
   \setboolean{MoreFiles}{true}
   \whiledo{\boolean{MoreFiles}}{
     \IfFileExists{\tcPngC}{
@@ -183,8 +183,8 @@
         \includegraphics[scale=0.31]{\tcPngC}
         \caption{\tcPngC}
       \end{figure}
-      
-	  \tcIncludeCsv{\tcCsv}%   
+
+	  \tcIncludeCsv{\tcCsv}%
       \addtocounter{FileCnt}{1}
     }
     {\setboolean{MoreFiles}{false}}
@@ -198,7 +198,7 @@
 \newcommand{\sDir}{}% boilerplateSpecificDir
 \newcommand{\bDir}{}% boilerplateDir
 
-% Refresh directory variables. 
+% Refresh directory variables.
 \newcommand{\refreshDirs}[1]{
   \renewcommand{\lDir}{#1}%
   \renewcommand{\sDir}{\boilerplateSpecificTestDir/#1}%
