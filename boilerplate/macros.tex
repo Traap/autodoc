@@ -5,22 +5,27 @@
 \newcommand{\tcLog}{}%
 \newcommand{\tcPng}{}%
 \newcommand{\tcCsv}{}%
+\newcommand{\tcCap}{}%
 \newcommand{\tcStyleCaption}{\tcCsv}%
 
 \newcounter{FileCnt}\setcounter{FileCnt}{1}%
+\newcounter{StepCnt}\setcounter{StepCnt}{1}%
 \newboolean{MoreFiles}\setboolean{MoreFiles}{true}%
+\newboolean{MoreSteps}\setboolean{MoreSteps}{true}%
 
 \newcommand{\setTOFPath}[1]{%
- \renewcommand{\tcLog}{#1.tex}%
- \renewcommand{\tcPng}{#1-\zerofill{\theFileCnt}.png}%
+ \renewcommand{\tcCap}{#1 Step \theFileCnt-Image \theStepCnt}
  \renewcommand{\tcCsv}{#1.csv}%
+ \renewcommand{\tcLog}{#1.tex}%
+ \renewcommand{\tcPng}{#1-\zerofill{\theFileCnt}-\zerofill{\theStepCnt}.png}
  \renewcommand{\tcStyleCaption}{\caption{\tcCsv}}%
 }%
 
 \newcommand{\setTOFPathC}[3]{%
- \renewcommand{\tcLog}{#3.tex}%
- \renewcommand{\tcPng}{#3-\zerofill{\theFileCnt}.png}%
+ \renewcommand{\tcCap}{#3 Step \theFileCnt-Image \theStepCnt}
  \renewcommand{\tcCsv}{#3.csv}%
+ \renewcommand{\tcLog}{#3.tex}%
+ \renewcommand{\tcPng}{#1-\zerofill{\theFileCnt}-\zerofill{\theStepCnt}.png}
  \renewcommand{\tcStyleCaption}{\caption{\tcCsv}}%
 }%
 
@@ -90,23 +95,46 @@
 
 % ------------------------------------------------------------------------------
 % Assemble test case output.
+% includeLogFile
+% includeCsvFile
+% includeGraphicFiles
 % ------------------------------------------------------------------------------
 \newcommand{\assembleTestCaseOutput}{%
+  %
+  % Include the log file Amber created.
+  %
+  \inputIfExists{\tcLog}%
+  %
+  % Include the CSV file the program Amber called created.
+  %
   \IfFileExists{\tcCsv}{%
     \csvreader[tcStyle, separator=pipe]{\tcCsv}{}{\id & \key & \des & \status}%
   }{}%
   %
+  % Include any graphic file the program Amber called created.
+  %
   \setboolean{MoreFiles}{true}%
-  \setcounter{FileCnt}{1}%
+  \setboolean{MoreSteps}{true}%
+  %
   \whiledo{\boolean{MoreFiles}}{%
+    \addtocounter{FileCnt}{1}%
+    \setboolean{MoreSteps}{true}%
     \IfFileExists{\tcPng}{%
-      \clearpage%
-      \begin{figure}[ht]%
-        \centering%
-        \includegraphics[scale=0.32]{\tcPng}%
-        \caption{\tcPng}%
-      \end{figure}%
-      \addtocounter{FileCnt}{1}%
+      \whiledo{\boolean{MoreSteps}}{%
+        \IfFileExists{\tcPng}{%
+          \clearpage%
+          \begin{figure}[ht]%
+            \centering%
+            \includegraphics[scale=0.31]{\tcPng}%
+            \caption{\tcCap}%
+          \end{figure}%
+          \addtocounter{StepCnt}{1}%
+        }%
+        {% Else
+          \setboolean{MoreSteps}{false}%
+          \setcounter{StepCnt}{1}%
+        }%
+      }%
     }%
     {\setboolean{MoreFiles}{false}}%
   }%
