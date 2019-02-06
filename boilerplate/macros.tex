@@ -2,52 +2,48 @@
 % This set of commands define the path test-output/factory the amber driver
 % produces as it process YAML files.
 % ------------------------------------------------------------------------------
-\newcommand{\testOutputDir}{test-output}%
-\newcommand{\tofPath}{\testOutputDir}%
-\newcommand{\tofPathC}{\testOutputDir}%
-\newcommand{\tcStyleCaption}{\tcCsv}%
-
-\newcommand{\setTOFPath}{%
- \renewcommand{\testOutputDir}{test-output}%
- \renewcommand{\tcStyleCaption}{\caption{\tcCsv}}%
- }%
-
-\newcommand{\setTOFPathC}[2]{%
- \renewcommand{\testOutputDir}{test-output/#1/#2}%
- \renewcommand{\tcStyleCaption}{\caption{\tcCsvC}}%
- }%
-
-\newcommand{\tcPath}{}%
 \newcommand{\tcLog}{}%
 \newcommand{\tcPng}{}%
 \newcommand{\tcCsv}{}%
+\newcommand{\tcStyleCaption}{\tcCsv}%
 
-\newcommand{\tcPathC}{}%
-\newcommand{\tcLogC}{}%
-\newcommand{\tcPngC}{}%
-\newcommand{\tcCsvC}{}%
 \newcounter{FileCnt}\setcounter{FileCnt}{1}%
 \newboolean{MoreFiles}\setboolean{MoreFiles}{true}%
+
+\newcommand{\setTOFPath}[1]{%
+ \renewcommand{\tcLog}{#1.tex}%
+ \renewcommand{\tcPng}{#1-\zerofill{\theFileCnt}.png}%
+ \renewcommand{\tcCsv}{#1.csv}%
+ \renewcommand{\tcStyleCaption}{\caption{\tcCsv}}%
+}%
+
+\newcommand{\setTOFPathC}[3]{%
+ \renewcommand{\tcLog}{#3.tex}%
+ \renewcommand{\tcPng}{#3-\zerofill{\theFileCnt}.png}%
+ \renewcommand{\tcCsv}{#3.csv}%
+ \renewcommand{\tcStyleCaption}{\caption{\tcCsv}}%
+}%
+
 
 % ------------------------------------------------------------------------------
 % Comma Separated Variable table definition.  This table is applicable to 1 and
 % 3 argument commands.
 % ------------------------------------------------------------------------------
 % Define column names use by csvreader for Test Case results.
-\csvnames{tcNames}{1=\id, 2=\key, 3=\des, 4=\status}
+\csvnames{tcNames}{1=\id, 2=\key, 3=\des, 4=\status}%
 
-\csvstyle{tcStyle}{
+\csvstyle{tcStyle}{%
    before reading=\small
   ,longtable=|L{1.6cm}|L{5.0cm}|L{6.5cm}|C{1.1cm}|
   ,table head=\hline\rowcolor{cyan!25}REQID & RESKEY & TEXT & STATUS\ER\endhead
   ,late after line=\ER
   ,table foot=\tcStyleCaption
   ,tcNames
-}
+}%
 
 % ------------------------------------------------------------------------------
 % Zero fill numbers
-\newcommand{\zerofill}[1]{\ifnum#1<10 00#1\else\ifnum#1<100 0#1\else #1\fi\fi}
+\newcommand{\zerofill}[1]{\ifnum#1<10 00#1\else\ifnum#1<100 0#1\else #1\fi\fi}%
 
 % ------------------------------------------------------------------------------
 % These commands are used when the amber driver is directed to run a Test Plan,
@@ -58,48 +54,18 @@
 % #1 - filename
 % ------------------------------------------------------------------------------
 % Define Test Plan Output (tpo) commands.
-\newcommand{\tpo}[1]{\setTOFPath\inputIfExists{\tofPath/#1.tex}}
+\newcommand{\tpo}[1]{\setTOFPath{#1}\inputIfExists{#1.tex}}%
 
 % ------------------------------------------------------------------------------
 % Define Test Suite Output (tso) commands.
-\newcommand{\tso}[1]{\setTOFPath\inputIfExists{\tofPath/#1.tex}}
+\newcommand{\tso}[1]{\setTOFPath{#1}\inputIfExists{#1.tex}}%
 
 % ------------------------------------------------------------------------------
 % Define Test Case Output (tco) commands.
 %
 % Define a command to standardize test case output (tco).
-\newcommand{\tco}[1]{
-  %
-  \setTOFPath
-  %
-  \renewcommand{\tcPath}{\tofPath}
-  \renewcommand{\tcLog}{\tcPath/#1.tex}
-  \renewcommand{\tcPng}{\tcPath/#1-\zerofill{\theFileCnt}.png}
-  \renewcommand{\tcCsv}{\tcPath/#1.csv}
-  %
-  \inputIfExists{\tcLog}
-  %
-  \IfFileExists{\tcCsv}{
-  	\csvreader[tcStyle, separator=pipe]
-  	{\tcCsv}{}{\id & \key & \des & \status}
-  }
-  {}
-  %
-  \setboolean{MoreFiles}{true}
-  \setcounter{FileCnt}{1}
-  \whiledo{\boolean{MoreFiles}}{
-    \IfFileExists{\tcPng}{
-      \clearpage
-      \begin{figure}[ht]
-        \centering
-        \includegraphics[scale=0.32]{\tcPng}
-        \caption{#1}
-      \end{figure}
-      \addtocounter{FileCnt}{1}
-    }
-    {\setboolean{MoreFiles}{false}}
-  }
-}
+\newcommand{\tco}[1]{\setTOFPath{#1}\assembleTestCaseOutput}%
+
 % ------------------------------------------------------------------------------
 % These commands are used when the amber driver is directed to run a Test Plan,
 % Test Suite, or Test Case to support a web browser and spoken language.
@@ -110,49 +76,41 @@
 % #3 - filename
 % ------------------------------------------------------------------------------
 % Define Test Plan Output (tpo) commands.
-\newcommand{\tpoC}[3]{\setTOFPathC{#1}{#2}\input{\tofPathC/#3.tex}}
+\newcommand{\tpoC}[3]{\setTOFPath{#1}{#2}{#3}\inputIfExists{#3.tex}}%
 
 % ------------------------------------------------------------------------------
 % Define Test Suite Output (tso3) commands.
-\newcommand{\tsoC}[3]{\setTOFPathC{#1}{#2}\input{\tofPathC/#3.tex}}
-
+\newcommand{\tsoC}[3]{\setTOFPath{#1}{#2}{#3}\inputIfExists{#3.tex}}%
 
 % ------------------------------------------------------------------------------
 % Define Test Case Output (tcoC) commands.
 %
 % Define a command to standardize test case output (tcoC).
-\newcommand{\tcoC}[3]{
+\newcommand{\tcoC}[3]{\setTOFPathC{#1}{#2}{#3}\assembleTestCaseOutput}%
+
+% ------------------------------------------------------------------------------
+% Assemble test case output.
+% ------------------------------------------------------------------------------
+\newcommand{\assembleTestCaseOutput}{%
+  \IfFileExists{\tcCsv}{%
+    \csvreader[tcStyle, separator=pipe]{\tcCsv}{}{\id & \key & \des & \status}%
+  }{}%
   %
-  \setTOFPathC{#1}{#2}
-  %
-  \setcounter{FileCnt}{1}
-  \renewcommand{\tcPathC}{\tofPathC}
-  \renewcommand{\tcLogC}{\tcPathC/#3.tex}
-  \renewcommand{\tcPngC}{\tcPathC/#3-\zerofill{\theFileCnt}.png}
-  \renewcommand{\tcCsvC}{\tcPathC/#3.csv}
-  %
-  \inputIfExists{\tcLogC}
-  %
-  \IfFileExists{\tcCsvC}{
-    \csvreader[tcStyle, separator=pipe]
-    {\tcCsvC}{}{\id & \key & \des & \status}
-  }
-  {}
-  %
-  \setboolean{MoreFiles}{true}
-  \whiledo{\boolean{MoreFiles}}{
-    \IfFileExists{\tcPngC}{
-      \clearpage
-      \begin{figure}[ht]
-        \centering
-        \includegraphics[scale=0.31]{\tcPngC}
-        \caption{\tcPngC}
-      \end{figure}
-      \addtocounter{FileCnt}{1}
-    }
-    {\setboolean{MoreFiles}{false}}
-  }
-}
+  \setboolean{MoreFiles}{true}%
+  \setcounter{FileCnt}{1}%
+  \whiledo{\boolean{MoreFiles}}{%
+    \IfFileExists{\tcPng}{%
+      \clearpage%
+      \begin{figure}[ht]%
+        \centering%
+        \includegraphics[scale=0.32]{\tcPng}%
+        \caption{\tcPng}%
+      \end{figure}%
+      \addtocounter{FileCnt}{1}%
+    }%
+    {\setboolean{MoreFiles}{false}}%
+  }%
+}%
 
 % ------------------------------------------------------------------------------
 % Initialize our directory variables to {} so LaTeX can renew them each time
@@ -162,7 +120,7 @@
 \newcommand{\bDir}{}% boilerplateDir
 
 % Refresh directory variables. 
-\newcommand{\refreshDirs}[1]{
+\newcommand{\refreshDirs}[1]{%
   \renewcommand{\lDir}{#1}%
   \renewcommand{\sDir}{\boilerplateSpecificTestDir/#1}%
   \renewcommand{\bDir}{\boilerplateDir/#1}%
