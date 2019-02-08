@@ -13,9 +13,28 @@
 
 \newcommand{\stdTypeVerTest}{Verification Test}
 \newcommand{\stdTypeValTest}{Validation Test}
+\newcommand{\stdTypeTestPlan}{Test Plan}
 \newcommand{\stdTypeTestRecord}{Test Record}
 \newcommand{\stdTypeTestReport}{Test Report}
 \newcommand{\stdTypeUnitTest}{Unit Test}
+
+% ------------------------------------------------------------------------------
+% Standard Test Plan Abstract.
+\newcommand{\stdTestPlan}[1]{#1 Test Plan}
+
+\newcommand{\stdTestPlanAbstract}[1]{%
+  In this document #1 is the \stdCfgItem\ being verified and \stdRptPkg\ is the
+  #1 \stdRptPkg. #1 is verified after this \stdRptPkg\ has been executed,
+  test evidence has been obtained, and test evidence supports the conclusion
+  \stdSyRS\ are satisfied. This document is stored in \stdCompanyName's (Company)
+  \stdQMS\ after #1 has been verified.
+}%
+
+\newcommand{\stdTestPlanDoc}[1]{%
+  \stdAutoDocLayout{\stdTestPlan{#1}}%
+                   {\stdTestPlanAbstract{#1}}%
+                   {\testPlanDir/main.tex}%
+}%
 
 % ------------------------------------------------------------------------------
 % Standard Test Record Abstract.
