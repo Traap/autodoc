@@ -23,11 +23,8 @@
 \newcommand{\stdTestPlan}[1]{#1 Test Plan}
 
 \newcommand{\stdTestPlanAbstract}[1]{%
-  In this document #1 is the \stdCfgItem\ being verified and \stdRptPkg\ is the
-  #1 \stdRptPkg. #1 is verified after this \stdRptPkg\ has been executed,
-  test evidence has been obtained, and test evidence supports the conclusion
-  \stdSyRS\ are satisfied. This document is stored in \stdCompanyName's (Company)
-  \stdQMS\ after #1 has been verified.
+  This is \stdTestPlan{#1}.  This document is stored in \stdCompanyName's
+  (Company) \stdQMS\ after #1 has been verified.
 }%
 
 \newcommand{\stdTestPlanDoc}[1]{%
@@ -38,9 +35,9 @@
 
 % ------------------------------------------------------------------------------
 % Standard Test Record Abstract.
-\newcommand{\stdTestRec}[1]{#1 Test Record}
+\newcommand{\stdTestRecord}[1]{#1 Test Record}
 
-\newcommand{\stdTestRecAbstract}[1]{%
+\newcommand{\stdTestRecordAbstract}[1]{%
   In this document #1 is the \stdCfgItem\ being verified and \stdRptPkg\ is the
   #1 \stdRptPkg. #1 is verified after this \stdRptPkg\ has been executed,
   test evidence has been obtained, and test evidence supports the conclusion
@@ -48,29 +45,25 @@
   \stdQMS\ after #1 has been verified.
 }%
 
-\newcommand{\stdTestRecDoc}[1]{%
-  \stdAutoDocLayout{\stdTestRec{#1}}%
-                   {\stdTestRecAbstract{#1}}%
+\newcommand{\stdTestRecordDoc}[1]{%
+  \stdAutoDocLayout{\stdTestRecord{#1}}%
+                   {\stdTestRecordAbstract{#1}}%
                    {\testRecordDir/main.tex}%
 }%
 
 % ------------------------------------------------------------------------------
 % Standard Test Report Abstract.
-\newcommand{\stdTestRep}[2]{#1 Software Application for the #2 Test Report}
+\newcommand{\stdTestReport}[1]{#1 Test Report}
 
-\newcommand{\stdTestRepAbstract}[2]{%
-  In this document #1 software application for the #2 is the \stdCfgItem\ being
-  verified and \stdRptPkg\ is the #1 software application for the #2 \stdRptPkg.
-  #1 software application for the #2 is verified after this \stdRptPkg\ has been executed,
-  test evidence has been obtained, and test evidence supports the conclusion
-  \stdSyRS\ are satisfied. This document is stored in \stdCompanyName's (Company)
-  \stdQMS\ after #1 software application for the #2 has been verified.
+\newcommand{\stdTestReportAbstract}[1]{%
+  This is #1 Test Report.  This document is stored in \stdCompanyName's
+  (Company) \stdQMS\ after #1 has been verified.
 }%
 
-\newcommand{\stdTestRepDoc}[2]{%
-  \stdAutoDocLayout{\stdTestRep{#1}{#2}}%
-                   {\stdTestRepAbstract{#1}{#2}}%
-                   {\testRecordDir/main.tex}%
+\newcommand{\stdTestReportDoc}[1]{%
+  \stdAutoDocLayout{\stdTestReport{#1}}%
+                   {\stdTestReportAbstract{#1}}%
+                   {\testReportDir/main.tex}%
 }%
 
 % ------------------------------------------------------------------------------
