@@ -8,24 +8,27 @@
 \newcommand{\tcCap}{}%
 \newcommand{\tcStyleCaption}{\tcCsv}%
 
-\newcounter{FileCnt}\setcounter{FileCnt}{1}%
-\newcounter{StepCnt}\setcounter{StepCnt}{1}%
-\newboolean{MoreFiles}\setboolean{MoreFiles}{true}%
+
 \newboolean{MoreSteps}\setboolean{MoreSteps}{true}%
+\newcounter{StepCnt}\setcounter{StepCnt}{1}%
+
+\newboolean{MoreFiles}\setboolean{MoreFiles}{true}%
+\newcounter{FileCnt}\setcounter{FileCnt}{1}%
+
 
 \newcommand{\setTOFPath}[1]{%
- \renewcommand{\tcCap}{#1 Step \theFileCnt-Image \theStepCnt}
+ \renewcommand{\tcCap}{#1 Step \theStepCnt-Image \theFileCnt}
  \renewcommand{\tcCsv}{#1.csv}%
  \renewcommand{\tcLog}{#1.tex}%
- \renewcommand{\tcPng}{#1-\zerofill{\theFileCnt}-\zerofill{\theStepCnt}.png}
+ \renewcommand{\tcPng}{#1-\zerofill{\theStepCnt}-\zerofill{\theFileCnt}.png}
  \renewcommand{\tcStyleCaption}{\caption{\tcCsv}}%
 }%
 
 \newcommand{\setTOFPathC}[3]{%
- \renewcommand{\tcCap}{#3 Step \theFileCnt-Image \theStepCnt}
+ \renewcommand{\tcCap}{#3 Step \theStepCnt-Image \theFileCnt}
  \renewcommand{\tcCsv}{#3.csv}%
  \renewcommand{\tcLog}{#3.tex}%
- \renewcommand{\tcPng}{#1-\zerofill{\theFileCnt}-\zerofill{\theStepCnt}.png}
+ \renewcommand{\tcPng}{#3-\zerofill{\theStepCnt}-\zerofill{\theFileCnt}.png}
  \renewcommand{\tcStyleCaption}{\caption{\tcCsv}}%
 }%
 
@@ -113,14 +116,13 @@
   %
   % Include any graphic file the program Amber called created.
   %
-  \setboolean{MoreFiles}{true}%
   \setboolean{MoreSteps}{true}%
+  \setboolean{MoreFiles}{true}%
   %
-  \whiledo{\boolean{MoreFiles}}{%
-    \addtocounter{FileCnt}{1}%
-    \setboolean{MoreSteps}{true}%
+  \whiledo{\boolean{MoreSteps}}{%
+    \setboolean{MoreFiles}{true}%
     \IfFileExists{\tcPng}{%
-      \whiledo{\boolean{MoreSteps}}{%
+      \whiledo{\boolean{MoreFiles}}{%
         \IfFileExists{\tcPng}{%
           \clearpage%
           \begin{figure}[ht]%
@@ -128,15 +130,16 @@
             \includegraphics[scale=0.31]{\tcPng}%
             \caption{\tcCap}%
           \end{figure}%
-          \addtocounter{StepCnt}{1}%
+          \addtocounter{FileCnt}{1}%
         }%
         {% Else
-          \setboolean{MoreSteps}{false}%
-          \setcounter{StepCnt}{1}%
+          \setboolean{MoreFiles}{false}%
+          \setcounter{FileCnt}{1}%
         }%
       }%
+      \addtocounter{StepCnt}{1}%
     }%
-    {\setboolean{MoreFiles}{false}}%
+    {\setboolean{MoreSteps}{false}}%
   }%
 }%
 
