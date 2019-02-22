@@ -8,7 +8,6 @@
 \newcommand{\tcCap}{}%
 \newcommand{\tcStyleCaption}{\tcCsv}%
 
-
 \newboolean{MoreSteps}\setboolean{MoreSteps}{true}%
 \newcounter{StepCnt}\setcounter{StepCnt}{1}%
 
@@ -17,18 +16,18 @@
 
 
 \newcommand{\setTOFPath}[1]{%
- \renewcommand{\tcCap}{#1 Step \theStepCnt-Image \theFileCnt}
  \renewcommand{\tcCsv}{#1.csv}%
  \renewcommand{\tcLog}{#1.tex}%
  \renewcommand{\tcPng}{#1-\zerofill{\theStepCnt}-\zerofill{\theFileCnt}.png}
+ \renewcommand{\tcCap}{\tcPng}
  \renewcommand{\tcStyleCaption}{\caption{\tcCsv}}%
 }%
 
 \newcommand{\setTOFPathC}[3]{%
- \renewcommand{\tcCap}{#3 Step \theStepCnt-Image \theFileCnt}
  \renewcommand{\tcCsv}{#3.csv}%
  \renewcommand{\tcLog}{#3.tex}%
  \renewcommand{\tcPng}{#3-\zerofill{\theStepCnt}-\zerofill{\theFileCnt}.png}
+ \renewcommand{\tcCap}{\tcPng}
  \renewcommand{\tcStyleCaption}{\caption{\tcCsv}}%
 }%
 
@@ -117,7 +116,10 @@
   % Include any graphic file the program Amber called created.
   %
   \setboolean{MoreSteps}{true}%
+  \setcounter{StepCnt}{1}%
+
   \setboolean{MoreFiles}{true}%
+  \setcounter{FileCnt}{1}%
   %
   \whiledo{\boolean{MoreSteps}}{%
     \setboolean{MoreFiles}{true}%
@@ -128,7 +130,7 @@
           \begin{figure}[ht]%
             \centering%
             \includegraphics[scale=0.31]{\tcPng}%
-            \caption{\tcCap}%
+            \caption{\footnotesize{\tcCap}}%
           \end{figure}%
           \addtocounter{FileCnt}{1}%
         }%
@@ -139,7 +141,10 @@
       }%
       \addtocounter{StepCnt}{1}%
     }%
-    {\setboolean{MoreSteps}{false}}%
+    {% Else
+      \setboolean{MoreSteps}{false}%
+      \setcounter{StepCnt}{1}%
+    }%
   }%
 }%
 
