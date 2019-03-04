@@ -14,21 +14,29 @@
 \newboolean{MoreFiles}\setboolean{MoreFiles}{true}%
 \newcounter{FileCnt}\setcounter{FileCnt}{1}%
 
+\newcommand{\tcCapData}{%
+  \caption{\scriptsize\tcPng}%
+  \center{%
+    \scriptsize%
+    \textbf{ Step: }\zerofill{\theStepCnt}%
+    \textbf{ File: }\zerofill{\theFileCnt}%
+  }%
+}%
 
 \newcommand{\setTOFPath}[1]{%
- \renewcommand{\tcCsv}{#1.csv}%
- \renewcommand{\tcLog}{#1.tex}%
- \renewcommand{\tcPng}{#1-\zerofill{\theStepCnt}-\zerofill{\theFileCnt}.png}
- \renewcommand{\tcCap}{\tcPng}
- \renewcommand{\tcStyleCaption}{\caption{\tcCsv}}%
+  \renewcommand{\tcCsv}{#1.csv}%
+  \renewcommand{\tcLog}{#1.tex}%
+  \renewcommand{\tcPng}{#1-\zerofill{\theStepCnt}-\zerofill{\theFileCnt}.png}
+  \renewcommand{\tcCap}{\tcCapData}%
+  \renewcommand{\tcStyleCaption}{\caption{\tcCsv}}%
 }%
 
 \newcommand{\setTOFPathC}[3]{%
- \renewcommand{\tcCsv}{#3.csv}%
- \renewcommand{\tcLog}{#3.tex}%
- \renewcommand{\tcPng}{#3-\zerofill{\theStepCnt}-\zerofill{\theFileCnt}.png}
- \renewcommand{\tcCap}{\tcPng}
- \renewcommand{\tcStyleCaption}{\caption{\tcCsv}}%
+  \renewcommand{\tcCsv}{#3.csv}%
+  \renewcommand{\tcLog}{#3.tex}%
+  \renewcommand{\tcPng}{#3-\zerofill{\theStepCnt}-\zerofill{\theFileCnt}.png}
+  \renewcommand{\tcCap}{\tcCapData}%
+  \renewcommand{\tcStyleCaption}{\caption{\tcCsv}}%
 }%
 
 
@@ -130,7 +138,7 @@
           \begin{figure}[ht]%
             \centering%
             \includegraphics[scale=0.31]{\tcPng}%
-            \caption{\footnotesize{\tcCap}}%
+            \tcCap%
           \end{figure}%
           \addtocounter{FileCnt}{1}%
         }%
