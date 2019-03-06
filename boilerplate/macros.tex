@@ -2,11 +2,11 @@
 % This set of commands define the path test-output/factory the amber driver
 % produces as it process YAML files.
 % ------------------------------------------------------------------------------
+\newcommand{\tcCsv}{}%
+\newcommand{\tcCsvCap}{\tcCsv}%
 \newcommand{\tcLog}{}%
 \newcommand{\tcPng}{}%
-\newcommand{\tcCsv}{}%
-\newcommand{\tcCap}{}%
-\newcommand{\tcStyleCaption}{\tcCsv}%
+\newcommand{\tcPngCap}{}%
 
 \newboolean{MoreSteps}\setboolean{MoreSteps}{true}%
 \newcounter{StepCnt}\setcounter{StepCnt}{1}%
@@ -14,29 +14,38 @@
 \newboolean{MoreFiles}\setboolean{MoreFiles}{true}%
 \newcounter{FileCnt}\setcounter{FileCnt}{1}%
 
-\newcommand{\tcCapData}{%
+\newcommand{\tcCsvCapData}{%
+  \caption{\scriptsize\tcCsv}%
+  \center{%
+    \scriptsize%
+    \textbf{~Step:~}\zerofill{\theStepCnt}%
+    \textbf{~File:~}\zerofill{\theFileCnt}%
+  }%
+}%
+
+\newcommand{\tcPngCapData}{%
   \caption{\scriptsize\tcPng}%
   \center{%
     \scriptsize%
-    \textbf{ Step: }\zerofill{\theStepCnt}%
-    \textbf{ File: }\zerofill{\theFileCnt}%
+    \textbf{~Step:~}\zerofill{\theStepCnt}%
+    \textbf{~File:~}\zerofill{\theFileCnt}%
   }%
 }%
 
 \newcommand{\setTOFPath}[1]{%
-  \renewcommand{\tcCsv}{#1.csv}%
+  \renewcommand{\tcCsv}{#1-\zerofill{\theStepCnt}-\zerofill{\theFileCnt}.csv}%
+  \renewcommand{\tcCsvCap}{\tcCsvCapData}%
   \renewcommand{\tcLog}{#1.tex}%
   \renewcommand{\tcPng}{#1-\zerofill{\theStepCnt}-\zerofill{\theFileCnt}.png}
-  \renewcommand{\tcCap}{\tcCapData}%
-  \renewcommand{\tcStyleCaption}{\caption{\tcCsv}}%
+  \renewcommand{\tcPngCap}{\tcPngCapData}%
 }%
 
 \newcommand{\setTOFPathC}[3]{%
-  \renewcommand{\tcCsv}{#3.csv}%
+  \renewcommand{\tcCsv}{#3-\zerofill{\theStepCnt}-\zerofill{\theFileCnt}.csv}%
+  \renewcommand{\tcCsvCap}{\tcCsvCapData}%
   \renewcommand{\tcLog}{#3.tex}%
   \renewcommand{\tcPng}{#3-\zerofill{\theStepCnt}-\zerofill{\theFileCnt}.png}
-  \renewcommand{\tcCap}{\tcCapData}%
-  \renewcommand{\tcStyleCaption}{\caption{\tcCsv}}%
+  \renewcommand{\tcPngCap}{\tcPngCapData}%
 }%
 
 
@@ -52,7 +61,7 @@
   ,longtable=|L{1.6cm}|L{5.0cm}|L{6.5cm}|C{1.1cm}|
   ,table head=\hline\rowcolor{cyan!25}REQID & RESKEY & TEXT & STATUS\ER\endhead
   ,late after line=\ER
-  ,table foot=\tcStyleCaption
+  ,table foot=\tcCsvCap
   ,tcNames
 }%
 
@@ -104,28 +113,48 @@
 \newcommand{\tcoC}[3]{\setTOFPathC{#1}{#2}{#3}\assembleTestCaseOutput}%
 
 % ------------------------------------------------------------------------------
-% Assemble test case output.
-% includeLogFile
-% includeCsvFile
-% includeGraphicFiles
+% Include the log file Amber created.
 % ------------------------------------------------------------------------------
-\newcommand{\assembleTestCaseOutput}{%
-  %
-  % Include the log file Amber created.
-  %
-  \inputIfExists{\tcLog}%
-  %
-  % Include the CSV file the program Amber called created.
-  %
+\newcommand{\includeLogFile}{\inputIfExists{\tcLog}}%
+
+% ------------------------------------------------------------------------------
+% Include the CSV file the program Amber called created.
+% ------------------------------------------------------------------------------
+\newcommand{\includeCsvFile}{%
   \IfFileExists{\tcCsv}{%
     \csvreader[tcStyle, separator=pipe]{\tcCsv}{}{\id & \key & \des & \status}%
   }{}%
+}%
+
+% ------------------------------------------------------------------------------
+% Include the PNG file the program Amber called created.
+% ------------------------------------------------------------------------------
+\newcommand{\includePngFile}{%
+  \IfFileExists{\tcPng}{%
+    \clearpage%
+    \begin{figure}[ht]%
+    \centering%
+    \includegraphics[scale=0.31]{\tcPng}%
+    \tcPngCap%
+    \end{figure}%
+    \addtocounter{FileCnt}{1}%
+  }%
+  {% Else
+    \setboolean{MoreFiles}{false}%
+    \setcounter{FileCnt}{1}%
+  }%
+}
+
+% ------------------------------------------------------------------------------
+% Assemble test case output uses includeLogFile and includeCsvFile.
+% ------------------------------------------------------------------------------
+\newcommand{\assembleTestCaseOutput}{%
   %
-  % Include any graphic file the program Amber called created.
+  \includeLogFile%
   %
   \setboolean{MoreSteps}{true}%
   \setcounter{StepCnt}{1}%
-
+  %
   \setboolean{MoreFiles}{true}%
   \setcounter{FileCnt}{1}%
   %
@@ -133,19 +162,8 @@
     \setboolean{MoreFiles}{true}%
     \IfFileExists{\tcPng}{%
       \whiledo{\boolean{MoreFiles}}{%
-        \IfFileExists{\tcPng}{%
-          \clearpage%
-          \begin{figure}[ht]%
-            \centering%
-            \includegraphics[scale=0.31]{\tcPng}%
-            \tcCap%
-          \end{figure}%
-          \addtocounter{FileCnt}{1}%
-        }%
-        {% Else
-          \setboolean{MoreFiles}{false}%
-          \setcounter{FileCnt}{1}%
-        }%
+        \includePngFile%
+        \includeCsvFile%
       }%
       \addtocounter{StepCnt}{1}%
     }%
