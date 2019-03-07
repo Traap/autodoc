@@ -59,9 +59,9 @@
 \csvstyle{tcStyle}{%
    before reading=\small
   ,longtable=|L{1.6cm}|L{5.0cm}|L{6.5cm}|C{1.1cm}|
-  ,table head=\hline\rowcolor{cyan!25}REQID & RESKEY & TEXT & STATUS\ER\endhead
+  ,table head=\hline\rowcolor{blue!35}REQID & RESKEY & TEXT & STATUS\ER\endhead
   ,late after line=\ER
-  ,table foot=\tcCsvCap
+  ,table foot=\hline
   ,tcNames
 }%
 
@@ -122,7 +122,12 @@
 % ------------------------------------------------------------------------------
 \newcommand{\includeCsvFile}{%
   \IfFileExists{\tcCsv}{%
-    \csvreader[tcStyle, separator=pipe]{\tcCsv}{}{\id & \key & \des & \status}%
+    \clearpage\pagebreak%
+    \begin{table}[ht]%
+      \centering%
+      \csvreader[tcStyle, separator=pipe]{\tcCsv}{}{\id & \key & \des & \status}%
+      \tcCsvCap%
+    \end{table}%
   }{}%
 }%
 
@@ -131,12 +136,13 @@
 % ------------------------------------------------------------------------------
 \newcommand{\includePngFile}{%
   \IfFileExists{\tcPng}{%
-    \clearpage%
+    \clearpage\pagebreak%
     \begin{figure}[ht]%
-    \centering%
-    \includegraphics[scale=0.31]{\tcPng}%
-    \tcPngCap%
+      \centering%
+      \includegraphics[scale=0.31]{\tcPng}%
+      \tcPngCap%
     \end{figure}%
+    \includeCsvFile%
     \addtocounter{FileCnt}{1}%
   }%
   {% Else
@@ -163,7 +169,6 @@
     \IfFileExists{\tcPng}{%
       \whiledo{\boolean{MoreFiles}}{%
         \includePngFile%
-        \includeCsvFile%
       }%
       \addtocounter{StepCnt}{1}%
     }%
