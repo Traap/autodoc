@@ -4,6 +4,8 @@
 % ------------------------------------------------------------------------------
 \newcommand{\tcCsv}{}%
 \newcommand{\tcCsvCap}{\tcCsv}%
+\newcommand{\tcCsvResult}{}%
+\newcommand{\tcCsvResultCap}{\tcCsvResult}%
 \newcommand{\tcLog}{}%
 \newcommand{\tcPng}{}%
 \newcommand{\tcPngCap}{}%
@@ -23,6 +25,10 @@
   }%
 }%
 
+\newcommand{\tcCsvResultCapData}{%
+  \caption{\scriptsize\tcCsvResult}%
+}%
+
 \newcommand{\tcPngCapData}{%
   \caption{\scriptsize\tcPng}%
   \center{%
@@ -35,6 +41,8 @@
 \newcommand{\setTOFPath}[1]{%
   \renewcommand{\tcCsv}{#1-\zerofill{\theStepCnt}-\zerofill{\theFileCnt}.csv}%
   \renewcommand{\tcCsvCap}{\tcCsvCapData}%
+  \renewcommand{\tcCsvResult}{#1.csv}%
+  \renewcommand{\tcCsvResultCap}{\tcCsvResultCapData}%
   \renewcommand{\tcLog}{#1.tex}%
   \renewcommand{\tcPng}{#1-\zerofill{\theStepCnt}-\zerofill{\theFileCnt}.png}
   \renewcommand{\tcPngCap}{\tcPngCapData}%
@@ -43,6 +51,8 @@
 \newcommand{\setTOFPathC}[3]{%
   \renewcommand{\tcCsv}{#3-\zerofill{\theStepCnt}-\zerofill{\theFileCnt}.csv}%
   \renewcommand{\tcCsvCap}{\tcCsvCapData}%
+  \renewcommand{\tcCsvResult}{#1.csv}%
+  \renewcommand{\tcCsvResultCap}{\tcCsvResultCapData}%
   \renewcommand{\tcLog}{#3.tex}%
   \renewcommand{\tcPng}{#3-\zerofill{\theStepCnt}-\zerofill{\theFileCnt}.png}
   \renewcommand{\tcPngCap}{\tcPngCapData}%
@@ -132,6 +142,20 @@
 }%
 
 % ------------------------------------------------------------------------------
+% Include the CSV file the program Amber called created at end of the test case.
+% ------------------------------------------------------------------------------
+\newcommand{\includeCsvResultFile}{%
+  \IfFileExists{\tcCsvResult}{%
+    \clearpage\pagebreak%
+    \begin{table}[ht]%
+      \centering%
+      \csvreader[tcStyle, separator=pipe]{\tcCsvResult}{}{\id & \key & \des & \status}%
+      \tcCsvResultCap%
+    \end{table}%
+  }{}%
+}%
+
+% ------------------------------------------------------------------------------
 % Include the PNG file the program Amber called created.
 % ------------------------------------------------------------------------------
 \newcommand{\includePngFile}{%
@@ -177,6 +201,9 @@
       \setcounter{StepCnt}{1}%
     }%
   }%
+  %
+  \includeCsvResultFile
+  %
 }%
 
 % ------------------------------------------------------------------------------
