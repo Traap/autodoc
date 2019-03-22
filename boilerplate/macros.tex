@@ -17,25 +17,33 @@
 \newcounter{FileCnt}\setcounter{FileCnt}{1}%
 
 \newcommand{\tcCsvCapData}{%
-  \caption{\scriptsize\tcCsv}%
-  \center{%
+  \begin{flushleft}%
     \scriptsize%
-    \textbf{~Step:~}\zerofill{\theStepCnt}%
-    \textbf{~File:~}\zerofill{\theFileCnt}%
-  }%
+    \textbf{Step:~}\zerofill{\theStepCnt}~%
+    \textbf{File:~}\zerofill{\theFileCnt}%
+    \newline%
+    \textbf{~Name:~}\tcCsv%
+  \end{flushleft}%
 }%
 
 \newcommand{\tcCsvResultCapData}{%
-  \caption{\scriptsize\tcCsvResult}%
+  \begin{flushleft}%
+    \scriptsize%
+    \textbf{Step:~}N/A~%
+    \textbf{File:~}N/A%
+    \newline%
+    \textbf{~Name:~}\tcCsvResult%
+  \end{flushleft}%
 }%
 
 \newcommand{\tcPngCapData}{%
-  \caption{\scriptsize\tcPng}%
-  \center{%
+  \begin{flushleft}%
     \scriptsize%
-    \textbf{~Step:~}\zerofill{\theStepCnt}%
-    \textbf{~File:~}\zerofill{\theFileCnt}%
-  }%
+    \textbf{Step:~}\zerofill{\theStepCnt}~%
+    \textbf{File:~}\zerofill{\theFileCnt}%
+    \newline%
+    \textbf{~Name:~}\tcPng%
+  \end{flushleft}%
 }%
 
 \newcommand{\setTOFPath}[1]{%
@@ -51,13 +59,12 @@
 \newcommand{\setTOFPathC}[3]{%
   \renewcommand{\tcCsv}{#3-\zerofill{\theStepCnt}-\zerofill{\theFileCnt}.csv}%
   \renewcommand{\tcCsvCap}{\tcCsvCapData}%
-  \renewcommand{\tcCsvResult}{#1.csv}%
+  \renewcommand{\tcCsvResult}{#3.csv}%
   \renewcommand{\tcCsvResultCap}{\tcCsvResultCapData}%
   \renewcommand{\tcLog}{#3.tex}%
   \renewcommand{\tcPng}{#3-\zerofill{\theStepCnt}-\zerofill{\theFileCnt}.png}
   \renewcommand{\tcPngCap}{\tcPngCapData}%
 }%
-
 
 % ------------------------------------------------------------------------------
 % Comma Separated Variable table definition.  This table is applicable to 1 and
@@ -67,9 +74,8 @@
 \csvnames{tcNames}{1=\id, 2=\key, 3=\des, 4=\status}%
 
 \csvstyle{tcStyle}{%
-   before reading=\small
-  ,longtable=|L{1.6cm}|L{5.0cm}|L{6.5cm}|C{1.1cm}|
-  ,table head=\hline\rowcolor{blue!35}REQID & RESKEY & TEXT & STATUS\ER\endhead
+  longtable=|L{0.5cm}|L{1.6cm}|L{5.0cm}|L{6.0cm}|C{0.6cm}|
+  ,table head=\hline\rowcolor{blue!35}\# & ReqId & ResKey & Text & Status\ER\endhead
   ,late after line=\ER
   ,table foot=\hline
   ,tcNames
@@ -129,29 +135,20 @@
 
 % ------------------------------------------------------------------------------
 % Include the CSV file the program Amber called created.
+% #1 - CSV file name. 
+% #2 - CSV Caption 
 % ------------------------------------------------------------------------------
-\newcommand{\includeCsvFile}{%
-  \IfFileExists{\tcCsv}{%
+\newcommand{\includeCsvFile}[2]{%
+  \IfFileExists{#1}{%
     \clearpage\pagebreak%
-    \begin{table}[ht]%
-      \centering%
-      \csvreader[tcStyle, separator=pipe]{\tcCsv}{}{\id & \key & \des & \status}%
-      \tcCsvCap%
-    \end{table}%
-  }{}%
-}%
-
-% ------------------------------------------------------------------------------
-% Include the CSV file the program Amber called created at end of the test case.
-% ------------------------------------------------------------------------------
-\newcommand{\includeCsvResultFile}{%
-  \IfFileExists{\tcCsvResult}{%
-    \clearpage\pagebreak%
-    \begin{table}[ht]%
-      \centering%
-      \csvreader[tcStyle, separator=pipe]{\tcCsvResult}{}{\id & \key & \des & \status}%
-      \tcCsvResultCap%
-    \end{table}%
+    \begin{center}%
+      \scriptsize%
+      \csvreader[tcStyle, separator=pipe]%
+        {\tcCsv}%
+        {}%
+        {\thecsvrow & \id & \key & \des & \status}%
+      #2%
+    \end{center}%
   }{}%
 }%
 
@@ -166,7 +163,7 @@
       \includegraphics[scale=0.31]{\tcPng}%
       \tcPngCap%
     \end{figure}%
-    \includeCsvFile%
+    \includeCsvFile{\tcCsv}{\tcCsvCap}%
     \addtocounter{FileCnt}{1}%
   }%
   {% Else
@@ -176,12 +173,9 @@
 }
 
 % ------------------------------------------------------------------------------
-% Assemble test case output uses includeLogFile and includeCsvFile.
+% Include test evidence which is a png file followed by a csv when present.
 % ------------------------------------------------------------------------------
-\newcommand{\assembleTestCaseOutput}{%
-  %
-  \includeLogFile%
-  %
+\newcommand{\includeTestEvidence}{%
   \setboolean{MoreSteps}{true}%
   \setcounter{StepCnt}{1}%
   %
@@ -201,9 +195,16 @@
       \setcounter{StepCnt}{1}%
     }%
   }%
-  %
-  \includeCsvResultFile
-  %
+}%
+
+% ------------------------------------------------------------------------------
+% Assemble test case output uses includeLogFile, includeTestEvidence, and 
+% includeCsvFile.
+% ------------------------------------------------------------------------------
+\newcommand{\assembleTestCaseOutput}{%
+  \includeLogFile%
+  \includeTestEvidence%
+  \includeCsvFile{\tcCsvResult}{\tcCsvResultCap}%
 }%
 
 % ------------------------------------------------------------------------------
