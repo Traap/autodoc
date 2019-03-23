@@ -1,0 +1,29 @@
+% ------------------------------------------------------------------------------
+% Define a standard tabular layout for documents referenced through design
+% control documentation.
+% ------------------------------------------------------------------------------
+% Define column names use by csvreader for refdocFile.
+\csvnames{refdocNames}{1=\docTitle,2=\docNumber}
+
+% Define a table style for the refdoc table section.
+\csvstyle{refdocStyle}{%
+   longtable=|C{0.5cm}|L{10.5cm}|L{4.0cm}|
+   ,table head=\hline \rowcolor{cyan}\# & Document Title & Document Number\\\hline\hline\endhead
+  ,late after line=\\\hline
+  ,refdocNames
+}%
+
+% Define a command to list documents referenced.
+% Parameters
+% #1 - reference document file name 
+\newcommand{\refdocList}[1]{%
+  \IfFileExists{#1}{%
+    \begin{center}%
+      \csvreader[refdocStyle,separator=pipe]%
+        {\refdocFile}{}{\thecsvrow&\docTitle&\docNumber}%
+    \end{center}%
+  }%
+  {\todo[inline]{#1 was not found.}%
+  }%
+}%
+% ------------------------------------------------------------------------------

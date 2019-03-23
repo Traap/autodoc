@@ -1,0 +1,25 @@
+% ------------------------------------------------------------------------------
+% Initialize our directory variables to {} so LaTeX can renew them each time
+% \useAutoDocFile is referenced.
+\newcommand{\lDir}{}% local directory
+\newcommand{\sDir}{}% boilerplateSpecificDir
+\newcommand{\bDir}{}% boilerplateDir
+
+% Refresh directory variables. 
+\newcommand{\refreshDirs}[1]{%
+  \renewcommand{\lDir}{#1}%
+  \renewcommand{\sDir}{\boilerplateSpecificTestDir/#1}%
+  \renewcommand{\bDir}{\boilerplateDir/#1}%
+}
+
+% We want to find and use a document part by searching the local directory,
+% followed by the boilerPlateSpecificDir, and finally the boilerplateDir.
+\newcommand{\useAutoDocFile}[1]{%
+  \refreshDirs{#1}
+  \IfFileExists{\lDir}{\input{\lDir}}{%
+    \IfFileExists{\sDir}{\input{\sDir}}{%
+      \IfFileExists{\bDir}{\input{\bDir}}{}%
+    }%
+  }%
+}%
+% ------------------------------------------------------------------------------
