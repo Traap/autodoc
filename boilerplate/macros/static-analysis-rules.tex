@@ -1,0 +1,28 @@
+% ------------------------------------------------------------------------------
+% Static analysis section.
+% ------------------------------------------------------------------------------
+% Define column names use by csvreader for static analysis File.
+\csvnames{staticAnalysisNames}{1=\rule, 2=\description}
+
+% Define a table style for the static analysis table reader.
+\csvstyle{staticAnalysisStyle}{%
+  longtable=|C{1cm}|L{2cm}|L{11.5cm}|
+  ,table head=\hline \rowcolor{cyan}\# & Rule & Description \\ \hline \hline \endhead
+  ,late after line=\\\hline
+  ,staticAnalysisNames
+}
+
+% Define a command to select rows from the static analysis file.
+% Parameter:
+% #1 - relative path to static analysis file.
+\newcommand{\staticAnalysisList}[1]{%
+  \IfFileExists{#1}{%
+    \begin{center}%
+      \csvreader[staticAnalysisStyle, separator=pipe]%
+        {#1}{}{\thecsvrow&\rule&\description}%
+    \end{center}%
+  }%
+  {\todo[inline]{#1 was not found.}%
+  }%
+}%
+% ------------------------------------------------------------------------------

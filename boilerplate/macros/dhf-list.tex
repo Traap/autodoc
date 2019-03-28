@@ -1,0 +1,32 @@
+% ------------------------------------------------------------------------------
+% Design History File index section.
+% ------------------------------------------------------------------------------
+% Define column names use by csvreader for the design history file..
+\csvnames{dhfNames}{1=\project, 2=\type, 3=\docnbr, 4=\title, 5=\version}
+
+% Define a table style for the design history file csvreader.
+\csvstyle{dhfStyle}{%
+  longtable=|C{0.5cm}|L{3cm}|C{1.5cm}|L{9cm}|
+  ,table head=\hline \rowcolor{cyan}\# & Document & Version & Title \\ \hline \hline \endhead
+  ,late after line=\\\hline
+  ,dhfNames
+}
+
+% Define a command to select rows from the design history file.
+% Parameters:
+% #1 - relative path to design history file.
+% #2 - project column value 
+% #3 - document type column value
+\newcommand{\dhfList}[3]{%
+  \IfFileExists{#1}{%
+    \begin{center}%
+      \csvreader[dhfStyle, separator=pipe,%
+        filter={\equal{\project}{#2} \and \equal{\type}{#3}}%
+        ]%
+        {#1}{}{\thecsvrow&\docnbr&\version&\title}%
+    \end{center}%
+  }%
+  {\todo[inline]{#1 was not found.}%
+  }%
+}%
+% ------------------------------------------------------------------------------

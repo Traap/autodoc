@@ -1,0 +1,17 @@
+% ------------------------------------------------------------------------------
+% Define a command to provide a standard layout for a graphical file. 
+% Parameters
+%   1 - relative path to graphic file.
+%   2 - figure capture 
+% ------------------------------------------------------------------------------
+\newcommand{\autodocGraphic}[2]{%
+  \IfFileExists{#1}{%
+    \begin{figure}[ht]%
+      \centering%
+      \includegraphics[scale=0.9]{#1}%
+      \caption{#2}%
+    \end{figure}%
+  }{}%
+}%
+% ------------------------------------------------------------------------------
+
