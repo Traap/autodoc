@@ -1,25 +1,36 @@
 % ------------------------------------------------------------------------------
 % We create definitions to support various relative paths used.
 \def\boilerplateDir{\autodocDir/boilerplate}
-\def\placeholderDir{\boilerplateDir/placeholder}
+
+% ------------------------------------------------------------------------------
+% Boilerplate directories. 
+
 \def\debugTestDir{\boilerplateDir/debug-test}
-\def\toolTestDir{\boilerplateDir/tool-test}
-\def\unitTestDir{\boilerplateDir/unit-test}
-\def\verTestDir{\boilerplateDir/ver-test}
+\def\placeholderDir{\boilerplateDir/placeholder}
+\def\stdPhrasesDir{\boilerplateDir/standard-phrases}
+
+% ------------------------------------------------------------------------------
+% Specific document types.
+
+\def\techPlanDir{\boilerplateDir/tech-plan}
 \def\testPlanDir{\boilerplateDir/test-plan}
 \def\testRecordDir{\boilerplateDir/test-record}
 \def\testReportDir{\boilerplateDir/test-report}
+\def\toolTestDir{\boilerplateDir/tool-test}
+\def\unitTestDir{\boilerplateDir/unit-test}
+\def\verTestDir{\boilerplateDir/ver-test}
 
+% ------------------------------------------------------------------------------
+% Autodoc data and shared folders.
 \global\def\dataDir{\autodocDir/data}
 \global\def\sharedDir{\autodocDir/shared}
 
 % ------------------------------------------------------------------------------
-% Include macros, debugging aids,  and SOPs common to all documents.
+% Include macros, debugging aids, SOPs, and standard phrases common to all
+% documents.
 \input{\boilerplateDir/macros.tex}
 \input{\boilerplateDir/debug.tex}
 \input{\boilerplateDir/sop-list.tex}
-
-% ------------------------------------------------------------------------------
-% Include standard phrases.
 \input{\boilerplateDir/standard-phrases.tex}
 
+% ------------------------------------------------------------------------------

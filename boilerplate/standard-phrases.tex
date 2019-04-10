@@ -1,216 +1,28 @@
 % ------------------------------------------------------------------------------
-% Standard terminology and phrases used through our Quality Management System
-% documents.
-\newcommand{\stdAuthor}{Data Management Software Solutions}
-\newcommand{\stdCfgID}{Configuration Identification}
-\newcommand{\stdCfgItem}{Configuration Item}
-\newcommand{\stdCompanyName}{Fresenius-Kabi}
-\newcommand{\stdIUR}{Intended Use Requirements (IUR)}
-\newcommand{\stdSyRS}{System Requirements (SyRS)}
-\newcommand{\stdSRS}{Softare Requirements (SRS)}
-\newcommand{\stdQMS}{Quality Management System}
-\newcommand{\stdRptPkg}{Report Package}
-
-\newcommand{\stdTypeVerTest}{Verification Test}
-\newcommand{\stdTypeValTest}{Validation Test}
-\newcommand{\stdTypeTestPlan}{Test Plan}
-\newcommand{\stdTypeTestRecord}{Test Record}
-\newcommand{\stdTypeTestReport}{Test Report}
-\newcommand{\stdTypeUnitTest}{Unit Test}
+% Generic terms used by document types. 
+% ------------------------------------------------------------------------------
+\input{\stdPhrasesDir/terms.tex}
 
 % ------------------------------------------------------------------------------
-% Standard Test Plan Abstract.
-\newcommand{\stdTestPlan}[1]{#1 Test Plan}
-
-\newcommand{\stdTestPlanAbstract}[1]{%
-  This is \stdTestPlan{#1}.  This document is stored in \stdCompanyName's
-  (Company) \stdQMS\ after #1 has been verified.
-}%
-
-\newcommand{\stdTestPlanDoc}[1]{%
-  \stdAutoDocLayout{\stdTestPlan{#1}}%
-                   {\stdTestPlanAbstract{#1}}%
-                   {\testPlanDir/main.tex}%
-}%
-
+% Generic phrases used by document types. 
 % ------------------------------------------------------------------------------
-% Standard Test Record Abstract.
-\newcommand{\stdTestRecord}[1]{#1 Test Record}
-
-\newcommand{\stdTestRecordAbstract}[1]{%
-  In this document #1 is the \stdCfgItem\ being verified and \stdRptPkg\ is the
-  #1 \stdRptPkg. #1 is verified after this \stdRptPkg\ has been executed,
-  test evidence has been obtained, and test evidence supports the conclusion
-  \stdSyRS\ are satisfied. This document is stored in \stdCompanyName's (Company)
-  \stdQMS\ after #1 has been verified.
-}%
-
-\newcommand{\stdTestRecordDoc}[1]{%
-  \stdAutoDocLayout{\stdTestRecord{#1}}%
-                   {\stdTestRecordAbstract{#1}}%
-                   {\testRecordDir/main.tex}%
-}%
-
-% ------------------------------------------------------------------------------
-% Standard Test Report Abstract.
-\newcommand{\stdTestReport}[1]{#1 Test Report}
-
-\newcommand{\stdTestReportAbstract}[1]{%
-  This is #1 Test Report.  This document is stored in \stdCompanyName's
-  (Company) \stdQMS\ after #1 has been verified.
-}%
-
-\newcommand{\stdTestReportDoc}[1]{%
-  \stdAutoDocLayout{\stdTestReport{#1}}%
-                   {\stdTestReportAbstract{#1}}%
-                   {\testReportDir/main.tex}%
-}%
-
-% ------------------------------------------------------------------------------
-% Standard Tool Validation Abstract.
-\newcommand{\stdToolVal}[1]{#1 Tool Validation}
-
-\newcommand{\stdToolValAbstract}[1]{%
-  In this document #1 is the \stdCfgItem\ being validated and \stdRptPkg\ is the
-  #1 \stdRptPkg. #1 is validated after this \stdRptPkg\ has been executed,
-  test evidence has been obtained, and test evidence supports the conclusion
-  \stdIUR\ are satisfied. This document is stored in \stdCompanyName's (Company)
-  \stdQMS\ after #1 has been validated.
-}%
-
-\newcommand{\stdToolTestDoc}[1]{%
-  \stdAutoDocLayout{\stdToolVal{#1}}%
-                   {\stdToolValAbstract{#1}}%
-                   {\toolTestDir/main.tex}%
-}%
-
-% ------------------------------------------------------------------------------
-% Standard Unit Test Abstract.
-\newcommand{\stdUnitTest}[1]{#1 Unit Test}
-
-\newcommand{\stdUnitTestAbstract}[1]{%
-  In this document #1 is the \stdCfgItem\ being unit tested and \stdRptPkg\ is the
-  #1 \stdRptPkg. #1 is unit tested after this \stdRptPkg\ has been executed,
-  test evidence has been obtained, and test evidence supports the conclusion
-  \stdSRS\ are satisfied. This document is stored in \stdCompanyName's (Company)
-  \stdQMS\ after #1 has been unit tested.
-}
-
-\newcommand{\stdUnitTestDoc}[1]{%
-  \stdAutoDocLayout{\stdUnitTest{#1}}%
-                   {\stdUnitTestAbstract{#1}}%
-                   {\unitTestDir/main.tex}%
-}%
-
-% ------------------------------------------------------------------------------
-% Standard Ver Test Abstract.
-\newcommand{\stdVerTest}[1]{#1 Verification Test}
-
-\newcommand{\stdVerTestAbstract}[1]{%
-  In this document #1 is the \stdCfgItem\ being verified and \stdRptPkg\ is the
-  #1 \stdRptPkg. #1 is verified after this \stdRptPkg\ has been executed,
-  test evidence has been obtained, and test evidence supports the conclusion
-  \stdSyRS\ and \stdSRS\ are satisfied. This document is stored in
-  \stdCompanyName's (Company) \stdQMS\ after #1 has been verified.
-}%
-
-\newcommand{\stdVerTestDoc}[1]{%
-  \stdAutoDocLayout{\stdVerTest{#1}}%
-                   {\stdVerTestAbstract{#1}}%
-                   {\verTestDir/main.tex}%
-}%
+\input{\techPlanDir/standard-phrases.tex}
+\input{\testPlanDir/standard-phrases.tex}
+\input{\testRecordDir/standard-phrases.tex}
+\input{\testReportDir/standard-phrases.tex}
+\input{\toolTestDir/standard-phrases.tex}
+\input{\unitTestDir/standard-phrases.tex}
+\input{\verTestDir/standard-phrases.tex}
 
 % ------------------------------------------------------------------------------
 % Standard AutoDoc Layout.
 % #1 - Name     + [Test Record | Tool Validation | Unit Test | Ver Test]
 % #2 - Abstract + [Test Record | Tool Validation | Unit Test | Ver Test]
 % #3 - main.tex + [Test Record | Tool Validation | Unit Test | Ver Test]
+% ------------------------------------------------------------------------------
 \newcommand{\stdAutoDocLayout}[3]{%
   \tlcTitlePageAndTableOfContents{#1}{\stdAuthor}{#2}%
   \input{#3}%
 }%
-
-% ------------------------------------------------------------------------------
-% Standard prerequisite definitions.
-\newcommand{\stdPreReq}{%
-  \clearpage%
-  \section{Prerequisites}%
-  The Company's automated test system is pre-configured with the following
-  components:
-}%
-
-\newcommand{\stdPreReqBegin}{%
-  \stdPreReq%
-  \begin{description}[labelindent=25pt,style=multiline,leftmargin=4.0cm]%
-}%
-
-\newcommand{\stdPreReqEnd}{\end{description}}%
-
-\newcommand{\stdAdminRights}{\item[Administrative Rights]
-  Administrative rights to your computer.  Contact your computer systems
-  administrator.
-}
-
-\newcommand{\stdAmber}{\item[amber]
-  a Ruby Gem that is used for automated testing.
-}
-
-\newcommand{\stdAutodoc}{\item[autodoc]
-  a dynamic and static \LaTeX\ documentation provider.
-}
-
-\newcommand{\stdBamboo}{\item[Bamboo]
-  an Atlassian Bamboo Server.
-}
-
-\newcommand{\stdBitbucket}{\item[Bitbucket]
-  an Atlassian Bitbucket Server.
-}
-
-\newcommand{\stdBundler}{\item[Bundler]
-  a Ruby Gem package manager.
-}
-
-\newcommand{\stdDocbld}{\item[docbld]
-  a dynamic and static \LaTeX\ documentation assembler.
-}
-
-\newcommand{\stdGitAccount}{\item[Git Account]
-  A valid Git username and password.  Request these from your Git administrator.
-}
-
-\newcommand{\stdJira}{\item[JIRA]
-  a project and issue-tracking platform.
-}
-
-\newcommand{\stdNetworkAccess}{\item[Network access]
-  Your computer requires HTTP and HTTPS access to the Internet.  Contact your
-  network administrator.
-}
-
-\newcommand{\stdRake}{\item[Rake]
-  a Ruby build system.
-}
-
-\newcommand{\stdRspec}{\item[Rspec]
-  a Ruby Gem that provides behavior development test driven development.
-}
-
-\newcommand{\stdRuby}{\item[Ruby]
-  a dynamic programming language.
-}
-
-\newcommand{\stdQuickSortRepo}{\item[quicksort repository]
-  Read and write access to
-  \url{https://bitbucket-vial.intra.fresenius.com/projects/SAN/repos/quicksort}
-}
-
-\newcommand{\stdTlcArticle}{\item[tlc-article]
-  a \LaTeX\ document class used to simplify document layout.
-}
-
-\newcommand{\stdWatir}{\item[Watir]
-  a Ruby Gem that is used to interact with a browser.
-}
 
 % ------------------------------------------------------------------------------

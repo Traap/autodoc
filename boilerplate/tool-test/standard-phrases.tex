@@ -1,0 +1,24 @@
+% ------------------------------------------------------------------------------
+% Standard Tool Validation Abstract.
+% ------------------------------------------------------------------------------
+\newcommand{\stdToolVal}{Test Plan}
+\newcommand{\stdToolValTitle}[1]{#1 \stdToolVal}
+
+\newcommand{\stdToolValAbstract}[1]{%
+  In this document #1 is the \stdCfgItem\ being validated and \stdRptPkg\ is the
+  #1 \stdRptPkg. #1 is validated after this \stdRptPkg\ has been executed,
+  test evidence has been obtained, and test evidence supports the conclusion
+  \stdIUR\ are satisfied. This document is stored in \stdCompanyName's (Company)
+  \stdQMS\ after #1 has been validated.
+}%
+
+% ------------------------------------------------------------------------------
+% Standard Tool Validation document generator command. 
+% ------------------------------------------------------------------------------
+\newcommand{\stdToolTestDoc}[1]{%
+  \stdAutoDocLayout{\stdToolValTitle{#1}}%
+                   {\stdToolValAbstract{#1}}%
+                   {\toolTestDir/main.tex}%
+}%
+
+% ------------------------------------------------------------------------------
