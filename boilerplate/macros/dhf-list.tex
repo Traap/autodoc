@@ -3,12 +3,12 @@
 % ------------------------------------------------------------------------------
 % Define column names use by csvreader for the design history file..
 \csvnames{dhfNames}%
-{1=\proj,2=\pv,3=\type,4=\docnbr,5=\ver,6=\title,7=\pkg,8=\dra,9=\drb,10=\drc,11=\drd,12=\dre}%
+{1=\pj,2=\pv,3=\ty,4=\dn,5=\ver,6=\ttl,7=\pkg,8=\dra,9=\drb,10=\drc,11=\drd,12=\dre,13=\ai}%
 
 % Define a table style for the design history file csvreader.
 \csvstyle{dhfStyle}{%
-  longtable=|C{0.5cm}|L{4.5cm}|L{9cm}|
-  ,table head=\hline \rowcolor{cyan}\# & Document & Title \\ \hline \hline \endhead
+  longtable=|C{0.5cm}|L{3cm}|C{1.5cm}|L{9cm}|
+  ,table head=\hline \rowcolor{cyan}\# & Document & Version & Title \\ \hline \hline \endhead
   ,late after line=\\\hline
   ,dhfNames
 }
@@ -17,15 +17,15 @@
 % Parameters:
 % #1 - relative path to design history file.
 % #2 - project column value 
-% #3 - project version column value 
-% #4 - document type column valuek
+% #3 - project version column value
+% #4 - document type column value
 \newcommand{\dhfList}[4]{%
   \IfFileExists{#1}{%
     \begin{center}%
       \csvreader[dhfStyle, separator=pipe, respect all,%
-        filter={\equal{\proj}{#2} \and \equal{\pv}{#3} \and \equal{\type}{#4}}%
+        filter={\equal{\pj}{#2} \and \equal{\pv}{#3} \and \equal{\ty}{#4}}%
         ]%
-        {#1}{}{\thecsvrow&\docnbr~[\ver]&\title}%
+        {#1}{}{\thecsvrow&\dn&\ver&\ttl}%
     \end{center}%
   }%
   {\todo[inline]{#1 was not found.}%
