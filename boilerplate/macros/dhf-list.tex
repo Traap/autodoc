@@ -13,17 +13,34 @@
   ,dhfNames
 }
 
-% Define a command to select rows from the design history file.
+% ------------------------------------------------------------------------------
+% Define commands to select rows from the design history file.
 % Parameters:
 % #1 - relative path to design history file.
 % #2 - project column value 
 % #3 - project version column value
-% #4 - document type column value
-\newcommand{\dhfList}[4]{%
+% #4 - document type or AI column value
+\newcommand{\dhfList}[4]{\dhfQuery{#1}{\pj}{#2}{\pv}{#3}{\ty}{#4}}%
+\newcommand{\aiList}[4] {\dhfQuery{#1}{\pj}{#2}{\pv}{#3}{\ai}{#4}}%
+
+% ------------------------------------------------------------------------------
+% Define a command to query rows from the design history file.
+% Parameters:
+% #1 - relative path to design history file.
+%
+% #2 - first column name to match
+% #3 - first column value to match 
+%
+% #4 - second column name to match
+% #5 - second column value to match 
+%
+% #6 - third column name to match
+% #7 - third column value to match 
+\newcommand{\dhfQuery}[7]{%
   \IfFileExists{#1}{%
     \begin{center}%
       \csvreader[dhfStyle, separator=pipe, respect all,%
-        filter={\equal{\pj}{#2} \and \equal{\pv}{#3} \and \equal{\ty}{#4}}%
+        filter={\equal{#2}{#3} \and \equal{#4}{#5} \and \equal{#6}{#7}}%
         ]%
         {#1}{}{\thecsvrow&\dn&\ver&\ttl}%
     \end{center}%
@@ -31,4 +48,5 @@
   {\todo[inline]{#1 was not found.}%
   }%
 }%
+
 % ------------------------------------------------------------------------------
