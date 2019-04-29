@@ -1,14 +1,19 @@
+% These API's return fully-formatted tables containing the queried information
 % ------------------------------------------------------------------------------
 % Design History File index section.
 % ------------------------------------------------------------------------------
-% Define column names use by csvreader for the design history file..
+% Define column names used by csvreader for the design history file.
 \csvnames{dhfNames}%
 {1=\pj,2=\pv,3=\ty,4=\dn,5=\ver,6=\ttl,7=\pkg,8=\dra,9=\drb,10=\drc,11=\drd,12=\dre,13=\ai}%
+
+% Define column names used by csvreader for the SOP design history file.
+\csvnames{dhfSopNames}%
+{1=\title,2=\number,3=\version}%
 
 % Define a table style for the design history file csvreader.
 \csvstyle{dhfStyle}{%
   longtable=|C{0.5cm}|L{3cm}|C{1.5cm}|L{9cm}|
-  ,table head=\hline \rowcolor{cyan}\# & Document & Version & Title \\ \hline \hline \endhead
+  ,table head=\hline \rowcolor{fkblue}\# & \fkHdrRow{Document} & V\fkHdrRow{Version} & \fkHdrRow{Title} \\ \hline \hline \endhead
   ,late after line=\\\hline
   ,dhfNames
 }
@@ -24,6 +29,30 @@
 \newcommand{\aiList}[4] {\dhfQuery{#1}{\pj}{#2}{\pv}{#3}{\ai}{#4}}%
 
 % ------------------------------------------------------------------------------
+% Define a command to select a row from the SOP design history file.
+% Parameters:
+% #1 - relative path to the SOP design history file.
+% #2 - title value
+\newcommand{\dhfSopList}[2]{\dhfSopQuery{#1}{\title}{#2}}%
+
+% -----------------------------------------------------------------------------
+% Define a command to query a row from the design history SOP file.
+% Parameters:
+% #1 - relative path to design history SOP file.
+%
+% #2 - first column name to match (\title)
+% #3 - first column value to match
+\newcommand{\dhfSopQuery}[3]{%
+  \IfFileExists{#1}{%
+      \csvreader[separator=pipe, respect all,%
+      filter={\equal{#2}{#3}}]%
+  {#1}{}{\thecsvrow&\number[\version]}%
+  }%
+  {\todo[inline]{#1 was not found.}%
+  }%
+}%
+
+% -----------------------------------------------------------------------------
 % Define a command to query rows from the design history file.
 % Parameters:
 % #1 - relative path to design history file.
