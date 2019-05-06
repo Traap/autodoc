@@ -232,7 +232,8 @@
 {
    \begin{tikzpicture}
      \pie[pos={0,0}, explode=0.1, text=legend, radius=2, sum=auto]{\thepasscount/PASS,\thefailcount/FAIL}%
-     \pie[pos={8,0}, explode=0.1, text=legend, radius=2, sum=auto, color={green!\detectedcount,red!\themissingcount}]{\detectedcount/DETECTED, %
+     \pie[pos={8,0}, explode=0.1, text=legend, radius=2, sum=auto, %
+     color={green!\detectedcount,red!\themissingcount}]{\detectedcount/DETECTED, %
      \themissingcount/MISSING}%
     \end{tikzpicture}
 }
