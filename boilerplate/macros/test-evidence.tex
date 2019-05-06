@@ -35,6 +35,15 @@
     \textbf{~Name:~}\tcCsvResult%
   \end{flushleft}%
 }%
+\newcommand{\tcCsvResultCapDataMissing}{%
+  \begin{flushleft}%
+    \scriptsize%
+    \textbf{Step:~}N/A~%
+    \textbf{File:~}N/A%
+    \newline%
+    \textbf{~Name:~}\tcCsvResult%
+  \end{flushleft}%
+}%
 
 \newcommand{\tcPngCapData}{%
   \begin{flushleft}%
@@ -139,18 +148,86 @@
 % #2 - CSV Caption 
 % ------------------------------------------------------------------------------
 \newcommand{\includeCsvFile}[2]{%
+ \setSummaryCounters
   \IfFileExists{#1}{%
     #2% CSV Caption
     \begin{center}%
       \tiny%
-      \csvreader[tcStyle, separator=pipe]%
+      \csvreader[tcStyle, separator=pipe,%
+        %filter ifthen=\equal{\status}{PASS} \or \equal{\status}{FAIL} ,%
+        ]%
         {#1}% CSV file name
         {}%   Filtering.
-        {\thecsvrow & \id & \key & \des & \status}%
+        {\thecsvrow\istotal\ispass\isfail\ismissing & \id & \key & \des & \status}%
     \end{center}%
-    \clearpage\pagebreak%
+     \clearpage\pagebreak%
   }{}%
 }%
+
+% ------------------------------------------------------------------------------
+% Summary graph
+% ------------------------------------------------------------------------------
+% define counters
+\newcommand{\setSummaryCounters}
+{
+  \newcounter{passcount}
+  \newcounter{failcount}
+  \newcounter{missingcount}
+  \newcounter{totalcount}
+  % set to zero
+  \setcounter{passcount}{0}
+  \setcounter{failcount}{0}
+  \setcounter{missingcount}{0}
+  \setcounter{totalcount}{0}
+}
+
+\newcommand{\ispass}{%
+  \ifnum\pdfstrcmp{\status}{PASS}=0
+    \stepcounter{passcount}%
+  \fi
+}
+
+\newcommand{\isfail}{%
+  \ifnum\pdfstrcmp{\status}{FAIL}=0
+    \stepcounter{failcount}%
+  \fi
+}
+
+\newcommand{\ismissing}{%
+  \ifnum\pdfstrcmp{\status}{MISSING}=0
+    \stepcounter{missingcount}%
+  \fi
+}
+
+\newcommand{\istotal}{%
+   \stepcounter{totalcount}%
+}
+
+% calculated percentage
+\newcommand{\percPASS}{%
+   \the\numexpr(\thepasscount*100 / \thetotalcount)\relax%
+}
+\newcommand{\percFAIL}{%
+   \the\numexpr(\thefailcount*100 / \thetotalcount)\relax%
+}
+\newcommand{\percMISSING}{%
+   \the\numexpr(\themissingcount*100 / \thetotalcount)\relax%
+}
+\newcommand{\percDETECTED}{%
+   \the\numexpr((\thepasscount + \thefailcount))*100 / \thetotalcount)\relax%
+}
+
+% ------------------------------------------------------------------------------
+% Include the summary results
+% 
+\newcommand{\includeSummaryResults}
+{
+
+   \begin{tikzpicture}
+     \pie[red, explode=0.1]{\percPASS/PASS,\percFAIL/FAIL,\percMISSING/MISSING}
+      \legend[shift={(0cm,-1cm)}]{{PASS}/PASS, {FAIL}/FAIL, {MISSING}/MISSING}
+   \end{tikzpicture}
+}
 
 % ------------------------------------------------------------------------------
 % Include the PNG file the program Amber called created.
@@ -205,5 +282,6 @@
   \includeLogFile%
   \includeTestEvidence%
   \includeCsvFile{\tcCsvResult}{\tcCsvResultCap}%
-}%
+  \includeSummaryResults
+ }%
 % ------------------------------------------------------------------------------
