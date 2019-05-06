@@ -153,9 +153,7 @@
     #2% CSV Caption
     \begin{center}%
       \tiny%
-      \csvreader[tcStyle, separator=pipe,%
-        %filter ifthen=\equal{\status}{PASS} \or \equal{\status}{FAIL} ,%
-        ]%
+      \csvreader[tcStyle, separator=pipe]%
         {#1}% CSV file name
         {}%   Filtering.
         {\thecsvrow\istotal\ispass\isfail\ismissing & \id & \key & \des & \status}%
@@ -168,6 +166,7 @@
 % Summary graph
 % ------------------------------------------------------------------------------
 % define counters
+
 \newcommand{\setSummaryCounters}
 {
   \newcounter{passcount}
@@ -203,30 +202,39 @@
    \stepcounter{totalcount}%
 }
 
-% calculated percentage
+% ------------------------------------------------------------------------------
+% calculated percentage in case we want to show it
+
 \newcommand{\percPASS}{%
    \the\numexpr(\thepasscount*100 / \thetotalcount)\relax%
 }
 \newcommand{\percFAIL}{%
    \the\numexpr(\thefailcount*100 / \thetotalcount)\relax%
 }
-\newcommand{\percMISSING}{%
-   \the\numexpr(\themissingcount*100 / \thetotalcount)\relax%
-}
 \newcommand{\percDETECTED}{%
    \the\numexpr((\thepasscount + \thefailcount))*100 / \thetotalcount)\relax%
 }
 
-% ------------------------------------------------------------------------------
-% Include the summary results
-% 
-\newcommand{\includeSummaryResults}
-{
+\newcommand{\percMISSING}{%
+   \the\numexpr(\themissingcount*100 / \thetotalcount)\relax%
+}
 
+% ------------------------------------------------------------------------------
+% calculate detected
+\newcommand{\detectedcount}{%
+  \the\numexpr(\thepasscount + \thefailcount)\relax%
+}
+
+% ------------------------------------------------------------------------------
+% Include the summary chart
+% ------------------------------------------------------------------------------
+\newcommand{\includeSummaryChart}
+{
    \begin{tikzpicture}
-     \pie[red, explode=0.1]{\percPASS/PASS,\percFAIL/FAIL,\percMISSING/MISSING}
-      \legend[shift={(0cm,-1cm)}]{{PASS}/PASS, {FAIL}/FAIL, {MISSING}/MISSING}
-   \end{tikzpicture}
+     \pie[pos={0,0}, explode=0.1, text=legend, radius=2, sum=auto]{\thepasscount/PASS,\thefailcount/FAIL}%
+     \pie[pos={8,0}, explode=0.1, text=legend, radius=2, sum=auto, color={green!\detectedcount,red!\themissingcount}]{\detectedcount/DETECTED, %
+     \themissingcount/MISSING}%
+    \end{tikzpicture}
 }
 
 % ------------------------------------------------------------------------------
@@ -282,6 +290,6 @@
   \includeLogFile%
   \includeTestEvidence%
   \includeCsvFile{\tcCsvResult}{\tcCsvResultCap}%
-  \includeSummaryResults
+  \includeSummaryChart
  }%
 % ------------------------------------------------------------------------------
