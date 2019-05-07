@@ -3,12 +3,14 @@
 % ------------------------------------------------------------------------------
 % Define column names used by csvreader for the design history file.
 \csvnames{dhfNames}%
-{1=\pj,2=\pv,3=\ty,4=\dn,5=\ver,6=\ttl,7=\pkg,8=\dra,9=\drb,10=\drc,11=\drd,12=\dre,13=\ai}%
+{1=\pj,2=\pv,3=\ty,4=\dn,5=\ver,6=\ttl,7=\pkg,8=\dra,9=\drb,10=\drc,11=\drd
+,12=\dre,13=\ai}%
 
 % Define a table style for the design history file csvreader.
 \csvstyle{dhfStyle}{%
   longtable=|C{0.5cm}|L{3cm}|C{1.5cm}|L{9cm}|
-  ,table head=\hline \rowcolor{fkblue}\# & \fkHdrRow{Document} & V\fkHdrRow{Version} & \fkHdrRow{Title} \\ \hline \hline \endhead
+  ,table head=\hline \rowcolor{fkblue}\# & \fkHdrRow{Document} 
+  & V\fkHdrRow{Version} & \fkHdrRow{Title} \\ \hline \hline \endhead
   ,late after line=\\\hline
   ,dhfNames
 }
