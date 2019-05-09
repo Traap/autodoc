@@ -1,14 +1,16 @@
 % ------------------------------------------------------------------------------
 % Design History File index section.
 % ------------------------------------------------------------------------------
-% Define column names use by csvreader for the design history file..
+% Define column names used by csvreader for the design history file.
 \csvnames{dhfNames}%
-{1=\pj,2=\pv,3=\ty,4=\dn,5=\ver,6=\ttl,7=\pkg,8=\dra,9=\drb,10=\drc,11=\drd,12=\dre,13=\ai}%
+{1=\pj,2=\pv,3=\ty,4=\dn,5=\ver,6=\ttl,7=\pkg,8=\dra,9=\drb,10=\drc,11=\drd
+,12=\dre,13=\ai}%
 
 % Define a table style for the design history file csvreader.
 \csvstyle{dhfStyle}{%
   longtable=|C{0.5cm}|L{3cm}|C{1.5cm}|L{9cm}|
-  ,table head=\hline \rowcolor{cyan}\# & Document & Version & Title \\ \hline \hline \endhead
+  ,table head=\hline \rowcolor{fkblue}\# & \fkHdrRow{Document} 
+  & V\fkHdrRow{Version} & \fkHdrRow{Title} \\ \hline \hline \endhead
   ,late after line=\\\hline
   ,dhfNames
 }
@@ -23,7 +25,7 @@
 \newcommand{\dhfList}[4]{\dhfQuery{#1}{\pj}{#2}{\pv}{#3}{\ty}{#4}}%
 \newcommand{\aiList}[4] {\dhfQuery{#1}{\pj}{#2}{\pv}{#3}{\ai}{#4}}%
 
-% ------------------------------------------------------------------------------
+% -----------------------------------------------------------------------------
 % Define a command to query rows from the design history file.
 % Parameters:
 % #1 - relative path to design history file.
@@ -44,6 +46,54 @@
         ]%
         {#1}{}{\thecsvrow&\dn&\ver&\ttl}%
     \end{center}%
+  }%
+  {\todo[inline]{#1 was not found.}%
+  }%
+}%
+
+% ------------------------------------------------------------------------------
+% Define a command to select a row from the reference documents
+% design history file.
+% Parameters:
+% #1 - relative path to the reference documents design history file.
+% #2 - title value
+\newcommand{\dhfRefDocList}[2]{\dhfRefDocQuery{#1}{\csvcoli}{#2}}%
+
+% -----------------------------------------------------------------------------
+% Define a command to query a row from the reference documents
+% design history file.
+% Parameters:
+% #1 - relative path to design history reference documents file.
+% #2 - first column name to match (\title)
+% #3 - first column value to match
+\newcommand{\dhfRefDocQuery}[3]{%
+  \IfFileExists{#1}{%
+      \csvreader[separator=pipe, respect all,%
+      filter={\equal{#2}{#3}}]%
+      {#1}{}{{\csvcolii}[{\csvcoliii}]}%
+  }%
+  {\todo[inline]{#1 was not found.}%
+  }%
+}%
+
+% ------------------------------------------------------------------------------
+% Define a command to select a row from the VSS design history file.
+% Parameters:
+% #1 - relative path to the VSS design history file.
+% #2 - title value
+\newcommand{\dhfVssDocList}[2]{\dhfVssDocQuery{#1}{\csvcolvi}{#2}}%
+
+% -----------------------------------------------------------------------------
+% Define a command to query a row from the VSS design history file.
+% Parameters:
+% #1 - relative path to VSS design history file.
+% #2 - first column name to match (\ttl)
+% #3 - first column value to match
+\newcommand{\dhfVssDocQuery}[3]{%
+  \IfFileExists{#1}{%
+      \csvreader[separator=pipe, respect all,%
+      filter={\equal{#2}{#3}}]%
+      {#1}{}{{\csvcoliv}[{\csvcolv}]}%
   }%
   {\todo[inline]{#1 was not found.}%
   }%
