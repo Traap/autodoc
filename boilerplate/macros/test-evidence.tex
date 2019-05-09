@@ -10,6 +10,12 @@
 \newcommand{\tcPng}{}%
 \newcommand{\tcPngCap}{}%
 
+% define result counters
+\newcounter{passcount}
+\newcounter{failcount}
+\newcounter{missingcount}
+\newcounter{totalcount}
+
 \newboolean{MoreSteps}\setboolean{MoreSteps}{true}%
 \newcounter{StepCnt}\setcounter{StepCnt}{1}%
 
@@ -160,10 +166,6 @@
 
 \newcommand{\setSummaryCounters}
 {
-  \newcounter{passcount}
-  \newcounter{failcount}
-  \newcounter{missingcount}
-  \newcounter{totalcount}
   % set to zero
   \setcounter{passcount}{0}
   \setcounter{failcount}{0}
