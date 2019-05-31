@@ -11,7 +11,9 @@
       \includegraphics[scale=0.9]{#1}%
       \caption{#2}%
     \end{figure}%
-  }{}%
+  }{%Else
+     \todo[inline]{#1 was not found!}%
+  }%
 }%
 % ------------------------------------------------------------------------------
 
