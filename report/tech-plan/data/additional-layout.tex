@@ -12,4 +12,83 @@
 
 % ------------------------------------------------------------------------------
 % Your additional layout, packages, etc. are declared now. 
+\newcommand{\overwritecommand}[1]{%
+  \providecommand{#1}{}%
+  \renewcommand{#1}%
+}%
 
+% ------------------------------------------------------------------------------
+% override all commands tech-plan expects the user to define.
+% ------------------------------------------------------------------------------
+
+% ------------------------------------------------------------------------------
+% Note:  New software technical techinical plans will need to customize
+% this file.
+%
+% These commands are defined with overwritecommand as a 'hook' into autodoc
+% templates.  The software technical plan consist of boilerpalte paragraphs
+% that need simple product name and document number substitutions.
+% ------------------------------------------------------------------------------
+
+% ------------------------------------------------------------------------------
+% used in autodoc/boilerplate/tech-plan/change-and-problem-tracking.tex
+% ------------------------------------------------------------------------------
+\overwritecommand{\issueTrackingProcNumber}{\textbf{issueTrackingProcNumber}}
+\overwritecommand{\dataMgmtIssueTrackingNum}{\textbf{dataMgmtIssueTrackingNum}}
+\overwritecommand{\changeProblemTrackingApplication}{\textbf{changeProblemTrackingApplication}}
+\overwritecommand{\changeProblemTrackingDatabases}{\textbf{changeProblemTrackingDatabases}}
+
+% ------------------------------------------------------------------------------
+% used in autodoc/boilerplate/tech-plan/definition.tex
+% ------------------------------------------------------------------------------
+\overwritecommand{\swarcnum}{\textbf{swarcnum}}
+\overwritecommand{\swarctitle}{\textbf{swarctitle}}
+\overwritecommand{\swfmeanum}{\textbf{swfmeanum}}
+\overwritecommand{\swfmeatitle}{\textbf{swfmeatitle}}
+\overwritecommand{\soupnum}{\textbf{soupnum}}
+\overwritecommand{\souptitle}{\textbf{souptitle}}
+\overwritecommand{\swreqmntnums}{\textbf{swreqmntnums}}
+\overwritecommand{\swreqmnttitles}{\textbf{swreqmnttitles}}
+\overwritecommand{\sysreqmntnums}{\textbf{sysreqmntnums}}
+\overwritecommand{\sysreqmnttitles}{\textbf{sysreqmnttitles}}
+
+% ------------------------------------------------------------------------------
+% used in autodoc/boilerplate/tech-plan/plan.tex
+% ------------------------------------------------------------------------------
+\overwritecommand{\buildprocedurenums}{\textbf{buildprocedurenums}}
+\overwritecommand{\buildproceduretitles}{\textbf{buildproceduretitles}}
+\overwritecommand{\releaseplannum}{\textbf{releaseplannum}}
+\overwritecommand{\releaseplantitle}{\textbf{releaseplantitle}}
+
+% ------------------------------------------------------------------------------
+% used in autodoc/boilerplate/tech-plan/references.tex
+% ------------------------------------------------------------------------------
+\overwritecommand{\dndPlanNumber}{\textbf{dndPlanNumber}}
+\overwritecommand{\dndPlanTitle}{\textbf{dndPlanTitle}}
+\overwritecommand{\pkgnumproject}{\textbf{pkgnumproject}}
+\overwritecommand{\pkgtitleproject}{\textbf{pkgtitleproject}}
+\overwritecommand{\pkgnumsw}{\textbf{pkgnumsw}}
+\overwritecommand{\pkgtitlesw}{\textbf{pkgtitlesw}}
+
+% ------------------------------------------------------------------------------
+% used in autodoc/boilerplate/tech-plan/soup.tex
+% ------------------------------------------------------------------------------
+\overwritecommand{\soupdesigntitle}{\textbf{soupdesigntitle}}
+\overwritecommand{\soupdesignnum}{\textbf{soupdesignnum}}
+
+% ------------------------------------------------------------------------------
+% used in autodoc/boilerplate/tech-plan/source-cfg-management-plan.tex
+% ------------------------------------------------------------------------------
+\overwritecommand{\sourcecfgmgmtdatabases}{\textbf{sourcecfgmgmtdatabases}}
+
+% ------------------------------------------------------------------------------
+% used in autodoc/boilerplate/tech-plan/verification.tex
+% ------------------------------------------------------------------------------
+\overwritecommand{\swverificationplannum}{\textbf{swverificationplannum}}
+\overwritecommand{\swverificationplantitle}{\textbf{swverificationplantitle}}
+
+% ------------------------------------------------------------------------------
+% used in data/section-4-additional-notes.tex
+% ------------------------------------------------------------------------------
+\overwritecommand{\vssSOUP}{\textbf{vssSOUP}}
+\overwritecommand{\vssmSyRS}{\textbf{vssmSyRS}}
