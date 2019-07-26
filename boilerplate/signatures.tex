@@ -1,12 +1,14 @@
 % ------------------------------------------------------------------------------
 % The defaults are set to N/A.  Each document must override these values.
-\newcommand{\sgNA}    {N/A}
-\newcommand{\sgAuthor}{\sgNA}
-\newcommand{\sgTrOne} {\sgNA}
-\newcommand{\sgTrTwo} {\sgNA}
-\newcommand{\sgIR}    {\sgNA}
-\newcommand{\sgQA}    {\sgNA}
-\newcommand{\sgOnFile}{Electronic signature on file.}
+\newcommand{\sgNA}      {N/A}
+\newcommand{\sgAuthor}  {\sgNA}
+\newcommand{\sgTrOne}   {\sgNA}
+\newcommand{\sgTrTwo}   {\sgNA}
+\newcommand{\sgTrThree} {\sgNA}
+\newcommand{\sgIR}      {\sgNA}
+\newcommand{\sgQA}      {\sgNA}
+\newcommand{\sgOnFile}  {Electronic signature on file.}
+\newcommand{\sgAttached}{Signature attached.}
 % ------------------------------------------------------------------------------
 \newcommand{\sgApplySignatures}{%
   \phantomsection%
@@ -19,6 +21,7 @@
        Author               & \sgAuthor\      & \sgOnFile\ \ER%
        Technical Reviewer   & \sgTrOne\       & \sgOnFile\ \ER%
        Technical Reviewer   & \sgTrTwo\       & \sgOnFile\ \ER%
+       Technical Reviewer   & \sgTrThree\     & \sgOnFile\ \ER%
        Independent Reviewer & \sgIR\          & \sgOnFile\ \ER%
        QA Reviewer          & \sgQA\          & \sgOnFile\ \ER%
    \end{longtable}%
