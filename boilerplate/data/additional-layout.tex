@@ -8,31 +8,12 @@
 
 % ------------------------------------------------------------------------------
 % Used in \hfLogo command to include the logo and set the logo to the correct size.
-\newcommand{\logosize}{\includegraphics[width=3cm, height=1cm]}
+\newcommand{\logoSize}{\includegraphics[width=3cm, height=1cm]}
 
 % ------------------------------------------------------------------------------
 % The logo applied to all documents
-\newcommand{\useLogo}{%
-\IfFileExists{/autodoc/boilerplate/data/logo.png}{\logosize{/autodoc/boilerplate/data/logo.png}}{%
-  \IfFileExists{../autodoc/boilerplate/data/logo.png}{\logosize{../autodoc/boilerplate/data/logo.png}}{%
-    \IfFileExists{../../autodoc/boilerplate/data/logo.png}{\logosize{../../autodoc/boilerplate/data/logo.png}}{%
-      \IfFileExists{../../../autodoc/boilerplate/data/logo.png}{\logosize{../../../autodoc/boilerplate/data/logo.png}}{%
-        \IfFileExists{../../../../autodoc/boilerplate/data/logo.png}{\logosize{../../../../autodoc/boilerplate/data/logo.png}}{%
-          \IfFileExists{../../../../../autodoc/boilerplate/data/logo.png}{\logosize{../../../../../autodoc/boilerplate/data/logo.png}}{%
-            \IfFileExists{../../../../../../autodoc/boilerplate/data/logo.png}{\logosize{../../../../../../autodoc/boilerplate/data/logo.png}}{%
-              \IfFileExists{../../../../../../../autodoc/boilerplate/data/logo.png}{\logosize{../../../../../../../autodoc/boilerplate/data/logo.png}}{%
-                \IfFileExists{../../../../../../../../autodoc/boilerplate/data/logo.png}{\logosize{../../../../../../../../autodoc/boilerplate/data/logo.png}}{%
-                  \IfFileExists{../../../../../../../../../autodoc/boilerplate/data/logo.png}{\logosize{../../../../../../../../../autodoc/boilerplate/data/logo.png}}{}%
-                  }%
-                }%
-              }%
-            }%
-          }%
-        }%
-      }%
-    }%
-  }%
-}%
+\def\autodocLogo{\autodocDir/boilerplate/data/logo.png}%
+\newcommand{\useLogo}{\IfFileExists{\autodocLogo}{\logoSize{\autodocLogo}}{}}%
 
 % ------------------------------------------------------------------------------
 % We want our header and footer to remain consistent with table of contents
