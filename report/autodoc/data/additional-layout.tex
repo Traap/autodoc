@@ -1,4 +1,10 @@
 % ------------------------------------------------------------------------------
+% Hook into this document's document layout information.
+\input{../shared/data/additional-layout.tex}%
+
+% ------------------------------------------------------------------------------
+% Your additional layout, packages, etc. are declared now. 
+% ------------------------------------------------------------------------------
 % Commands and definitions I have defined to make writing this document easier.
 \def\skAdditionalLayout{\tlcDarkblue{data/additional-layout.tex~}}
 \def\skAmber{\tlcDarkblue{Amber~}}
@@ -21,11 +27,3 @@
 \def\skToolTestTemplate{\tlcDarkblue{Tool Validation~}}
 \def\skUnitTestTemplate{\tlcDarkblue{Unit Test~}}
 \def\skVerTestTemplate{\tlcDarkblue{Verificaiton Test~}}
-
-% ------------------------------------------------------------------------------
-% autodocDir MUST point to your github/traap/autodoc location.
-\def\autodocDir{..}
-
-% ------------------------------------------------------------------------------
-% Hook into boilerplate definitions.
-\input{\autodocDir/boilerplate/project-directories.tex}
