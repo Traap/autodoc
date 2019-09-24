@@ -23,32 +23,38 @@
 \AtBeginDocument{\addtocontents{toc}{\protect\thispagestyle{fancy}}}%
 
 % ------------------------------------------------------------------------------
-% Refer to project abbreviations and definitions, when present.
+% Refer to project abbreviations and definitions, when requested and present.
 % ------------------------------------------------------------------------------
-\IfFileExists{\autodocDir/boilerplate/data/abbreviations.tex}{%
-  \IfFileExists{\autodocDir/boilerplate/data/definitions.tex}{%
-    %
-    % Check for abbreviation and definition files.
-    \input{\autodocDir/boilerplate/data/abbreviations.tex}%
-    \input{\autodocDir/boilerplate/data/definitions.tex}%
-    %
-    % Make glossaries with a specify style.
-    \makeglossaries%
-    \setacronymstyle{long-sc-short-desc}%
-    %
-    % Use this command from your document to list acronyms and glossaries.
-    \newcommand{\printGlossaries}{%
+\provideboolean{UseAutodocGlossaries}%
+\ifthenelse{\boolean{UseAutodocGlossaries}}{%
+  \IfFileExists{\autodocDir/boilerplate/data/abbreviations.tex}{%
+    \IfFileExists{\autodocDir/boilerplate/data/definitions.tex}{%
       %
-      % Acronyms
-      \clearpage%
-      \setacronymstyle{long-short}%
-      \printglossary[type=\acronymtype]%
+      % Check for abbreviation and definition files.
+      \input{\autodocDir/boilerplate/data/abbreviations.tex}%
+      \input{\autodocDir/boilerplate/data/definitions.tex}%
       %
-      % Glossaries
-      \clearpage%
-      \printglossary%
+      % Make glossaries with a specify style.
+      \makeglossaries%
+      \setacronymstyle{long-sc-short-desc}%
       %
-    }% endCommand
+      % Use this command from your document to list acronyms and glossaries.
+      \newcommand{\printGlossaries}{%
+        %
+        % Acronyms
+        \clearpage%
+        \setacronymstyle{long-short}%
+        \printglossary[type=\acronymtype]%
+        %
+        % Glossaries
+        \clearpage%
+        \printglossary%
+        %
+      }% endCommand
+    }{}% endif
   }{}% endif
-}{}% endif
+}{% end ifthenelse
+  % Deine printGlossaries as NULL so autodoc hooks are present.
+  \newcommand{\printGlossaries}{}%
+}
 % ------------------------------------------------------------------------------
