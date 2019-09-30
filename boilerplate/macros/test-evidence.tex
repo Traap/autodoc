@@ -1,4 +1,4 @@
-%  ------------------------------------------------------------------------------
+% ------------------------------------------------------------------------------
 % This set of commands define the path test-output/factory the amber driver
 % produces as it process YAML files.
 % ------------------------------------------------------------------------------
@@ -10,6 +10,7 @@
 \newcommand{\tcPng}{}%
 \newcommand{\tcPngCap}{}%
 \newcommand{\tcStep}{}%
+\newcommand{\tcStepLog}{}%
 
 % define result counters
 \newcounter{passcount}%
@@ -61,7 +62,8 @@
   \renewcommand{\tcLog}{#1.tex}%
   \renewcommand{\tcPng}{#1-\zerofill{\theStepCnt}-\zerofill{\theFileCnt}.png}
   \renewcommand{\tcPngCap}{\tcPngCapData}%
-  \renewcommand{\tcStep}{#1-step-\zerofill{\theStepCnt}.tex}%
+  \renewcommand{\tcStep}{#1-step-\zerofill{\theStepCnt}-status.tex}%
+  \renewcommand{\tcStepLog}{#1-step-\zerofill{\theStepCnt}-log.tex}%
 }%
 
 \newcommand{\setTOFPathC}[3]{%
@@ -72,7 +74,8 @@
   \renewcommand{\tcLog}{#3.tex}%
   \renewcommand{\tcPng}{#3-\zerofill{\theStepCnt}-\zerofill{\theFileCnt}.png}
   \renewcommand{\tcPngCap}{\tcPngCapData}%
-  \renewcommand{\tcStep}{#3-step-\zerofill{\theStepCnt}.tex}%
+  \renewcommand{\tcStep}{#3-step-\zerofill{\theStepCnt}-status.tex}%
+  \renewcommand{\tcStepLog}{#3-step-\zerofill{\theStepCnt}-log.tex}%
 }%
 
 % ------------------------------------------------------------------------------
@@ -271,20 +274,30 @@
 
 
 % ------------------------------------------------------------------------------
+% Include the step log file Amber created. 
+% ------------------------------------------------------------------------------
+\newcommand{\includeStepLog}{%
+  \IfFileExists{\tcStepLog}{%
+    \inputIfExists{\tcStepLog}%
+  }{}%
+}% 
+
+% ------------------------------------------------------------------------------
 % Include the PNG file the program Amber called created.
 % ------------------------------------------------------------------------------
 \newcommand{\includePngFile}{%
   \IfFileExists{\tcPng}{%
-    \clearpage\pagebreak%
     \begin{figure}[ht]%
       \tcPngCap%
       \centering%
       \includegraphics[width=\textwidth]{\tcPng}%
     \end{figure}%
     \includeCsvFile{\tcCsv}{\tcCsvCap}%
+    \clearpage\pagebreak%
     \addtocounter{FileCnt}{1}%
   }%
   {% Else
+    \clearpage\pagebreak%
     \resetFileCounters{false}%
   }%
 }
@@ -314,6 +327,7 @@
   \resetStepAndFileCounters{true}%  
   %
   \whiledo{\boolean{MoreSteps}}{%
+    \includeStepLog%
     \whiledo{\boolean{MoreFiles}}{%
       \includePngFile%
     }% end whiledo MoreFiles
