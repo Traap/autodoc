@@ -24,11 +24,3 @@ $ cd $HOME \
             && cd autodoc \
             && docbld
 ```
-
-# Project Management
-The **autodoc** repository uses a SCRUM framework adapted to standard GitHub
-tooling.  **autodoc** is integrated with Travis-ci.org for continuous
-integration and AllanConsulting.slack.com for centralized notification.
-
-Please refer to my [Lightweight Project Management](https://github.com/Traap/lpm)
-for the project management strategy I use.

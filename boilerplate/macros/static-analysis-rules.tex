@@ -6,11 +6,14 @@
 
 % Define a table style for the static analysis table reader.
 \csvstyle{staticAnalysisStyle}{%
-  longtable=|C{1cm}|L{2cm}|L{11.5cm}|
-  ,table head=\hline \rowcolor{cyan}\# & Rule & Description \\ \hline \hline \endhead
-  ,late after line=\\\hline
-  ,staticAnalysisNames
-}
+  longtable=|C{1cm}|L{2cm}|L{11.5cm}|%
+  ,table head=\hline %
+  \rowcolor{fkblue}%
+  \fkHdrRow{\#} & \fkHdrRow{Rule} & \fkHdrRow{Description}%
+  \\ \hline \hline \endhead%
+  ,late after line=\\\hline%
+  ,staticAnalysisNames%
+}%
 
 % Define a command to select rows from the static analysis file.
 % Parameter:

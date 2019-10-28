@@ -9,12 +9,20 @@
 \newcommand{\tcLog}{}%
 \newcommand{\tcPng}{}%
 \newcommand{\tcPngCap}{}%
+\newcommand{\tcStep}{}%
+\newcommand{\tcStepLog}{}%
 
-\newboolean{MoreSteps}\setboolean{MoreSteps}{true}%
-\newcounter{StepCnt}\setcounter{StepCnt}{1}%
+% define result counters
+\newcounter{passcount}%
+\newcounter{failcount}%
+\newcounter{missingcount}%
+\newcounter{totalcount}%
 
-\newboolean{MoreFiles}\setboolean{MoreFiles}{true}%
-\newcounter{FileCnt}\setcounter{FileCnt}{1}%
+\newboolean{MoreSteps}%
+\newcounter{StepCnt}%
+
+\newboolean{MoreFiles}%
+\newcounter{FileCnt}%
 
 \newcommand{\tcCsvCapData}{%
   \begin{flushleft}%
@@ -54,6 +62,8 @@
   \renewcommand{\tcLog}{#1.tex}%
   \renewcommand{\tcPng}{#1-\zerofill{\theStepCnt}-\zerofill{\theFileCnt}.png}
   \renewcommand{\tcPngCap}{\tcPngCapData}%
+  \renewcommand{\tcStep}{#1-step-\zerofill{\theStepCnt}-status.tex}%
+  \renewcommand{\tcStepLog}{#1-step-\zerofill{\theStepCnt}-log.tex}%
 }%
 
 \newcommand{\setTOFPathC}[3]{%
@@ -64,6 +74,8 @@
   \renewcommand{\tcLog}{#3.tex}%
   \renewcommand{\tcPng}{#3-\zerofill{\theStepCnt}-\zerofill{\theFileCnt}.png}
   \renewcommand{\tcPngCap}{\tcPngCapData}%
+  \renewcommand{\tcStep}{#3-step-\zerofill{\theStepCnt}-status.tex}%
+  \renewcommand{\tcStepLog}{#3-step-\zerofill{\theStepCnt}-log.tex}%
 }%
 
 % ------------------------------------------------------------------------------
@@ -74,11 +86,12 @@
 \csvnames{tcNames}{1=\id, 2=\key, 3=\des, 4=\status}%
 
 \csvstyle{tcStyle}{%
-  longtable=|L{0.5cm}|L{1.6cm}|L{5.0cm}|L{6.0cm}|C{0.6cm}|
-  ,table head=\hline\rowcolor{blue!35}\# & ReqId & ResKey & Text & Status\ER\endhead
-  ,late after line=\ER
-  ,table foot=\hline
-  ,tcNames
+  longtable=|L{0.5cm}|L{1.6cm}|L{5.0cm}|L{6.0cm}|C{0.6cm}|%
+  ,respect all%
+  ,table head=\hline\rowcolor{blue!35}\#&ReqId&ResKey&Text&Status\ER\endhead%
+  ,late after line=\ER%
+  ,table foot=\hline%
+  ,tcNames%
 }%
 
 % ------------------------------------------------------------------------------
@@ -116,11 +129,11 @@
 % #3 - filename
 % ------------------------------------------------------------------------------
 % Define Test Plan Output (tpo) commands.
-\newcommand{\tpoC}[3]{\setTOFPath{#1}{#2}{#3}\inputIfExists{#3.tex}}%
+\newcommand{\tpoC}[3]{\setTOFPathC{#1}{#2}{#3}\inputIfExists{#3.tex}}%
 
 % ------------------------------------------------------------------------------
 % Define Test Suite Output (tso3) commands.
-\newcommand{\tsoC}[3]{\setTOFPath{#1}{#2}{#3}\inputIfExists{#3.tex}}%
+\newcommand{\tsoC}[3]{\setTOFPathC{#1}{#2}{#3}\inputIfExists{#3.tex}}%
 
 % ------------------------------------------------------------------------------
 % Define Test Case Output (tcoC) commands.
@@ -139,6 +152,7 @@
 % #2 - CSV Caption 
 % ------------------------------------------------------------------------------
 \newcommand{\includeCsvFile}[2]{%
+ \setSummaryCounters%
   \IfFileExists{#1}{%
     #2% CSV Caption
     \begin{center}%
@@ -146,55 +160,179 @@
       \csvreader[tcStyle, separator=pipe]%
         {#1}% CSV file name
         {}%   Filtering.
-        {\thecsvrow & \id & \key & \des & \status}%
+        {\thecsvrow\istotal\ispass\isfail\ismissing&%
+         \id&%
+         \key&%
+         \des&%
+         \status%
+        }%
     \end{center}%
     \clearpage\pagebreak%
   }{}%
 }%
 
 % ------------------------------------------------------------------------------
+% Summary graph
+% ------------------------------------------------------------------------------
+% define counters
+
+\newcommand{\setSummaryCounters}{%
+  % set to zero
+  \setcounter{passcount}{0}%
+  \setcounter{failcount}{0}%
+  \setcounter{missingcount}{0}%
+  \setcounter{totalcount}{0}%
+}%
+
+\newcommand{\ispass}{%
+  \ifnum\pdfstrcmp{\status}{PASS}=0%
+    \stepcounter{passcount}%
+  \fi%
+}%
+
+\newcommand{\isfail}{%
+  \ifnum\pdfstrcmp{\status}{FAIL}=0%
+    \stepcounter{failcount}%
+  \fi%
+}%
+
+\newcommand{\ismissing}{%
+  \ifnum\pdfstrcmp{\status}{MISSING}=0%
+    \stepcounter{missingcount}%
+  \fi%
+}%
+
+\newcommand{\istotal}{%%
+   \stepcounter{totalcount}%
+}%
+
+% ------------------------------------------------------------------------------
+% calculated percentage in case we want to show it
+
+\newcommand{\percPASS}{%
+   \the\numexpr(\thepasscount*100/\thetotalcount)\relax%
+}%
+
+\newcommand{\percFAIL}{%
+   \the\numexpr(\thefailcount*100/\thetotalcount)\relax%
+}%
+
+\newcommand{\percDETECTED}{%
+   \the\numexpr((\thepasscount+\thefailcount))*100/\thetotalcount\relax%
+}%
+
+\newcommand{\percMISSING}{%
+   \the\numexpr(\themissingcount*100/\thetotalcount)\relax%
+}%
+
+% ------------------------------------------------------------------------------
+% calculate detected
+\newcommand{\detectedcount}{%
+  \the\numexpr(\thepasscount+\thefailcount)\relax%
+}
+
+% ------------------------------------------------------------------------------
+% Include the summary chart
+% ------------------------------------------------------------------------------
+\newcommand{\includeSummaryChart}[1]{%
+  \IfFileExists{#1}{%
+   \begin{tikzpicture}%
+     \pie[pos={0,0},%
+          explode=0.1,%
+          text=legend,%
+          radius=2,%
+          sum=auto]%
+          {\thepasscount/PASS,\thefailcount/FAIL}%
+     \pie[pos={8,0},%
+          explode=0.1,%
+          text=legend,%
+          radius=2,%
+          sum=auto,%
+          color={green!\detectedcount,red!\themissingcount}]%
+          {\detectedcount/DETECTED,\themissingcount/MISSING}%
+    \end{tikzpicture}%
+    }{}%
+}
+
+% ------------------------------------------------------------------------------
+% Check for the setp file Amber created.  A step file has the result of a test
+% step.
+%
+% PASS : the program Amber called returned a pass - zero.
+% FAIL : the program Amber called returned a failure - nonzero.
+% ------------------------------------------------------------------------------
+\newcommand{\checkForNextStep}{%
+  \IfFileExists{\tcStep}{%
+    \addtocounter{StepCnt}{1}%
+    \setcounter{FileCnt}{1}%
+    \setboolean{MoreFiles}{true}%
+  }%
+  {% Else
+    \resetStepAndFileCounters{false}%
+  }%
+}
+
+
+% ------------------------------------------------------------------------------
+% Include the step log file Amber created. 
+% ------------------------------------------------------------------------------
+\newcommand{\includeStepLog}{%
+  \IfFileExists{\tcStepLog}{%
+    \inputIfExists{\tcStepLog}%
+  }{}%
+}% 
+
+% ------------------------------------------------------------------------------
 % Include the PNG file the program Amber called created.
 % ------------------------------------------------------------------------------
 \newcommand{\includePngFile}{%
   \IfFileExists{\tcPng}{%
-    \clearpage\pagebreak%
     \begin{figure}[ht]%
       \tcPngCap%
       \centering%
-      \includegraphics[scale=0.31]{\tcPng}%
+      \includegraphics[width=\textwidth]{\tcPng}%
     \end{figure}%
     \includeCsvFile{\tcCsv}{\tcCsvCap}%
+    \clearpage\pagebreak%
     \addtocounter{FileCnt}{1}%
   }%
   {% Else
-    \setboolean{MoreFiles}{false}%
-    \setcounter{FileCnt}{1}%
+    \clearpage\pagebreak%
+    \resetFileCounters{false}%
   }%
 }
+
+% ------------------------------------------------------------------------------
+% Reset Step and File counter and booleans.  Counter is always reset to 1.
+% MoreSteps and MoreFiles is set to true or false.
+% #1 - true  : when starting the next test case.
+%    - false : when cycling through files (png) within steps.
+% ------------------------------------------------------------------------------
+\newcommand{\resetStepAndFileCounters}[1]{%
+  \setboolean{MoreSteps}{#1}%
+  \setcounter{StepCnt}{1}%
+  %
+  \resetFileCounters{#1}%
+}%
+
+\newcommand{\resetFileCounters}[1]{%
+  \setboolean{MoreFiles}{#1}%
+  \setcounter{FileCnt}{1}%
+}%
 
 % ------------------------------------------------------------------------------
 % Include test evidence which is a png file followed by a csv when present.
 % ------------------------------------------------------------------------------
 \newcommand{\includeTestEvidence}{%
-  \setboolean{MoreSteps}{true}%
-  \setcounter{StepCnt}{1}%
-  %
-  \setboolean{MoreFiles}{true}%
-  \setcounter{FileCnt}{1}%
+  \resetStepAndFileCounters{true}%  
   %
   \whiledo{\boolean{MoreSteps}}{%
-    \setboolean{MoreFiles}{true}%
-    \IfFileExists{\tcPng}{%
-      \whiledo{\boolean{MoreFiles}}{%
-        \includePngFile%
-      }%
-      \addtocounter{StepCnt}{1}%
-    }%
-    {% Else
-      \setboolean{MoreSteps}{false}%
-      \setcounter{StepCnt}{1}%
-    }%
-  }%
+    \includeStepLog%
+    \whiledo{\boolean{MoreFiles}}{%
+      \includePngFile%
+    }% end whiledo MoreFiles
+    \checkForNextStep%
+  }% end whiledo MoreSteps
 }%
 
 % ------------------------------------------------------------------------------
@@ -205,5 +343,6 @@
   \includeLogFile%
   \includeTestEvidence%
   \includeCsvFile{\tcCsvResult}{\tcCsvResultCap}%
-}%
+  \includeSummaryChart{\tcCsvResult}
+ }%
 % ------------------------------------------------------------------------------

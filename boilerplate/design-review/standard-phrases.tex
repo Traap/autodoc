@@ -1,0 +1,22 @@
+% ------------------------------------------------------------------------------
+% Standard Design Review Abstract.
+% ------------------------------------------------------------------------------
+\newcommand{\stdDesignReview}{Design Review}
+\newcommand{\stdDesignReviewTitle}[1]{#1}
+
+\newcommand{\stdDesignReviewAbstract}[1]{%
+  This is \stdDesignReviewTitle{#1}.  This document is stored in
+  \stdCompanyName's (Company) \stdQMS\ after the \stdDesignReview\ has been
+  approved.
+}%
+
+% ------------------------------------------------------------------------------
+% Standard Design Review document generator command. 
+% ------------------------------------------------------------------------------
+\newcommand{\stdDesignReviewDoc}[1]{%
+  \stdAutoDocLayout{\stdDesignReviewTitle{#1}}%
+                   {\stdDesignReviewAbstract{#1}}%
+                   {\designReviewDir/main.tex}%
+}%
+
+% ------------------------------------------------------------------------------

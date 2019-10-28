@@ -3,20 +3,26 @@
 % This macro should be placed at the end of our main document so that you can
 % debug text expansion LaTeX compiler is performing.:w
 \newcommand{\autodocDebug}{%
-  \clearpage
-  \section{autodoc debug}
-  \subsection{autodoc definitions}
-    \begin{description}[align=right,leftmargin=*,labelindent=5cm]
-      \item[autodocDir:] \autodocDir
-      \item[boilerplateDir:] \boilerplateDir
-      \item[dataDir:] \dataDir
-      \item[placeholderDir:] \placeholderDir
-      \item[sharedDir:] \sharedDir
-      \item[testRecordDir:] \testRecordDir
-      \item[toolTestDir:] \toolTestDir
-      \item[unitTestDir:] \unitTestDir
-      \item[verTestDir:] \verTestDir
-      \item[boilerplateSpecificTestDir:] \boilerplateSpecificTestDir
-  \end{description}
+  \makeatletter%
+  \tlcDebug%
+  \makeatother%
+  \subsection{autodoc definitions}%
+    \begin{description}[align=right,leftmargin=*,labelindent=5cm]%
+      \item[autodocDir:]     \autodocDir%
+      \item[boilerplateDir:] \boilerplateDir%
+      \item[dataDir:]        \dataDir%
+      \item[designReviewDir:]\designReviewDir%
+      \item[placeholderDir:] \placeholderDir%
+      \item[sharedDir:]      \sharedDir%
+      \item[stdPhrasesDir:]  \stdPhrasesDir%
+      \item[techPlanDir:]    \techPlanDir%
+      \item[testPlanDir:]    \testPlanDir%
+      \item[testRecordDir:]  \testRecordDir%
+      \item[testReportDir:]  \testReportDir%
+      \item[toolTestDir:]    \toolTestDir%
+      \item[unitTestDir:]    \unitTestDir%
+      \item[verTestDir:]     \verTestDir%
+      \item[boilerplateSpecificTestDir:] \boilerplateSpecificTestDir%
+    \end{description}%
 }%
 % ------------------------------------------------------------------------------
