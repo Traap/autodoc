@@ -1,0 +1,21 @@
+% ------------------------------------------------------------------------------
+% Standard Test Report Abstract.
+% ------------------------------------------------------------------------------
+\newcommand{\stdTestReport}{}
+\newcommand{\stdTestReportTitle}[1]{#1 \stdTestReport}
+
+\newcommand{\stdTestReportAbstract}[1]{%
+  This is the #1. This document is stored in \stdCompanyName's
+  (Company) \stdQMS\ after the #1 has been verified.
+}%
+
+% ------------------------------------------------------------------------------
+% Standard Test Report document generator command. 
+% ------------------------------------------------------------------------------
+\newcommand{\stdTestReportDoc}[1]{%
+  \stdAutoDocLayout{\stdTestReportTitle{#1}}%
+                   {\stdTestReportAbstract{#1}}%
+                   {\testReportDir/main.tex}%
+}%
+
+% ------------------------------------------------------------------------------

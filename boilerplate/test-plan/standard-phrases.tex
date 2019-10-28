@@ -1,0 +1,21 @@
+% ------------------------------------------------------------------------------
+% Standard Test Plan Abstract.
+% ------------------------------------------------------------------------------
+\newcommand{\stdTestPlan}{test plan}
+\newcommand{\stdTestPlanTitle}[1]{#1}
+
+\newcommand{\stdTestPlanAbstract}[1]{%
+  This is \stdTestPlanTitle{#1}.  This document is stored in
+  \glsentrylong{company}'s \glsentrylong{dms}.
+}%
+
+% ------------------------------------------------------------------------------
+% Standard Test Plan document generator command. 
+% ------------------------------------------------------------------------------
+\newcommand{\stdTestPlanDoc}[1]{%
+  \stdAutoDocLayout{\stdTestPlanTitle{#1}}%
+                   {\stdTestPlanAbstract{#1}}%
+                   {\testPlanDir/main.tex}%
+}%
+
+% ------------------------------------------------------------------------------

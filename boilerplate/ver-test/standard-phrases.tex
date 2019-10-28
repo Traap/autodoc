@@ -1,0 +1,24 @@
+% ------------------------------------------------------------------------------
+% Standard Ver Test Abstract.
+% ------------------------------------------------------------------------------
+\newcommand{\stdVerTest}{Verification Test}
+\newcommand{\stdVerTestTitle}[1]{#1 \stdVerTest}
+
+\newcommand{\stdVerTestAbstract}[1]{%
+  In this document #1 is the \stdCfgItem\ being verified and \stdRptPkg\ is the
+  #1 \stdRptPkg. #1 is verified after this \stdRptPkg\ has been executed,
+  test evidence has been obtained, and test evidence supports the conclusion
+  \stdSyRS\ and \stdSRS\ are satisfied. This document is stored in
+  \stdCompanyName's (Company) \stdQMS\ after #1 has been verified.
+}%
+
+% ------------------------------------------------------------------------------
+% Standard Ver Test document generator command. 
+% ------------------------------------------------------------------------------
+\newcommand{\stdVerTestDoc}[1]{%
+  \stdAutoDocLayout{\stdVerTestTitle{#1}}%
+                   {\stdVerTestAbstract{#1}}%
+                   {\verTestDir/main.tex}%
+}%
+
+% ------------------------------------------------------------------------------
