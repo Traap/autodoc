@@ -1,6 +1,6 @@
 % {{{ docTerm %
 %
-% \docTerm uses three paramaters to define a glossary entry: %
+% \docTerm uses three parameters to define a glossary entry: %
 %   #1 - key
 %   #2 - name
 %   #3 - description
@@ -15,12 +15,14 @@
 % \docTermPlural adds a fourth add a fourth parameter:%
 %   #4 - plural form of #2.
 % ------------------------------------------------------------------------------
+
 \newcommand{\docTerm}[3]{%
   \newglossaryentry{#1}{%
     name={#2},%
     description={#3}%
   }%
 }%
+
 \newcommand{\docTermPlural}[4]{%
   \newglossaryentry{#1}{%
     name={#2},%
@@ -28,15 +30,19 @@
     plural={#4}%
   }%
 }%
+
 % -------------------------------------------------------------------------- }}}
 % {{{ [0..0]
+
 \docTerm{510k}{510(k)}{%
   A premarket submission made to FDA to demonstrate that a medical device to be
   marketed is at least as safe and effective, that is, substantially equivalent,
   to a legally marketed device (21 CFR 807.92(a)(3)) that is not subject to PMA.
 }%
+
 % -------------------------------------------------------------------------- }}}
 % {{{ [A]
+
 \docTerm{abbr510k}{abbreviated 510(k)}{%
   A type of alternative to the Traditional 510(k) pre-market notification that
   reduces the amount of information supplied to the FDA in the pre-market
@@ -174,7 +180,7 @@
 }%
 
 \docTerm{awaredate}{aware date}{%
-  The date Fenwal has determined a complaint to meet requirements for reporting
+  The date Acme Corporation has determined a complaint to meet requirements for reporting
   to the applicable regulatory body.  This date is commonly the notification
   date, unless:
   1) Not enough information was acquired with the initial report to make the
@@ -189,6 +195,7 @@
 
 % -------------------------------------------------------------------------- }}}
 % {{{ [B]
+
 \docTerm{batch}{batch}{%
   One or more components or finished devices that consist of a single type,
   model, class, size, composition or software version that are manufactured
@@ -258,8 +265,10 @@
 \docTerm{bundler}{bundler}{%
   A \gls{rubygem} package manager.
 }%
+
 % -------------------------------------------------------------------------- }}}
 % {{{ [C]
+
 \docTerm{calibration}{calibration}{%
   Process for ensuring continuous adequate performance of sensing, measurement,
   and actuating equipment with regard to specified accuracy and precision
@@ -443,7 +452,7 @@
   a software product.
 }%
 
-\docTerm{configuration-mangement}{configuration mangement}{%
+\docTerm{configuration-management}{configuration management}{%
   (IEEE)
   A discipline applying technical and administrative direction and surveillance
   to identify and document the functional and physical characteristics of
@@ -484,7 +493,7 @@
   enables the operation of the system.
 }%
 
-\docTerm{contentre-engineering}{content re-engineering}{%
+\docTerm{content-engineering}{content re-engineering}{%
   Evaluating and revising content to assure consistency, reduce redundancy,
   address requirement gaps, optimize architecture, and increase usability.
 }%
@@ -519,7 +528,7 @@
 
 \docTerm{controlled-document}{controlled document}{%
   A document that requires review, approval, and issuance through a defined and
-  documented proces.
+  documented process.
 }%
 
 \docTerm{corporate}{corporate}{%
@@ -543,7 +552,7 @@
 
 \docTerm{corrective-action}{corrective action}{%
   Action taken to eliminate the cause(s) and prevent recurrence of an existing
-  product, process, or quality system nonconformance, defect, trend  or or other
+  product, process, or quality system non-conformance, defect, trend  or or other
   undesirable situation.
 }%
 
@@ -562,8 +571,10 @@
   or the unauthorized use of information that is stored, accessed, or transferred
   from a medical device to an external recipient.
 }%
+
 % -------------------------------------------------------------------------- }}}
 % {{{ [D]
+
 \docTerm{defect}{defect}{%
   A departure of a single quality characteristic of a product or service that
   deviates from the desired requirements or specifications.  One (1) defect may
@@ -624,7 +635,7 @@
 }%
 
 \docTerm{deviation}{deviation}{%
-  A detected or potential nonconformance, system deficiency, or non-fulfillment
+  A detected or potential non-conformance, system deficiency, or non-fulfillment
   of specified requirements.  Can be product, process, or system related.
 }%
 
@@ -672,12 +683,14 @@
   dosage form that does not contain an active ingredient but is intended to be
   used as a placebo.
 }%
+
 % -------------------------------------------------------------------------- }}}
 % {{{ [E]
+
 \docTerm{effectiveness-check}{effectiveness check / verification}{%
   Monitoring or assessments completed after implementation of Corrective and/or
   Preventive Actions to establish whether actions taken were effective and
-  adressed the identified nonconformity.
+  addressed the identified nonconformity.
 }%
 
 \docTerm{electronic-record}{electronic record}{%
@@ -741,8 +754,10 @@
   Requirements include Customer Requirements, Regulations, Standards and
   \gls{company} Corporate Policies.
 }%
+
 % -------------------------------------------------------------------------- }}}
 % {{{ [F]
+
 \docTerm{feature}{feature}{%
   A feature describes a part and/or its performance. Features include any
   dimensional, visual, functional, mechanical, electrical, chemical, physical,
@@ -757,7 +772,7 @@
 
 \docTerm{finished-goods}{finished goods}{%
   Items manufactured by an outside supplier that require no further processing
-  prior to being sold by Fenwal.
+  prior to being sold by Acme Corporation.
 }%
 
 \docTerm{firmware}{firmware}{%
@@ -783,8 +798,10 @@
   and that an appropriate criticality level is assigned to each software
   element.
 }%
+
 % -------------------------------------------------------------------------- }}}
 % {{{ [G]
+
 \docTerm{git-account}{git account}{%
   A valid Git username and password.  Request these from your Git administrator.
 }%
@@ -823,6 +840,7 @@
 }%
 % -------------------------------------------------------------------------- }}}
 % {{{ [H]
+
 \docTerm{harm}{harm}{%
   Physical injury or damage to the health of people, or damage to property or
   the environment.
@@ -842,8 +860,10 @@
   Circumstance in which people, property, or the environment are exposed to one
   or more hazard(s).
 }%
+
 % -------------------------------------------------------------------------- }}}
 % {{{ [I]
+
 \docTerm{identifier}{identifier}{%
   A unique series of letters or numbers or any combination of these or a bar
   code that is assigned to a medical device by the manufacturer and that
@@ -896,16 +916,8 @@
 }%
 
 \docTerm{installer}{installer}{%
-  Installer is a software-only utility that is composed of VSS Installer,
-  Sentinel Installer, and Device Uploader Installer.  It is located on the VSS
-  distribution media.  Installer is designed to assist a qualified systems
-  administrator to install, uninstall, and configure the VSS subsytems.
-  1) VSS Installer manages Vigilant Bridge, Vigilant Centerium, Vigilant
-     Insight, and Vigilant Master Med;
-  2) Sentinel Installer manages Vigilant Sentinel; and
-  3) Device Uploader Installer manages Device uploader.  Enabling and disabling
-     of VSS features and functions are controlled by the feature license
-     function not by Installer.
+  Installer is a software-only utility that is used to install and configure
+  software into an operating system environment.
 }%
 
 \docTerm{intended-use}{intended use}{%
@@ -915,7 +927,7 @@
 }%
 
 \docTerm{internal-requirements}{internal requirements}{%
-  Requirements that originate within the ABT-BU organizational entity.  Internal
+  Requirements that originate within organizational entity.  Internal
   Requirements include Quality and Business Requirements, but not Regulatory
   Requirements.
 }%
@@ -926,7 +938,7 @@
 
 \docTerm{investigation}{investigation}{%
   Review of CAPA PR/Event to determine the scope, depth and breadth of
-  a nonconformance in order to determine Root Caus.
+  a non-conformance in order to determine Root Cause.
 }%
 
 \docTerm{investigational-device}{investigational device}{%
@@ -934,17 +946,21 @@
   not approved / cleared or is different from the approved / cleared form or is
   being used for an unapproved or unclear indication/use.
 }%
+
 % -------------------------------------------------------------------------- }}}
 % {{{ [J]
+
 \docTerm{jira}{JIRA}{%
   An Atlassian project and issue-tracking platform.
 }%
+
 % -------------------------------------------------------------------------- }}}
 % {{{ [L]
+
 \docTerm{label}{label}{%
   Any written, printed, or graphic matter affixed to or appearing upon any
   consumer commodity or affixed to or appearing upon a package containing any
-  consumer commodit.
+  consumer commodity.
 }%
 
 \docTerm{labeling}{labeling (noun)}{%
@@ -955,13 +971,13 @@
 }%
 
 \docTerm{laboratory-notebook}{laboratory notebook}{%
-  A bound, prenumbered book with numbered pages and an index (or Table of
+  A bound, pre-numbered book with numbered pages and an index (or Table of
   Contents), which is the confidential property of the company and includes
   facility name and location. Laboratory notebooks provide a means of
   permanently recording daily work conducted in:
   1) Research,
   2) Development, and
-  3) Support activitie.
+  3) Support activities.
 }%
 
 \docTerm{latex}{\LaTeX}{%
@@ -992,8 +1008,10 @@
   ensure that purchased or otherwise received product or services conform to
   specifications and are acceptable for their intended use.
 }%
+
 % -------------------------------------------------------------------------- }}}
 % {{{ [M]
+
 \docTerm{maintenance}{maintenance}{%
   Activities such as adjusting, cleaning, modifying and overhauling equipment to
   assure performance in accordance with requirements. Maintenance of a software
@@ -1077,8 +1095,10 @@
   Containment; these steps are typically required when an issue is first
   identified but may also be required throughout the life of a CAPA..
 }%
+
 % -------------------------------------------------------------------------- }}}
 % {{{ [N]
+
 \docTerm{nearmiss}{near miss}{%
   Post completion of routine in-process inspections and testing detection
   of an issue that could potentially compromise patient safety if the material
@@ -1104,8 +1124,10 @@
   Organizations recognized by a competent authority in the Member State to carry
   out CE (European Conformity) marking compliance procedures.
 }%
+
 % -------------------------------------------------------------------------- }}}
 % {{{ [O]
+
 \docTerm{objective-evidence}{objective evidence}{%
   Qualitative or quantitative information, records, or statements of fact
   pertaining to:
@@ -1148,8 +1170,10 @@
   versions of the product's information, are placed either partially or
   completely over the original label(s), precluding legibility.
 }%
+
 % -------------------------------------------------------------------------- }}}
 % {{{ [P]
+
 \docTerm{precaution}{precaution}{%
   A statement of a hazard alert that warns the user of a potentially hazardous
   situation which, if not avoided, may result in minor or moderate injury to the
@@ -1161,7 +1185,7 @@
   been achieved.
 }%
 
-\docTerm{performance-spec}{performance specificagtion}{%
+\docTerm{performance-spec}{performance specification}{%
   The performance characteristics of a device as listed in device labeling or in
   finished product release specifications
 }%
@@ -1193,7 +1217,7 @@
 
 \docTerm{preventive-action}{preventive action}{%
   Action taken to eliminate the causes of a potential nonconformity or other
-  undesirable situation in order to prevent occurence.
+  undesirable situation in order to prevent occurrence.
 }%
 
 \docTerm{primary-document}{primary document}{%
@@ -1273,7 +1297,7 @@
   associated with a CAPA.
 }%
 
-\docTerm{productin-field}{product in field}{%
+\docTerm{product-in-field}{product in field}{%
   Product that is now or was once beyond a \gls{company}-controlled
   distribution center.
 }%
@@ -1328,12 +1352,14 @@
   A document considered legally and contractually binding, between buyer and
   seller, to purchase goods or services.
 }%
+
 % -------------------------------------------------------------------------- }}}
 % {{{ [Q]
-\docTerm{qms-document}{qms document}{%
+
+\docTerm{qms-document}{QMS document}{%
   Also referred to as Quality System Document. A term that refers collectively
-  to the distinct Document Categories that make up the QMS\@. QMS documents can be
-  paper or electronic, and are categorized as policies, standard operating
+  to the distinct Document Categories that make up the QMS\@. QMS documents can
+  be paper or electronic, and are categorized as policies, standard operating
   procedures, work instructions or supporting material.
 }%
 
@@ -1366,8 +1392,8 @@
 }%
 
 \docTerm{quality-manual}{quality manual}{%
-  A QMS Document (Policy) that defines the ABT-BU organizational entity,
-  establishes QMS scope and structure, and outlines management oversight
+  A QMS Document (Policy) that defines the organizational entity establishes
+  to define QMS scope and structure, and outlines management oversight
   responsibilities.
 }%
 
@@ -1423,8 +1449,10 @@
   820.3(v) means the organizational structure, responsibilities, procedures,
   processes and resources for implementing quality management.
 }%
+
 % -------------------------------------------------------------------------- }}}
 % {{{ [R]
+
 \docTerm{rake}{Rake}{%
   a \gls{ruby} build system.
 }%
@@ -1453,7 +1481,7 @@
 }%
 
 \docTerm{re-audit}{re-audit}{%
-  An audit that occurs in response to previously identified Nonconformances for
+  An audit that occurs in response to previously identified non-conformances for
   the purpose of verifying effectiveness of audit response. The Re-audit usually
   occurs in advance of the interval or frequency of the next regularly scheduled
   audit.
@@ -1488,7 +1516,7 @@
   see Regulatory Agency.
 }%
 
-\docTerm{regulatory-opinion}{regulatoryopinion}{%
+\docTerm{regulatory-opinion}{regulatory opinion}{%
   A written and approved document that provides justification, analysis, and
   risk assessment and regulatory recommendations concerning manufacturing and
   marketing products in accordance with regulatory requirements. Regulatory
@@ -1538,7 +1566,7 @@
 
 \docTerm{remediationplan}{remediation plan}{%
   A plan describing the action required to eliminate the cause(s) of an existing
-  or potential nonconformance/exception or other undesirable situation to
+  or potential non-conformance/exception or other undesirable situation to
   prevent recurrence or occurrence.
 }%
 
@@ -1604,7 +1632,7 @@
 \docTerm{risk-control}{risk control}{%
   1) Process in which decisions are made and measures implemented by which risks
      are reduced to, or maintained within, specified levels.
-  2) Specific requirements that are implemented to reduct the severity of the
+  2) Specific requirements that are implemented to redact the severity of the
      harm or the probability of its occurrence, or both.
 }%
 
@@ -1624,7 +1652,7 @@
   Management is an Enabling Process.
 }%
 
-\docTerm{risk-managementfile}{risk management file}{%
+\docTerm{risk-management-file}{risk management file}{%
   Set of records and other documents (not necessarily contiguous) that is
   produced by risk management (process).
 }%
@@ -1642,8 +1670,8 @@
 
 \docTerm{root-cause-analysis}{root cause analysis}{%
   Documented analysis necessary to determine the original or true cause of
-  a system, product or process nonconformance; this effort extends beyond the
-  effects of a problem to discover its most fundamental caus.
+  a system, product or process non-conformance; this effort extends beyond the
+  effects of a problem to discover its most fundamental cause.
 }%
 
 \docTerm{routine-servicing}{routine servicing}{%
@@ -1659,18 +1687,20 @@
 \docTerm{ruby}{ruby}{%
   (WikipediA) An interpreted, high-level, general purpose programming language.
   Ruby is dynamically typed and garbage-collected.  It support multiple
-  programming paradigims, including procedueral, object-oriented, and functional
+  programming paradigms, including procedural, object-oriented, and functional
   programming.
 }%
 
 \docTerm{rubygem}{RubyGem}{%
-  (WikipediA) A package manager for the \gls{ruby} programming language that
-  provides a standard format for distributing \gls{ruby} programs and libaries
+  (Wikipedia) A package manager for the \gls{ruby} programming language that
+  provides a standard format for distributing \gls{ruby} programs and libraries
   (in a self-contained format called a `gem'), a tool designed to easily manage
   the installation of gems, and a server for distributing them.
 }%
+
 % -------------------------------------------------------------------------- }}}
 % {{{ [S]
+
 \docTerm{safety}{safety}{%
   Freedom from unacceptable risk.
 }%
@@ -1796,7 +1826,7 @@
   usability goals.  Sub-processes are decomposed into Activities when warranted.
 }%
 
-\docTerm{sub-tiersupplier}{sub-tier supplier}{%
+\docTerm{sub-tier-supplier}{sub-tier supplier}{%
   An organization or business entity that provides Products or Services to
   a Supplier.
 }%
@@ -1845,8 +1875,10 @@
      system does not produce unexpected results during normal use or high load
      situations.
 }%
+
 % -------------------------------------------------------------------------- }}}
 % {{{ [T]
+
 \docTerm{technical-design-inputs}{technical design inputs}{%
   see System Requirements Specification.
 }%
@@ -1968,6 +2000,7 @@
 
 % -------------------------------------------------------------------------- }}}
 % {{{ [U]
+
 \docTerm{use-error}{use error}{%
   Pattern of use failure that indicates a failure mode that is likely to occur
   with use and thus has a reasonable possibility of predictability of
@@ -1979,8 +2012,10 @@
   fundamental errors by humans and that has no reasonable possibility of being
   predicted.
 }%
+
 % -------------------------------------------------------------------------- }}}
 % {{{ [V]
+
 \docTerm{validation}{validation}{%
   820.3(z) means confirmation by examination and provision of objective evidence
   that the particular requirements for a specific intended use can be
@@ -2001,8 +2036,10 @@
   820.3(aa) means confirmation by examination and provision of objective
   evidence the specified requirements have been fulfilled.
 }%
+
 % -------------------------------------------------------------------------- }}}
 % {{{ [w]
+
 \docTerm{warning}{warning}{%
   An alert to the user about a situation which, if not avoided, could result in
   death or serious injury.  Note: The distinction between warnings and
@@ -2016,4 +2053,5 @@
 
 \docTerm{where-appropriate}{where appropriate}{%
   Deemed to be required unless appropriate rationale is documented.
+
 }% ------------------------------------------------------------------------- }}
