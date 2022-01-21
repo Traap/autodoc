@@ -3,20 +3,14 @@ LaTeX.  Dynamic documents depend upon output produced by running programs that
 emit output to the console, web pages, log files, source codr, or other text
 files.
 
-# Prerequisites 
+# Prerequisites
 1. [autodoc](https://GitHub.com/Traap/autodoc.git)
 1. [docbld](https://GitHub.com/Traap/docbld.git)
-1. [MiKTeX](https://miktex.org/download)
 1. [tlc-article](https://GitHub.com/Traap/tlc-article.git)
-
+1. Any Tex distribution.
 
 # Installation
 Copy the text below and paste into a shell.  The commands will:
-1. Change directory to home
-1. Clone Traap/autodoc
-1. Move to autodoc directory
-1. Assemble StarterKit
-1. View **_build/Starterkit.pdf**
 
 ```bash
 $ cd $HOME \

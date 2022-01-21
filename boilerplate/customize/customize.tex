@@ -1,0 +1,111 @@
+% {{{ Customize autodoc to your specific needs.
+%
+% Autodoc uses tlc-article to provide consistent document layout.  When present,
+% tlc-article includes data/additional-layout.tex in your document specific
+% folder.  Your document hooks into autodoc by referencing a template/main.tex
+% file.  The template hooks everything autodoc can do into you document.
+%
+% These definitions should be changed to customize every document you assemble
+% using autodoc. Autodoc provides a template view for each autodoc type in the
+% report folder.  One should assemble these documents to understand how your
+% changes will be consumed by autodoc.
+%
+% One can override these definitions in a document specific file
+% data/additional-layout.tex
+%
+% -------------------------------------------------------------------------- }}}
+% {{{ Your company name and confidential statement.
+
+\newcommand{\autodocCompanyName}{Acme Corporation}%
+\newcommand{\autodocConfidential}{Confidential Document}%
+\newcommand{\autodocDepartmentName}{Department Name}%
+
+% -------------------------------------------------------------------------- }}}
+% {{{ Define your header and footer variables.
+
+\newcommand{\autodocHeaderFooterDate}{\today}%
+\newcommand{\autodocHeaderFooterDocType}{Verification and Validation}%
+\newcommand{\autodocHeaderFooterDocNum}{Document number: }%
+\newcommand{\autodocHeaderFooterInstitution}{\autodocCompanyName~\autodocConfidential}%
+\newcommand{\autodocHeaderFooterOrigin}{Department Location}%
+\newcommand{\autodocHeaderFooterPermission}{\autodocDepartmentName}%
+\newcommand{\autodocHeaderFooterRevise}{Revision: }%
+\newcommand{\autodocHeaderFooterRevision}{[A]}%
+\newcommand{\autodocHeaderFooterStatus}{FINAL}%
+\newcommand{\autodocHeaderFooterVersion}{1.0.0}%
+
+\newcommand{\autodocHeaderFooterHeadRuleWidth}{0.1pt}%
+\newcommand{\autodocHeaderFooterFootRuleWidth}{0.1pt}%
+
+\newcommand{\autodocHeaderFooterHeadHeight}{41.99376pt}%
+\newcommand{\autodocHeaderFooterFootSkip}{27.5003pt}%
+
+% -------------------------------------------------------------------------- }}}
+% {{{ Source Configuration Management URLs
+
+\newcommand{\autodocScmURL}{https://github.com}%
+
+% -------------------------------------------------------------------------- }}}
+% {{{ Abbreviations
+
+\newacronym[description={%
+ Acme Corporation is a global healthcare company that specializes in lifesaving
+ medicines and technologies for infusion, transfusion and clinical nutrition.
+ Our products and services are used to help care for critically and chronically
+ ill patients.
+}]{xcompany}{XCOMPANY}{Acme Corporation}%
+
+\newacronym[description={%
+ Vigilant Software Suite.
+}]{vss}{VSS}{Vigilant Software Suite}%
+
+\newacronym[description={%
+  Vigilant Bridge is a software-only application that is intended to establish
+  a connection between Acme Corporation infusion pumps and the Electronic Medical
+  Records (EMR) system.  Infusion data is automatically transmitted to the EMR.
+}]{vssb}{VB}{Vigilant Bridge}%
+
+\newacronym[description={%
+  Vigilant Centerium is a software-only application that intended to perform the
+  following actions with connected Acme Corporation infusion devices:
+  1) Store and distribute data sets;
+  2) Report data set distribution status;
+  3) Collect and report infusion data; and
+  4) Support system maintenance operations.
+}]{vssc}{VC}{Vigilant Centerium}%
+
+\newacronym[description={%
+  Vigilant Insight is a software-only application that is intended to provide
+  infusion analytics in the form of dashboards and reports.  The software
+  provides reports about the user of Acme Corporation infusion pumps.  The
+  software is intended to improve accuracy of clinical settings included in the
+  data set.  Intended healthcare professionals are able to review the reports
+  and make adjustments to ensure operational efficiency within their healthcare
+  facility.  Vigilant Insight is not intended to provide clinical decision making,
+  it is just an information only tool to support trained healthcare
+  professionals in their routine clinical management.
+}]{vssi}{VI}{Vigilant Insight}%
+
+\newacronym[description={%
+  Vigilant Master Med is a software-only application that manages drug libraries
+  within the Vigilant Software Suite.  Its main function is to create,
+  customize, and manage drug lists, drug libraries, device configurations,
+  profiles, and data sets which are uploaded to compatible infusion pumps.
+}]{vssm}{VMM}{Vigilant Master Med}%
+
+\newacronym[description={%
+ Vigilant Sentinel is a software-only application this is an infusion
+ visualization system designed to provide qualified healthcare personnel with
+ a centrally aggregated view of infusion pumps' status within a hospital or
+ a hospital-type setting.
+}]{vsss}{VS}{Vigilant Sentinel}%
+
+
+% -------------------------------------------------------------------------- }}}
+% {{{ Definitions
+
+\docTerm{foobarbaz}{foo bar baz}{%
+  Foo is to bar as bar is to baz.  Baz is to bar as bar is to Foo.
+}%
+
+% -------------------------------------------------------------------------- }}}

@@ -1,6 +1,17 @@
 % ------------------------------------------------------------------------------
+% You must define UseAutodocGlossaries prior to hooking into autodoc.
+\newboolean{UseAutodocGlossaries}\setboolean{UseAutodocGlossaries}{true}%
+
+% ------------------------------------------------------------------------------
 % Hook into this document's document layout information.
 \input{../shared/data/additional-layout.tex}%
+
+% ------------------------------------------------------------------------------
+% Override test evidence table column header names. 
+\renewcommand{\tchtableacola}{ReqID}%
+\renewcommand{\tchtableacolb}{Resource Key}%
+\renewcommand{\tchtableacolc}{Text}%
+\renewcommand{\tchtableacold}{Status}
 
 % ------------------------------------------------------------------------------
 % Your additional layout, packages, etc. are declared now. 

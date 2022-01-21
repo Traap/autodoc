@@ -1,0 +1,117 @@
+% ------------------------------------------------------------------------------
+% These are the parameters Results Synthesis uses when calling the
+% includeTwoColumnTable command. These parameters maybe overridden in  
+% data/additional-layout.tex for the document you are writing.
+% 
+% Note:  Do not reset these parameters in this file.
+% ------------------------------------------------------------------------------
+\newcommand{\ttSynFile}{test-output/resultsSynthesis.csv}%
+\newcommand{\ttSynColAHdr}{Case Type}%
+\newcommand{\ttSynColBHdr}{Result}%
+\newcommand{\ttSynSecName}{Results Synthesis}%
+\newcommand{\ttSynSecHeading}{resultssynthesis}%
+\newcommand{\ttSynSecText}{%
+  This section compiles the counts for Total Test Cases, Passed Test Cases, and
+  Failed Test Cases, and determines if the test plan is COMPLIANT or
+  NON-COMPLIANT.
+}%
+
+% ------------------------------------------------------------------------------
+% These are the parameters Test Environment uses when calling the
+% includeTwoColumnTable command. These parameters maybe overridden in  
+% data/additional-layout.tex for the document you are writing.
+% 
+% Note:  Do not reset these parameters in this file.
+% ------------------------------------------------------------------------------
+\newcommand{\ttEnvFile}{test-output/envInfo.csv}%
+\newcommand{\ttEnvColAHdr}{Name}%
+\newcommand{\ttEnvColBHdr}{Value}%
+\newcommand{\ttEnvSecName}{Test Environment Variables}%
+\newcommand{\ttEnvSecHeading}{testenvironment}%
+\newcommand{\ttEnvSecText}{%
+  This describes the state of the system environment used for testing.  The
+  following values are generated from config files and reading the ENV on the
+  client system.
+}%
+
+% ------------------------------------------------------------------------------
+% This set of commands are defined with default values.  They are redefined to
+% the values used as parameters to command includeTwoColumnTable
+% ------------------------------------------------------------------------------
+\newcommand{\dataFile}{}%
+\newcommand{\dataName}{}%
+\newcommand{\dataValue}{}%
+\newcommand{\dataSectionName}{}%
+\newcommand{\dataSectionTitle}{}%
+\newcommand{\dataSectionBody}{}%
+
+% ------------------------------------------------------------------------------
+% Redefine data values.
+% ------------------------------------------------------------------------------
+\newcommand{\redefineDataParameters}[6]{%
+  \renewcommand{\dataFile}{#1}%
+  \renewcommand{\dataName}{#2}%
+  \renewcommand{\dataValue}{#3}%
+  \renewcommand{\dataSectionName}{#4}%
+  \renewcommand{\dataSectionTitle}{#5}%
+  \renewcommand{\dataSectionBody}{#6}%
+}%
+
+% ------------------------------------------------------------------------------
+% Define csvnames and csvstyle
+% ------------------------------------------------------------------------------
+\csvnames{dataNames}{1=\dataName, 2=\dataValue}%
+
+\csvstyle{dataStyle}{%
+  longtable=|C{1.0cm}|L{7.0cm}|L{7.0cm}|%
+  ,respect all%
+  ,table head=\hline%
+    \rowcolor{fkblue}%
+    \# & \fkHdrRow{\dataName} & \fkHdrRow{\dataValue}\ER%
+  \endhead%
+  ,late after line=\ER%
+  ,table foot=\hline%
+  ,dataNames%
+}%
+
+% ------------------------------------------------------------------------------
+% includeTwoColumnTable provides a convenient method to include a table in your
+% document with two tables.  
+%
+% #1 - path to data file
+% #2 - column 1 heading
+% #3 - column 2 heading
+% #4 - section name
+% #5 - section heading
+% #6 - section text
+% ------------------------------------------------------------------------------
+\newcommand{\includeTwoColumnTable}[6]{%
+  \redefineDataParameters{#1}{#2}{#3}{#4}{#5}{#6}%
+
+  \IfFileExists{\dataFile}{%
+
+    % Add a document section.
+    \phantomsection%
+    % \addcontentsline{toc}{section}{\dataSectionName}%
+    \section{\dataSectionName}%
+    \label{sec:\dataSectionTitle}%
+
+    % Add section body.  Any well-formed LaTeX is allowed.
+    \dataSectionBody%
+
+    % Add a two column table. 
+    \begin{center}%
+      \csvreader[dataStyle, separator=pipe]%
+        {\dataFile}% CSV file name
+        {}% Filtering.
+        {\thecsvrow&%
+         \dataName&%
+         \dataValue%
+        }%
+    \end{center}%
+    \clearpage\pagebreak%
+  }{% Else (Uncomment next line to debug files.)
+    % \todo[inline]{\dataFile\ Missing input csv file.}%
+  }% 
+}%
+% ------------------------------------------------------------------------------

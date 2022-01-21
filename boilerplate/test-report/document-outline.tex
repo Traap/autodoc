@@ -1,18 +1,22 @@
 % ------------------------------------------------------------------------------
 % We want to allow maximum configuration for your document.  This is
 % accomplished by searching for the named document in order of the folders
-% folders listed below:
+% listed below:
 %
 % local
 % boilerplateSpecificTestDir
 % boilerplateDir
 %
-% Note: You may completely eliminate a name file by touching it in your local
-%       directory.  LaTeX compilers happily consume files without content.
+% Note:
+%   A named file may be eniminated by touching a file with the same name in your
+%   local directory.  Thus, an empty file is created.  LaTeX compilers happily
+%   consume files without content.
 %
+\useAutoDocFile{signatures.tex}
 \useAutoDocFile{overview.tex}
 \useAutoDocFile{purpose.tex}
 \useAutoDocFile{scope.tex}
 \useAutoDocFile{body.tex}
-\useAutoDocFile{signatures.tex}
+\useAutoDocFile{conclusion.tex}
 \useAutoDocFile{change-summary.tex}
+\printGlossaries%

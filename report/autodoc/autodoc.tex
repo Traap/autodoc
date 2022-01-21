@@ -1,56 +1,30 @@
 \documentclass[10pt]{tlc-article}%
-\begin{document}%
-% Table of Contents {{{
-  \tlcTitlePageAndTableOfContents%
-    {Autodoc \\ Example}%
-    {Gary A. Howard}%
-    {This document demonstrates how-to use (\skAutoDoc) a \LaTeX\ documentation
-     framework.}%
-% -------------------------------------------------------------------------- }}}
-% Purpose {{{
-\section{Purpose}
-\todo[inline]{Complete section.}%
-% -------------------------------------------------------------------------- }}}
-% Scope {{{
-\section{Scope}
-\todo[inline]{Complete section.}%
-% -------------------------------------------------------------------------- }}}
-% Document Types {{{
-\section{Document Types}
-\todo[inline]{Complete section.}%
-% ------------------------------------------------------------------------- }}}
-% Design Review{{{
-\subsection{Design Review}
-\todo[inline]{Complete section}%
-% -------------------------------------------------------------------------- }}}
-% Tech Plan {{{
-\subsection{Tech Plan}
-\todo[inline]{Complete section.}%
-% -------------------------------------------------------------------------- }}}
-% Test Record {{{
-\subsection{Test Plan}
-\todo[inline]{Complete section.}%
-% -------------------------------------------------------------------------- }}}
-% Test Report {{{
-\subsection{Test Report}
-\todo[inline]{Complete section.}%
-% -------------------------------------------------------------------------- }}}
-% Tool Test {{{
-\subsection{Tool Test}
-\todo[inline]{Complete section.}%
-% -------------------------------------------------------------------------- }}}
-% Unit Test {{{
-\subsection{Unit Test}
-\todo[inline]{Complete section.}%
-% -------------------------------------------------------------------------- }}}
-% Ver Test {{{
-\subsection{Ver Test}
-\todo[inline]{Complete section.}%
-% -------------------------------------------------------------------------- }}}
-% Debug {{{
-% \section{Debug}
-% \todo[inline]{The next pages show tlcDebug and autodocDebug information.}%
-% \autodocDebug%
-% -------------------------------------------------------------------------- }}}
+% {{{ Assemble a document using tlc-article and hook into autodoc.
 
+\begin{document}%
+  \tlcTitlePageAndTableOfContents%
+    {Autodoc Example}%
+    {Gary A. Howard}%
+    {This document demonstrates how-to use (\adAutoDoc) a \LaTeX\ documentation
+     framework.}%
+
+% -------------------------------------------------------------------------- }}}
+% {{{ Document body.
+
+\input{overview.tex}
+\input{autodoc-overview.tex}
+\input{autodoc-folders.tex}
+\input{autodoc-framework.tex}
+\input{autodoc-examples.tex}
+\input{automation-overview.tex}
+
+% Uncomment the command below to reveal debug information.
+% \autodocDebug\
+
+% -------------------------------------------------------------------------- }}}
+% {{{ Print acronyms and glossaries
+
+\printGlossaries%
+
+% -------------------------------------------------------------------------- }}}
 \end{document}

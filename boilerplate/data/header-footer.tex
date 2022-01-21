@@ -1,17 +1,27 @@
 % Header applied to all documents.
-\input{data/version.tex}
-\makeatletter
+\input{data/version.tex}%
 
-% Header applied to all documents.
-\lhead{\useLogo\\\tiny\hfOrigin\\\hfDocType}
-\rhead{\tiny\thetitle\\\hfdocNum\hfVersion\\\hfRevise\hfRevision}
-\renewcommand{\headrulewidth}{0.1pt}
+% Clear header and footer.
+\fancyhf{}%
 
-% Eliminate headheight too small warning, which is occurring because we are
-% using an image to our header.
-\setlength\headheight{52pt}
+% Header applied to this document.
+\lhead{\useLogo}%
+\chead{\thetitle}%
+\rhead{%
+  \tiny{%
+    \hfStatus\\%
+    \hfDate\\%
+    \hfVersion\hfRevision%
+ }%
+}%
+\renewcommand{\headrulewidth}{\autodocHeaderFooterHeadRuleWidth}%
+\renewcommand{\footrulewidth}{\autodocHeaderFooterFootRuleWidth}%
 
-% Footer applied to all documents.
-\cfoot{\hfInstitution}
-\rfoot{\tiny\ Page \thepage~of~\pageref{LastPage}}
-\renewcommand{\footrulewidth}{0.01pt}
+% Adjust header and footer heights.
+\setlength\headheight{\autodocHeaderFooterHeadHeight}%
+\setlength\footskip{\autodocHeaderFooterFootSkip}%
+
+% Footer applied to this document.
+\cfoot{\tiny{\hfPermission}}%
+\lfoot{\tiny{\hfInstitution}}%
+\rfoot{\tiny{Page \thepage~of~\pageref{LastPage}}}%

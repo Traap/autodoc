@@ -1,32 +1,44 @@
 % ------------------------------------------------------------------------------
+% You must define UseAutodocGlossaries prior to hooking into autodoc.
+\newboolean{UseAutodocGlossaries}\setboolean{UseAutodocGlossaries}{true}%
+
+% ------------------------------------------------------------------------------
 % Hook into this document's document layout information.
 \input{../shared/data/additional-layout.tex}%
 
 % ------------------------------------------------------------------------------
 % Your additional layout, packages, etc. are declared now. 
 \def\boilerplateSpecificTestDir{\textcolor{red}{NOT USED}}
+\usepackage{dirtree}
+
+\def\adAdditionalLayout{\tlcDarkblue{data/additional-layout.tex}}
+\def\adAmber{\tlcDarkblue{Amber}}
+\def\adAutoDocDebug{\tlcDarkblue{autodocDebug}}
+\def\adAutoDocDir{\tlcDarkblue{autodocDir}}
+\def\adAutoDoc{\tlcDarkblue{autodoc}}
+\def\adBoilerplate{\tlcDarkblue{autodoc/boilerplate}}
+\def\adConclusion{\tlcDarkblue{Conclusion.tex}}
+\def\adInputFactory{\tlcDarkblue{input factory}}
+\def\adMain{\tlcDarkblue{toolTestDir/main}}
+\def\adOutputFactory{\tlcDarkblue{test-output factory}}
+\def\adProjectDirTex{\tlcDarkblue{project-directories.tex}}
+\def\adStarterkit{\tlcDarkblue{autodoc.tex}}
+\def\adTlcArticle{\tlcDarkblue{tlc-article}}
+\def\adTlcDebug{\tlcDarkblue{tlcDebug}}
+\def\adToc{\tlcDarkblue{tlcTitleAndTableOfContents}}
+\def\adToolTest{\tlcDarkblue{boilerplate/tool-test}}
+\def\adUnitTest{\tlcDarkblue{boilerplate/unit-test}}
+\def\adVerTest{\tlcDarkblue{boilerplate/ver-test}}
+\def\adToolTestTemplate{\tlcDarkblue{Tool Validation}}
+\def\adUnitTestTemplate{\tlcDarkblue{Unit Test}}
+\def\adVerTestTemplate{\tlcDarkblue{Verificaiton Test}}
 
 % ------------------------------------------------------------------------------
-% Commands and definitions I have defined to make writing this document easier.
-% Starter Kit (sk).
-\def\skAdditionalLayout{\tlcDarkblue{data/additional-layout.tex~}}
-\def\skAmber{\tlcDarkblue{Amber~}}
-\def\skAutoDocDebug{\tlcDarkblue{autodocDebug~}}
-\def\skAutoDocDir{\tlcDarkblue{autodocDir~}}
-\def\skAutoDoc{\tlcDarkblue{autodoc~}}
-\def\skBoilerplate{\tlcDarkblue{autodoc/boilerplate~}}
-\def\skConclusion{\tlcDarkblue{Conclusion.tex~}}
-\def\skInputFactory{\tlcDarkblue{input factory~}}
-\def\skMain{\tlcDarkblue{toolTestDir/main~}}
-\def\skOutputFactory{\tlcDarkblue{test-output factory~}}
-\def\skProjectDirTex{\tlcDarkblue{project-directories.tex~}}
-\def\skStarterkit{\tlcDarkblue{Starterkit.tex~}}
-\def\skTlcArticle{\tlcDarkblue{tlc-article~}}
-\def\skTlcDebug{\tlcDarkblue{tlcDebug~}}
-\def\skToc{\tlcDarkblue{tlcTitleAndTableOfContents~}}
-\def\skToolTest{\tlcDarkblue{boilerplate/tool-test~}}
-\def\skUnitTest{\tlcDarkblue{boilerplate/unit-test~}}
-\def\skVerTest{\tlcDarkblue{boilerplate/ver-test~}}
-\def\skToolTestTemplate{\tlcDarkblue{Tool Validation~}}
-\def\skUnitTestTemplate{\tlcDarkblue{Unit Test~}}
-\def\skVerTestTemplate{\tlcDarkblue{Verificaiton Test~}}
+\newcommand{\codelisting}[2]{%
+  \subsubsection{#1}
+  \lstinputlisting[language=#2, caption=#1]{#1}
+}%
+
+% ------------------------------------------------------------------------------
+% Override autodoc normal tocdepth that is 4.
+\setcounter{tocdepth}{2}%

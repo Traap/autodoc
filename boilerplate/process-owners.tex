@@ -1,0 +1,27 @@
+% ------------------------------------------------------------------------------
+% Different kinds of process owners. 
+\newcommand{\ownNA}               {N/A}%
+\newcommand{\ownProcessOwner}     {\ownNA}%
+\newcommand{\ownProjectManager}   {\ownNA}%
+\newcommand{\ownSystemOwner}      {\ownNA}%
+\newcommand{\ownValidationManager}{\ownNA}%
+\newcommand{\ownQualityManager}   {\ownNA}%
+
+% ------------------------------------------------------------------------------
+\newcommand{\ownerApplyNames}{%
+  \phantomsection%
+  \addcontentsline{toc}{section}{Process Owners}%
+   \section*{Process Owners}%
+   \begin{longtable}[ht]{|L{4.0cm}|L{10.5cm}|}\hline%
+     \rowcolor{fkblue}%
+     \fkHdrRow{Role}      & \fkHdrRow{Responsible}\ER%
+     \endhead%
+       Process Owner      & \ownProcessOwner\ER%
+       System Owner       & \ownSystemOwner\ER%
+       Validation Manager & \ownValidationManager\ER%
+       Project Manager    & \ownProjectManager\ER%
+       Quality  Manager   & \ownQualityManager\ER%
+   \end{longtable}%
+}%
+
+% ------------------------------------------------------------------------------

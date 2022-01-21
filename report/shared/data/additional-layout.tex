@@ -2,11 +2,10 @@
 % Your system environment variable AUTODOCPATH MUST be declared and you MUST
 % define autodocDir first.  These two mandatory requirements must be met so
 % that your customizations work.
-\input{../shared/data/find-autodoc.tex}%
-\tlcGetEnv[\autodocDir]{AUTODOCPATH}%
+\tlcGetEnvironmentVariable[\autodocDir]{AUTODOCPATH}%
 
 % ------------------------------------------------------------------------------
-% Hook into automation documentation additional layout. 
+% Hook into automation documentation additional layout.
 \input{\autodocDir/boilerplate/data/additional-layout.tex}%
 
 % ------------------------------------------------------------------------------
