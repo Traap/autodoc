@@ -1,5 +1,5 @@
-% ------------------------------------------------------------------------------
-% Different kinds of process owners. 
+% {{{ Different kinds of process owners commands.
+
 \newcommand{\ownNA}               {N/A}%
 \newcommand{\ownProcessOwner}     {\ownNA}%
 \newcommand{\ownProjectManager}   {\ownNA}%
@@ -7,7 +7,9 @@
 \newcommand{\ownValidationManager}{\ownNA}%
 \newcommand{\ownQualityManager}   {\ownNA}%
 
-% ------------------------------------------------------------------------------
+% -------------------------------------------------------------------------- }}}
+% {{{ Command to apply process owner names.
+
 \newcommand{\ownerApplyNames}{%
   \phantomsection%
   \addcontentsline{toc}{section}{Process Owners}%
@@ -20,8 +22,8 @@
        System Owner       & \ownSystemOwner\ER%
        Validation Manager & \ownValidationManager\ER%
        Project Manager    & \ownProjectManager\ER%
-       Quality  Manager   & \ownQualityManager\ER%
+       Quality Manager    & \ownQualityManager\ER%
    \end{longtable}%
 }%
 
-% ------------------------------------------------------------------------------
+% -------------------------------------------------------------------------- }}}
