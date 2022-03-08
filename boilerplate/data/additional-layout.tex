@@ -2,16 +2,27 @@
 \usepackage{pgf-pie}%
 
 % ------------------------------------------------------------------------------
-% Used in \autodocLogo command to include the logo and set the logo to the
+% Used in \useLogo command to include the logo and set the logo to the
 % correct size.
 % ------------------------------------------------------------------------------
 \newcommand{\logoSize}{\includegraphics*[scale=0.60]}%
 
-% ------------------------------------------------------------------------------
-% The logo applied to all documents.
-% ------------------------------------------------------------------------------
-\def\autodocLogo{\autodocDir/boilerplate/data/logo.png}%
-\newcommand{\useLogo}{\IfFileExists{\autodocLogo}{\logoSize{\autodocLogo}}{}}%
+% local directory
+\newcommand{\lLogo}{data/logo.png}%
+
+% boilerplateSpecificDir
+\newcommand{\sLogo}{\autodocDir/boilerplateSpecificTestDir/data/logo.png}%
+
+% boilerplateDir
+\newcommand{\bLogo}{\autodocDir/boilerplate/data/logo.png}%
+
+\newcommand{\useLogo}{%
+  \IfFileExists{\lLogo}{\logoSize{\lLogo}}{%
+    \IfFileExists{\sLogo}{\logoSize{\sLogo}}{%
+      \IfFileExists{\bLogo}{\logoSize{\bLogo}}{}%
+    }%
+  }%
+}%
 
 % ------------------------------------------------------------------------------
 % We want our header and footer to remain consistent with table of contents that
