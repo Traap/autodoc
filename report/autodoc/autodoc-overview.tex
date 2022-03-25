@@ -1,0 +1,99 @@
+% {{{ Autodoc Overview 
+
+\section{Autodoc Overview}
+
+\todo[inline]{Complete section. This section has content that needs to move to
+other sections.}%
+
+The contents of \adStarterkit\ are listed below.  Page layout, headers, footers,
+and table of contents is driven by the \LaTeX\ document class \adTlcArticle.
+
+\begin{verbatim}
+  \documentclass[10pt]{tlc-article}
+  \begin{document}
+    \tlcTitlePageAndTableOfContents
+      {Autodoc \\ Starter Kit}
+      {Jane Doe}
+      {This document demonstrates how-to use (\adAutoDoc) a \LaTeX\
+      documentation framework. \adAutoDoc declares this a tool-test document
+      type.}
+
+    \input{\toolTestDir/main.tex}
+
+    \makeatletter
+    \tlcDebug
+    \autodocDebug
+    \makeatother
+
+  \end{document}
+\end{verbatim}
+
+\subsection{\adToc}
+\textbf{\adTlcArticle} provides the \adToc\ to provide the document title, table
+of contents, author name, and document abstract that you read on the first page.
+
+\subsection{additional-layout}
+\adTlcArticle\  provides a hook to \adAdditionalLayout\ to allow you to specialize
+your documents layout.  The primary contents of this documents
+\adAdditionalLayout\ file is shown below.
+
+\begin{verbatim}
+  \def\autodocDir{..}
+  \input{\autodocDir/boilerplate/project-directories.tex}
+\end{verbatim}
+
+\adAutoDocDir\ is the location on your file system of the \adAutoDoc\ repository.
+\adProjectDirTex\ is an \adAutoDoc\ file that defines locations of files within
+the \adAutoDoc\ folder.
+
+\subsection{main}
+All text files found in \adBoilerplate\ are common to all \adAutoDoc\ documents.
+Each document consist of four major sections:
+
+\begin{description}[leftmargin=3cm, style=nextline]
+  \item[Overview:] This section provide an overview of the document.  It has
+    been designed with quality and regulatory compliance in mind.  The goal is
+    to assemble documents that a suitable for your Design History File, or may
+    be used when submitting records to the Food and Drug Administration.
+
+  \item[Requirements:] Identifies the requirements of the document.  This may be
+    user needs, products requirements, or testing requirements.
+
+  \item[Test Plan Overview:] This section will vary based on the type of testing
+    that is being described.  This section will contain test evidence when
+    combined with \adAmber.
+
+  \item[Conclusion:] This section is the conclusion you write after you have
+    reviewed your test evidence.  By default, \adAutoDoc, provides a default
+    conclusion that you override by placing a file named \adConclusion\ in same
+    directory as \adStarterkit.
+
+\end{description}
+
+\adAutoDoc\ provides three document templates.
+
+\begin{description}[leftmargin=3cm, style=nextline]
+  \item[\adToolTest:] This template was designed to standardize
+    \adToolTestTemplate.
+
+  \item[\adUnitTest:] This template can be used when your project requires
+    \adUnitTestTemplate.
+
+  \item[\adVerTest:] \adVerTestTemplate\ template is use do when you need to
+    record \adUnitTestTemplate\ results.
+
+\end{description}
+
+The term Test has been abstracted to mean any test type including: unit test,
+verification test, validation test, integration test and tool validation test.
+
+\subsection{\adTlcDebug}
+\adTlcDebug\ is a command provided by \adTlcArticle\ to assist you when you are
+having difficulty with \LaTeX\ text expansion.  You will notice the final
+sections of this document has debugging information.
+
+\subsection{\adAutoDocDebug}
+\adAutoDocDebug\ is similar to \adTlcDebug\ with a focus on debugging \adAutoDoc\
+documents.
+
+% -------------------------------------------------------------------------- }}}

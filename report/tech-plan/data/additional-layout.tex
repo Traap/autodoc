@@ -1,12 +1,10 @@
 % ------------------------------------------------------------------------------
-% Hook into this document's document layout information.
-\input{../shared/data/additional-layout.tex}%
+% You must define UseAutodocGlossaries prior to hooking into autodoc.
+\newboolean{UseAutodocGlossaries}\setboolean{UseAutodocGlossaries}{true}%
 
 % ------------------------------------------------------------------------------
-% Your additional layout, packages, etc. are declared now. 
-% ------------------------------------------------------------------------------
-% % autodocDir MUST be defined first so your customizations work. 
-% \def\autodocDir{../../../autodoc}
+% Hook into this document's document layout information.
+\input{../shared/data/additional-layout.tex}%
 
 % ------------------------------------------------------------------------------
 % Your additional layout, packages, etc. are declared now. 
@@ -20,7 +18,7 @@
 % ------------------------------------------------------------------------------
 
 % ------------------------------------------------------------------------------
-% Note:  New software technical techinical plans will need to customize
+% Note:  New software technical technical plans will need to customize
 % this file.
 %
 % These commands are defined with overwritecommand as a 'hook' into autodoc
@@ -53,8 +51,6 @@
 % ------------------------------------------------------------------------------
 % used in autodoc/boilerplate/tech-plan/plan.tex
 % ------------------------------------------------------------------------------
-\overwritecommand{\buildprocedurenums}{\textbf{buildprocedurenums}}
-\overwritecommand{\buildproceduretitles}{\textbf{buildproceduretitles}}
 \overwritecommand{\releaseplannum}{\textbf{releaseplannum}}
 \overwritecommand{\releaseplantitle}{\textbf{releaseplantitle}}
 
@@ -84,9 +80,3 @@
 % ------------------------------------------------------------------------------
 \overwritecommand{\swverificationplannum}{\textbf{swverificationplannum}}
 \overwritecommand{\swverificationplantitle}{\textbf{swverificationplantitle}}
-
-% ------------------------------------------------------------------------------
-% used in data/section-4-additional-notes.tex
-% ------------------------------------------------------------------------------
-\overwritecommand{\vssSOUP}{\textbf{vssSOUP}}
-\overwritecommand{\vssmSyRS}{\textbf{vssmSyRS}}

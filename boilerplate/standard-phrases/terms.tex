@@ -1,22 +1,20 @@
-% ------------------------------------------------------------------------------
-% Standard terminology and phrases used through our Quality Management System
-% documents.
-% ------------------------------------------------------------------------------
+% {{{ Standard terminology used through our Quality Management System documents.
 
-\newcommand{\stdAuthor}{Software Department}
+\newcommand{\stdAuthor}{\autodocDepartmentName}
 \newcommand{\stdCfgID}{Configuration Identification}
 \newcommand{\stdCfgItem}{Configuration Item}
-\newcommand{\stdCompanyName}{Acme Corporation}
+\newcommand{\stdCompanyName}{\autodocCompanyName}
 \newcommand{\stdIUR}{Intended Use Requirements (IUR)}
 \newcommand{\stdSyRS}{System Requirements (SyRS)}
 \newcommand{\stdSRS}{Software Requirements (SRS)}
 \newcommand{\stdQMS}{Quality Management System}
 \newcommand{\stdRptPkg}{Report Package}
 
-% ------------------------------------------------------------------------------
-% Standard prerequisite definitions.
+% -------------------------------------------------------------------------  }}}
+% {{{ Standard prerequisite definitions.
+%
 % Note:  Review tool validation report for example use.
-% ------------------------------------------------------------------------------
+
 \newcommand{\stdPreReq}{%
   \clearpage%
   \section{Prerequisites}%
@@ -87,7 +85,7 @@
 
 \newcommand{\stdQuickSortRepo}{\item[quicksort repository]
   Read and write access to
-  \url{http://github.com/Traap/repos/quicksort}
+  \url{\autodocScmUrl/projects/SAN/repos/quicksort}
 }
 
 \newcommand{\stdTlcArticle}{\item[tlc-article]
@@ -98,4 +96,5 @@
 \newcommand{\stdWatir}{\item[Watir]
   a RubyGem that is used to interact with a browser.
 }
-% ------------------------------------------------------------------------------
+
+% -------------------------------------------------------------------------  }}}

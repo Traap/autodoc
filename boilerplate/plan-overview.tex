@@ -1,10 +1,10 @@
 \newpage
 \section{Test Plan Overview}
 This section describes Test Plans, Test Suites, Test Cases, and Test Steps that
-demonstrate how a Configuration Item satisfies the IUR.  Each Test Plan
+demonstrate how a Configuration Item satisfies the IUR\@.  Each Test Plan
 describes any setup criteria needed to conduct the Test Steps. Each Test Plan
-contains a list of IUR\textbackslash{s} and the Test Steps that demonstrate how
-the Configuration Item satisfies the IUR. Each Test Step is marked passed or
+contains a list of IUR's and the Test Steps that demonstrate how
+the Configuration Item satisfies the IUR\@. Each Test Step is marked passed or
 failed as it is completed.  Each Test Plan is marked passed when all Test Steps
 pass or failed if a single Test Step fails.  This serves as a record of
 completed Test Plans and Test Steps.
@@ -22,7 +22,7 @@ are listed is the order they are run.  Each Test Plan defines:
 
 \item[Test Steps]
   Each step has a confirmation and expectation along with the command needed to
-  challenge the IUR.
+  challenge the IUR\@.
 
 \item[Objective Evidence]
   A record the Test Plan was run along with any evidence collected while the
@@ -36,11 +36,15 @@ are listed is the order they are run.  Each Test Plan defines:
 
 Each Test Plan, Test Suite, Test Case,  and Test Step has been designed to be
 run by the computer. However, a person may choose to manually run the Test
-Plans, save the test results, and generate this test report as specified in the
-appropriate design documentation.
+Step, save the test results, and generate this test report as specified in the
+appropriate design documentation.  The example below runs these commands:
 
-The example below runs two commands: 1) git help and 2) cat ~/gitconfig.  The
-output from both commands are written to the system console.
+\begin{enumerate}
+  \item git help
+  \item cat \@.gitconfig
+\end{enumerate}
+
+The output from both commands are written to the system console.
 
 \begin{lstlisting}
 plan:

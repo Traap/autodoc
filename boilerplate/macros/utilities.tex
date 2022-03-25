@@ -1,0 +1,33 @@
+% {{{ Define glossary entries.
+%
+% \docTerm uses three parameters to define a glossary entry:
+%   #1 - key
+%   #2 - name
+%   #3 - description
+%
+% Notes:
+%   1) Description can have blank lines and limited LaTeX syntax.
+%
+%   2) glossary entries do not need to be added alphabetically.  Although every
+%      effort has been made to do so.
+%
+% \docTermPlural adds a fourth parameter:
+%   #4 - plural form of #2.
+% ------------------------------------------------------------------------------
+
+\newcommand{\docTerm}[3]{%
+  \newglossaryentry{#1}{%
+    name={#2},%
+    description={#3}%
+  }%
+}%
+
+\newcommand{\docTermPlural}[4]{%
+  \newglossaryentry{#1}{%
+    name={#2},%
+    description={#3},%
+    plural={#4}%
+  }%
+}%
+
+% -------------------------------------------------------------------------- }}}

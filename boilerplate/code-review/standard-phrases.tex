@@ -1,0 +1,21 @@
+% ------------------------------------------------------------------------------
+% Standard Code Review Abstract.
+% ------------------------------------------------------------------------------
+\newcommand{\stdCodeReviewType}{Code Review}
+\newcommand{\stdCodeReview}[1]{#1 \stdCodeReviewType}
+
+\newcommand{\stdCodeReviewAbstract}[1]{%
+  This is a #1 report.  The #1 is stored in \stdCompanyName's (Company) \stdQMS\
+  after observations have been dispositioned.
+}
+
+% ------------------------------------------------------------------------------
+% Standard Code Review document generator command.
+% ------------------------------------------------------------------------------
+\newcommand{\stdCodeReviewDoc}[1]{%
+  \stdAutoDocLayout{\stdCodeReview{#1}}%
+                   {\stdCodeReviewAbstract{#1}}%
+                   {\codeReviewDir/main.tex}%
+}%
+
+% ------------------------------------------------------------------------------

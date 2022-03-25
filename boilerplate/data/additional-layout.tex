@@ -1,18 +1,28 @@
 % ------------------------------------------------------------------------------
-\usepackage{todonotes}%
 \usepackage{pgf-pie}%
 
 % ------------------------------------------------------------------------------
-% Used in \hfLogo command to include the logo and set the logo to the correct
-% size.
+% Used in \useLogo command to include the logo and set the logo to the
+% correct size.
 % ------------------------------------------------------------------------------
-\newcommand{\logoSize}{\includegraphics*[width=3cm, height=1cm]}%
+\newcommand{\logoSize}{\includegraphics*[scale=0.60]}%
 
-% ------------------------------------------------------------------------------
-% The logo applied to all documents
-% ------------------------------------------------------------------------------
-\def\autodocLogo{\autodocDir/boilerplate/data/logo.png}%
-\newcommand{\useLogo}{\IfFileExists{\autodocLogo}{\logoSize{\autodocLogo}}{}}%
+% local directory
+\newcommand{\lLogo}{data/logo.png}%
+
+% boilerplateSpecificDir
+\newcommand{\sLogo}{\autodocDir/boilerplateSpecificTestDir/data/logo.png}%
+
+% boilerplateDir
+\newcommand{\bLogo}{\autodocDir/boilerplate/data/logo.png}%
+
+\newcommand{\useLogo}{%
+  \IfFileExists{\lLogo}{\logoSize{\lLogo}}{%
+    \IfFileExists{\sLogo}{\logoSize{\sLogo}}{%
+      \IfFileExists{\bLogo}{\logoSize{\bLogo}}{}%
+    }%
+  }%
+}%
 
 % ------------------------------------------------------------------------------
 % We want our header and footer to remain consistent with table of contents that
@@ -22,39 +32,4 @@
 \setcounter{tocdepth}{4}%
 \AtBeginDocument{\addtocontents{toc}{\protect\thispagestyle{fancy}}}%
 
-% ------------------------------------------------------------------------------
-% Refer to project abbreviations and definitions, when requested and present.
-% ------------------------------------------------------------------------------
-\provideboolean{UseAutodocGlossaries}%
-\ifthenelse{\boolean{UseAutodocGlossaries}}{%
-  \IfFileExists{\autodocDir/boilerplate/data/abbreviations.tex}{%
-    \IfFileExists{\autodocDir/boilerplate/data/definitions.tex}{%
-      %
-      % Check for abbreviation and definition files.
-      \input{\autodocDir/boilerplate/data/abbreviations.tex}%
-      \input{\autodocDir/boilerplate/data/definitions.tex}%
-      %
-      % Make glossaries with a specify style.
-      \makeglossaries%
-      \setacronymstyle{long-sc-short-desc}%
-      %
-      % Use this command from your document to list acronyms and glossaries.
-      \newcommand{\printGlossaries}{%
-        %
-        % Acronyms
-        \clearpage%
-        \setacronymstyle{long-short}%
-        \printglossary[type=\acronymtype]%
-        %
-        % Glossaries
-        \clearpage%
-        \printglossary%
-        %
-      }% endCommand
-    }{}% endif
-  }{}% endif
-}{% end ifthenelse
-  % Deine printGlossaries as NULL so autodoc hooks are present.
-  \newcommand{\printGlossaries}{}%
-}
 % ------------------------------------------------------------------------------

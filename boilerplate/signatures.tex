@@ -2,28 +2,49 @@
 % The defaults are set to N/A.  Each document must override these values.
 \newcommand{\sgNA}      {N/A}
 \newcommand{\sgAuthor}  {\sgNA}
+\newcommand{\sgTE}      {\sgNA}
+\newcommand{\sgPL}      {\sgNA}
+\newcommand{\sgTL}      {\sgNA}
+\newcommand{\sgSE}      {\sgNA}
+\newcommand{\sgSWE}     {\sgNA}
+\newcommand{\sgPM}      {\sgNA}
+\newcommand{\sgCAM}     {\sgNA}
+\newcommand{\sgRAS}     {\sgNA}
 \newcommand{\sgTrOne}   {\sgNA}
 \newcommand{\sgTrTwo}   {\sgNA}
 \newcommand{\sgTrThree} {\sgNA}
+\newcommand{\sgTrFour}  {\sgNA}
 \newcommand{\sgIR}      {\sgNA}
 \newcommand{\sgQA}      {\sgNA}
+\newcommand{\sgMD}      {\sgNA}
 \newcommand{\sgOnFile}  {Electronic signature on file.}
 \newcommand{\sgAttached}{Signature attached.}
+
 % ------------------------------------------------------------------------------
 \newcommand{\sgApplySignatures}{%
   \phantomsection%
   \addcontentsline{toc}{section}{Approval Signatures}%
    \section*{Approval Signatures}%
-   \begin{longtable}[ht]{|L{3.5cm}|L{5.5cm}|L{5.5cm}|}\hline%
+   \begin{longtable}[ht]{|L{4cm}|L{5.5cm}|L{4.5cm}|}\hline%
      \rowcolor{fkblue}%
-     \fkHdrRow{Role}        & \fkHdrRow{Name} & \fkHdrRow{Signature}\ER%
+     \fkHdrRow{Role}         & \fkHdrRow{Name} & \fkHdrRow{Signature}\ER%
      \endhead%
-       Author               & \sgAuthor\      & \sgOnFile\ \ER%
-       Technical Reviewer   & \sgTrOne\       & \sgOnFile\ \ER%
-       Technical Reviewer   & \sgTrTwo\       & \sgOnFile\ \ER%
-       Technical Reviewer   & \sgTrThree\     & \sgOnFile\ \ER%
-       Independent Reviewer & \sgIR\          & \sgOnFile\ \ER%
-       QA Reviewer          & \sgQA\          & \sgOnFile\ \ER%
+       Author                & \sgAuthor\      & \sgOnFile\   \ER%
+       Project Lead          & \sgPL\          & \sgOnFile\   \ER%
+       Technical Lead        & \sgTL\          & \sgOnFile\   \ER%
+       System Engineer       & \sgSE\          & \sgOnFile\   \ER%
+       Software Engineer     & \sgSWE\         & \sgOnFile\   \ER%
+       Test Engineer         & \sgTE\          & \sgOnFile\   \ER%
+       Product Manager       & \sgPM\          & \sgOnFile\   \ER%
+       Clinical App. Manager & \sgCAM\         & \sgOnFile\   \ER%
+       RA Specialist         & \sgRAS\         & \sgOnFile\   \ER%
+       QA Engineer           & \sgQA\          & \sgOnFile\   \ER%
+       Medical Doctor        & \sgMD\          & \sgOnFile\   \ER%
+       Technical Reviewer    & \sgTrOne\       & \sgOnFile\   \ER%
+       Technical Reviewer    & \sgTrTwo\       & \sgOnFile\   \ER%
+       Technical Reviewer    & \sgTrThree\     & \sgOnFile\   \ER%
+       Technical Reviewer    & \sgTrFour\      & \sgOnFile\   \ER%
+       Independent Reviewer  & \sgIR\          & \sgAttached\ \ER%
    \end{longtable}%
 }%
 

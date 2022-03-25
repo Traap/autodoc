@@ -1,0 +1,29 @@
+% ------------------------------------------------------------------------------
+% Initialize our directory variables to {} so LaTeX can renew them each time
+% \useAutoDocFile is referenced.
+\newcommand{\lDataDir}{}% data/ 
+\newcommand{\saDataDir}{}% ../shared/data/
+\newcommand{\sbDataDir}{}% share/data 
+\newcommand{\bDataDir}{}% boilerplateSpecificTestDir 
+
+% Refresh directory variables. 
+\newcommand{\refreshDataDirs}[1]{%
+  \renewcommand{\lDataDir}{data/#1}%
+  \renewcommand{\saDataDir}{../shared/data/#1}%
+  \renewcommand{\sbDataDir}{shared/data/#1}%
+  \renewcommand{\bDataDir}{\boilerplateDir/data/#1}%
+}
+
+% This function is used to reference files in the report/data directory, if
+% present, falling back to shared/data, if present, and falling back to the
+% default ink boilerplate/data directory.
+\newcommand{\useAutoDocDataFile}[1]{
+  \refreshDataDirs{#1}%
+  \IfFileExists{\lDataDir}{\input{\lDataDir}}{%
+    \IfFileExists{\saDataDir}{\input{\saDataDir}}{%
+      \IfFileExists{\sbDataDir}{\input{\sbDataDir}}{%
+        \IfFileExists{\bDataDir}{\input{\sbDataDir}}{}%
+      }%
+    }%
+  }%
+}%

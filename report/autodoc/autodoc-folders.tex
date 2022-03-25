@@ -1,0 +1,96 @@
+% {{{ Folder Structure
+
+\clearpage
+\section{Folder Structure} 
+This section provides a high-level overview for the autodoc folder structure.
+Strict naming conventions are used throughout Autodoc.  Autodoc has
+a boilerplate and report section, where boilerplate is used to provide standard
+\LaTeX\ definitions, and report is used to demonstrate the boilerplate templates
+function correctly. 
+
+\tlcVspace
+
+\subsection{autodoc}
+\dirtree{%
+.1 autodoc.
+.2 boilerplate.
+.2 report.
+}%
+
+\subsection{boilerplate}
+Subsequent sections expand each boilerplate folder.  A Boilerplate is reusable
+documentation parts like definitions, paragraphs, document layout, terms, and
+phrases, and commands. 
+
+\tlcVspace
+
+\dirtree{%
+.1 autodoc.
+.2 boilerplate.
+.3 data.
+.3 code-review.
+.3 design-review.
+.3 macros.
+.3 placeholder.
+.3 standard-phrases.
+.3 test-plan.
+.3 tech-plan.
+.3 test-record.
+.3 test-report.
+.3 tool-test.
+.3 unit-test.
+.3 ver-test.
+.2 report.
+}%
+
+\subsection{report}
+Subsequent sections also expand each report folder.  A report is a concrete
+implementation of a boilerplate item.  This document shows the content of each
+file referenced.  Whereas building a autodoc report reveals how the boilerplate
+information is typeset. 
+
+\tlcVspace
+
+\dirtree{%
+.1 autodoc.
+.2 boilerplate.
+.2 report.
+.3 code-review.
+.3 design-review.
+.3 glossaries.
+.3 shared.
+.3 test-plan.
+.3 tech-plan.
+.3 test-record.
+.3 test-report.
+.3 tool-test.
+.3 unit-test.
+.3 ver-test.
+}
+
+\clearpage
+\subsection{data}
+tlc-article.cls looks for a document/data/additional-layout.tex file.  When
+found, the content is consumed.  Autodoc demonstrates two important concepts in
+this section.  All document types benefit from autodoc definitions defined in
+boilerplate/date folder.  The share folder is used to demonstrate how a project
+can hook into autodoc/boilerplate/data folder and then override or add
+additional definitions. 
+
+\tlcVspace
+
+\dirtree{%
+.1 autodoc.
+.2 boilerplate.
+.3 data.
+.4 abbreviations.
+.4 additional-layout.tex.
+.4 definitions.tex.
+.2 report.
+.3 shared.
+.4 data.
+.5 additional-layout.tex.
+.5 header-footer.tex.
+}%
+
+% -------------------------------------------------------------------------- }}}

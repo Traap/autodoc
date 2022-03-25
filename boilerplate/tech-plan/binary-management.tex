@@ -1,0 +1,15 @@
+\subsection{Binary Management}
+Artifactory is the tool to manage binaries.
+\begin{itemize}
+    \item All the external nuget dependencies shall be proxied and cached in
+      Artifactory. If there is a local nuget available, it shall be stored in
+      Artifactory.
+    \item If there is no nuget in Artifactory, then \gls{soup} component can be
+    manually copied into each project.
+    \item All \gls{vss} shared components shall be released as nuget packages
+      stored in Artifactory.
+    \item All the \gls{bamboo} artifacts shall be saved to and retrieved from
+      Artifactory.
+    \item All the releases, including the Installer, can be downloaded from
+      Artifactory.
+  \end{itemize}

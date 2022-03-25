@@ -1,4 +1,10 @@
 \subsection{Source Configuration Management Plan}
+
+Atlassian Bitbucket is used for source code management, and is located at
+\url{https://https://bitbucket.fkrnd.com/}. Atlassian Bitbucket is secured
+through corporate single sign-on procedures. Source code repositories are
+referenced as follows: project-name / repository-name.
+
 \begin{longtable}[ht]{|L{3.5cm}|L{5.5cm}|L{5.5cm}|}\hline%
   \rowcolor{fkblue}%
   \fkHdrRow{Item} & \fkHdrRow{Number} & \fkHdrRow{Title/Name}\ER%
@@ -7,11 +13,15 @@
     123-PRP-000685[3.0]&%
     Basic Codeline Policy\ER%
     %
+    SOURCE CONFIGURATION MANAGEMENT POLICY&%
+    696-PRP-055987[C]&%
+    Software Versioning\ER%
+    %
     Source Configuration Management Application&%
     N/A&%
-    Bitbucket 5.8.1\ER%
+    Bitbucket 6.10.0\ER%
     %
-    Source Configuration Management Database&%
+    Source Configuration Management Repositories&%
     N/A&%
     \sourcecfgmgmtdatabases\ER%
   \caption{Software Configuration Plan References}
@@ -24,3 +34,8 @@ controlled, the activities and tasks to be performed for configuration
 management, personnel responsible for configuration management activities and
 tasks, and the use of Change and Problem Tracking as part of configuration
 management.
+
+\tlcVspace
+
+The branching model of source control in Bitbucket derives from the GitFlow
+model. 

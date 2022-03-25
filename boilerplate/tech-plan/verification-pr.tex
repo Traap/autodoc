@@ -1,0 +1,18 @@
+\subsection{Pull Request}
+A Pull request is a \gls{software-inspection} method of submitting code to be
+peer reviewed prior to committing to a main repository. When all criteria listed
+below is met, the originator of the pull request may merge the change to
+development line.
+
+\begin{itemize}
+    \item JIRA-issue must be present in commit message and/or pull request
+    description.
+    \item No new \gls{static-analysis} errors/warnings are present.
+    \item Unit and integration test evidence is provided with a PASS result.
+    \item CI on task branches must show PASS result. It is strongly encouraged
+      to automate as many verification methods as possible.
+    \item At least one developer and one software lead must approve the pull
+    request. It is strongly encouraged to include multiple people from cross
+    functional teams on the review. 
+    \item All review comments must be addressed.
+\end{itemize}
