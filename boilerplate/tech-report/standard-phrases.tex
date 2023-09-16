@@ -1,0 +1,21 @@
+% ------------------------------------------------------------------------------
+% Standard Technical Report Abstract.
+% ------------------------------------------------------------------------------
+\newcommand{\stdTechReport}{Technical Report}
+\newcommand{\stdTechReportTitle}[1]{#1 \stdTechReport}
+
+\newcommand{\stdTechReportAbstract}[1]{%
+  Technical Report Abstract is replaced by inserting tlc-articles macro
+  tlcTitlePageAndTableOfContents in your primary tex file for this report.
+}%
+
+% ------------------------------------------------------------------------------
+% Standard Technical Report document generator command.
+% ------------------------------------------------------------------------------
+\newcommand{\stdTechReportDoc}[1]{%
+  \stdAutoDocLayout{\stdTechReportTitle{#1}}%
+                   {\stdTechReportAbstract{#1}}%
+                   {\techReportDir/main.tex}%
+}%
+
+% ------------------------------------------------------------------------------
