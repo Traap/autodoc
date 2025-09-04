@@ -6,4 +6,4 @@ rg -e 'gls\{vssi\}'
 rg -e 'gls\{vsss\}'
 rg -e 'Vigilant'
 rg -e 'VSS'
-rg -e 'SOP-'
+rg -e 'SOP-gxc

@@ -1,0 +1,22 @@
+% ------------------------------------------------------------------------------
+% General Design History File Document
+% ------------------------------------------------------------------------------
+\newcommand{\stdDhf}{Design History File Document}
+\newcommand{\stdDhfTitle}[1]{#1}
+
+\newcommand{\stdDhfAbstract}[1]{%
+  This is \stdDhfTitle{#1}.  This document is stored in
+  \Gls{company} \stdQMS\ after the \stdDhf\ has been
+  approved.
+}%
+
+% ------------------------------------------------------------------------------
+% Standard Design Review document generator command.
+% ------------------------------------------------------------------------------
+\newcommand{\stdDhfDoc}[1]{%
+  \stdAutoDocLayout{\stdDhfTitle{#1}}%
+                   {\stdDhfAbstract{#1}}%
+                   {\dhfDocDir/main.tex}%
+}%
+
+% ------------------------------------------------------------------------------
