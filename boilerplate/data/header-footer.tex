@@ -5,15 +5,25 @@
 \fancyhf{}%
 
 % Header applied to this document.
-\lhead{\useLogo}%
-\chead{\thetitle}%
-\rhead{%
-  \tiny{%
-    \hfStatus\\%
-    \hfDate\\%
-    \hfVersion\hfRevision%
- }%
+% \chead{%
+%   \begin{longtable}[ht]{|L{2.9cm}|C{5.5cm}|C{2.5cm}|C{1.5cm}|C{1.0cm}|}\hline% 
+%     \multirow{2}{*}{\useLogo} & \rule{0pt}{5mm}Description & Number & Revision & Pages\ER
+%   \endhead%
+%    & \parbox[t][1cm][t]{5.5cm}{\thetitle}%
+%    & \hfVersion & \hfRevision & \thepage~of~\pageref{LastPage}\ER%
+%   \end{longtable}%
+% }%
+\chead{%
+  \begin{longtable}[ht]{|L{2.9cm}|C{5.5cm}|C{2.5cm}|C{1.5cm}|C{1.0cm}|}\hline%
+    \multirow{2}{*}{\useLogo}
+      & \rule{0pt}{5mm}Description & Number & Revision & Pages\\ \cline{2-5}
+  \endhead%
+      & \parbox[t][1cm][t]{5.5cm}{\centering \thetitle}%
+      & \hfVersion & \hfRevision & \thepage~of~\pageref{LastPage}\ER%
+  \end{longtable}%
 }%
+
+
 \renewcommand{\headrulewidth}{\autodocHeaderFooterHeadRuleWidth}%
 \renewcommand{\footrulewidth}{\autodocHeaderFooterFootRuleWidth}%
 
@@ -22,6 +32,4 @@
 \setlength\footskip{\autodocHeaderFooterFootSkip}%
 
 % Footer applied to this document.
-\cfoot{\tiny{\hfPermission}}%
-\lfoot{\tiny{\hfInstitution}}%
-\rfoot{\tiny{Page \thepage~of~\pageref{LastPage}}}%
+\cfoot{\tiny{\hfInstitution \\ \hfPermission}}%
