@@ -6,7 +6,7 @@
 
 % Header applied to this document.
 % \chead{%
-%   \begin{longtable}[ht]{|L{2.9cm}|C{5.5cm}|C{2.5cm}|C{1.5cm}|C{1.0cm}|}\hline% 
+%   \begin{longtable}[ht]{|L{2.9cm}|C{5.5cm}|C{2.5cm}|C{1.5cm}|C{1.0cm}|}\hline%
 %     \multirow{2}{*}{\useLogo} & \rule{0pt}{5mm}Description & Number & Revision & Pages\ER
 %   \endhead%
 %    & \parbox[t][1cm][t]{5.5cm}{\thetitle}%
@@ -24,7 +24,8 @@
 }%
 
 
-\renewcommand{\headrulewidth}{\autodocHeaderFooterHeadRuleWidth}%
+% NOTE: Bracco's header contains a tables with borders enabled.
+% \renewcommand{\headrulewidth}{\autodocHeaderFooterHeadRuleWidth}%
 \renewcommand{\footrulewidth}{\autodocHeaderFooterFootRuleWidth}%
 
 % Adjust header and footer heights.
