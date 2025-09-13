@@ -3,14 +3,7 @@
 
 % Adjust page geometry for custom header and footder.  Count header/footer in
 % the text block.
-\geometry{
-  top=0.50in,
-  bottom=0.25in,
-  includehead,includefoot,
-  headheight=88pt,
-  headsep=4pt,
-  footskip=20pt
-}
+\autodocHeaderFooterGeometry%
 
 % Header
 % NOTE: Bracco's header contains a tables with borders enabled.
@@ -24,7 +17,9 @@
       & \rule{0pt}{5mm}Description & Number & Revision & Pages\\ \cline{2-5}
   \endhead%
       & \parbox[t][1cm][t]{5.5cm}{\centering \thetitle}%
-      & \hfVersion & \hfRevision & \thepage~of~\pageref{LastPage}\ER%
+      & \hfVersion
+      & \hfRevision
+      & \thepage~of~\pageref{LastPage}\ER%
   \end{longtable}%
 }%
 
@@ -38,15 +33,15 @@
         {0.98\textwidth}%
         {@{}L{0.38\textwidth}@{\extracolsep{\fill}}R{0.58\textwidth}@{}}%
 
-        SOP-700-08\newline%
-        FM0417, Rev 08\newline%
-        CO-07374%
+        \autodocHeaderFooterFootLeftLineA \newline%
+        \autodocHeaderFooterFootLeftLineB \newline%
+        \autodocHeaderFooterFootLeftLineC%
 
-        &%
+        &% Column separator
 
-        Confidential - Proprietary Information of Bracco Medical Technology (BMT)\newline%
-        This document is maintained in the document control system.\newline%
-        Confirm current version prior to use.%
+        \autodocHeaderFooterFootRightLineA \newline%
+        \autodocHeaderFooterFootRightLineB \newline%
+        \autodocHeaderFooterFootRightLineC%
 
       \end{tabular*}%
     }%
