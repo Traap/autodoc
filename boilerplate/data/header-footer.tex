@@ -1,20 +1,25 @@
 % Header applied to all documents.
 \input{data/version.tex}%
 
-% Clear header and footer.
-\fancyhf{}%
+% Adjust page geometry for custom header and footder.  Count header/footer in
+% the text block.
+\geometry{
+  top=0.50in,
+  bottom=0.25in,
+  includehead,includefoot,
+  headheight=88pt,
+  headsep=4pt,
+  footskip=20pt
+}
 
-% Header applied to this document.
-% \chead{%
-%   \begin{longtable}[ht]{|L{2.9cm}|C{5.5cm}|C{2.5cm}|C{1.5cm}|C{1.0cm}|}\hline%
-%     \multirow{2}{*}{\useLogo} & \rule{0pt}{5mm}Description & Number & Revision & Pages\ER
-%   \endhead%
-%    & \parbox[t][1cm][t]{5.5cm}{\thetitle}%
-%    & \hfVersion & \hfRevision & \thepage~of~\pageref{LastPage}\ER%
-%   \end{longtable}%
-% }%
+% Header
+% NOTE: Bracco's header contains a tables with borders enabled.
+\fancyhead{}
+\renewcommand{\headrule}{}
+\renewcommand{\headrulewidth}{\autodocHeaderFooterHeadRuleWidth}%
+
 \chead{%
-  \begin{longtable}[ht]{|L{2.9cm}|C{5.5cm}|C{2.5cm}|C{1.5cm}|C{1.0cm}|}\hline%
+  \begin{longtable}[ht]{|L{2.5cm}|C{5.5cm}|C{2.2cm}|C{1.5cm}|C{2.0cm}|}\hline%
     \multirow{2}{*}{\useLogo}
       & \rule{0pt}{5mm}Description & Number & Revision & Pages\\ \cline{2-5}
   \endhead%
@@ -23,14 +28,27 @@
   \end{longtable}%
 }%
 
-
-% NOTE: Bracco's header contains a tables with borders enabled.
-% \renewcommand{\headrulewidth}{\autodocHeaderFooterHeadRuleWidth}%
+% Footer
+\fancyfoot{}
 \renewcommand{\footrulewidth}{\autodocHeaderFooterFootRuleWidth}%
+\cfoot{%
+   \scriptsize{%
+    \noindent\makebox[\textwidth][c]{%
+      \begin{tabular*}%
+        {0.98\textwidth}%
+        {@{}L{0.38\textwidth}@{\extracolsep{\fill}}R{0.58\textwidth}@{}}%
 
-% Adjust header and footer heights.
-\setlength\headheight{\autodocHeaderFooterHeadHeight}%
-\setlength\footskip{\autodocHeaderFooterFootSkip}%
+        SOP-700-08\newline%
+        FM0417, Rev 08\newline%
+        CO-07374%
 
-% Footer applied to this document.
-\cfoot{\tiny{\hfInstitution \\ \hfPermission}}%
+        &%
+
+        Confidential - Proprietary Information of Bracco Medical Technology (BMT)\newline%
+        This document is maintained in the document control system.\newline%
+        Confirm current version prior to use.%
+
+      \end{tabular*}%
+    }%
+  }%
+}%

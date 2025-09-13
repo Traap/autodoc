@@ -2,14 +2,17 @@
 % Standard Test Record Abstract.
 % ------------------------------------------------------------------------------
 \newcommand{\stdTestRecord}{Test Record}
-\newcommand{\stdTestRecordTitle}[1]{#1 \stdTestRecord}
+\newcommand{\stdTestRecordTitle}[1]{#1}
 
 \newcommand{\stdTestRecordAbstract}[1]{%
-  In this document #1 is the \stdCfgItem\ being verified and \stdRptPkg\ is the
-  #1 \stdRptPkg. #1 is verified after this \stdRptPkg\ has been executed, test
-  evidence has been obtained, and test evidence supports the conclusion
-  \stdSyRS\ are satisfied. This document is stored in \Gls{company} \stdQMS\
-  after #1 has been verified.
+ #1 is an item in \Gls{dhf}, and stored in \Gls{company} \Gls{dms} after #1 has
+ been verified.
+
+  #1 is the \stdCfgItem\ being verified and \stdRptPkg\ is the #1 \stdRptPkg.
+
+  #1 is verified after this \stdRptPkg\ has been executed, test evidence has
+  been obtained, and test evidence supports the conclusion \stdSyRS\ are
+  satisfied.
 }%
 
 % ------------------------------------------------------------------------------

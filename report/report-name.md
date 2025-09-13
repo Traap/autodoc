@@ -1,0 +1,16 @@
+Autodoc report names that compile.
+---
+- [X] autodoc/autodoc.texx
+- [X] autodoc/test.texx
+- [X] code-review/code-review.texx
+- [X] design-review/design-review.texx
+- [X] dhf-doc/dhf-doc.texx
+- [X] glossaries/glossaries.texx
+- [X] tech-plan/tech-plan.texx
+- [X] tech-report/tech-report.texx
+- [X] test-plan/test-plan.texx
+- [X] test-record/test-record.texx
+- [X] test-report/test-report.texx
+- [X] tool-test/tool-test.texx
+- [X] unit-test/unit-test.texx
+- [X] ver-test/ver-test.texx
