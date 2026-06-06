@@ -1,0 +1,31 @@
+% {{{ DHF Document
+
+\clearpage
+\subsection{DHF Document}
+The DHF document report is a concrete example of using \adAutoDoc\ boilerplate
+to assemble Design History File content.
+
+\tlcVspace
+
+\dirtree{%
+.1 autodoc.
+.2 boilerplate.
+.2 report.
+.3 dhf-doc.
+.4 dhf-doc.texx.
+.4 dhf-doc.tex.
+.4 ---.
+.4 data.
+.5 additional-layout.tex.
+.5 header-footer.tex.
+.5 version.tex.
+}%
+
+\def\dhfDocRptDir{../dhf-doc}
+\codelisting{\dhfDocRptDir/dhf-doc.texx}{TeX}
+\codelisting{\dhfDocRptDir/dhf-doc.tex}{TeX}
+\codelisting{\dhfDocRptDir/data/additional-layout.tex}{TeX}
+\codelisting{\dhfDocRptDir/data/header-footer.tex}{TeX}
+\codelisting{\dhfDocRptDir/data/version.tex}{TeX}
+
+% -------------------------------------------------------------------------- }}}

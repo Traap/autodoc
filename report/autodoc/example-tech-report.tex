@@ -1,0 +1,31 @@
+% {{{ Tech Report
+
+\clearpage
+\subsection{Tech Report}
+The technical report is a concrete example of a report that presents technical
+content using the shared \adAutoDoc\ layout and data hooks.
+
+\tlcVspace
+
+\dirtree{%
+.1 autodoc.
+.2 boilerplate.
+.2 report.
+.3 tech-report.
+.4 tech-report.texx.
+.4 tech-report.tex.
+.4 ---.
+.4 data.
+.5 additional-layout.tex.
+.5 header-footer.tex.
+.5 version.tex.
+}%
+
+\def\techReportRptDir{../tech-report}
+\codelisting{\techReportRptDir/tech-report.texx}{TeX}
+\codelisting{\techReportRptDir/tech-report.tex}{TeX}
+\codelisting{\techReportRptDir/data/additional-layout.tex}{TeX}
+\codelisting{\techReportRptDir/data/header-footer.tex}{TeX}
+\codelisting{\techReportRptDir/data/version.tex}{TeX}
+
+% -------------------------------------------------------------------------- }}}
