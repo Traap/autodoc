@@ -1,10 +1,10 @@
 \subsection{Test Plan Instructions}
-This Test Plan describes Test Suits, Test Cases, and Test Steps that demonstrate
+This Test Plan describes Test Suites, Test Cases, and Test Steps that demonstrate
 how the Configuration Item satisfies the IUR\@.  Each Test Plan describes any
 setup criteria needed to conduct the test.  Each Test Plan contains a list of
-IUR's and the steps that demonstrate how the Configuration Item
+IURs and the steps that demonstrate how the Configuration Item
 satisfies the IUR\@.  Each Test Step is marked passed or failed as it is
-completed.  Each Test Plan is marked passed when all Test Steps pass or failed
+completed.  Each Test Plan is marked as passed when all Test Steps pass or as failed
 if a single Test Step fails.  Failures are addressed per \sopISS\@. This serves as
 a record of the completed
 test.
@@ -14,26 +14,26 @@ test.
 Test Plans are automatically run by the computer, generating a report in PDF
 format.  This Report Package is reviewed prior to execution per \sopSDLC\@.  The
 Report Package is routed and archived in the Quality Management System.  When it
-becomes necessary to annotate a computer generated document \sopGDP\ must be
+becomes necessary to annotate a computer-generated document, \sopGDP\ must be
 followed.
 
 \subsection{Test Plan Storage and Review}
 This Test Plan is part of a Company's automated validation framework.  The
-framework consists of following parts:
+framework consists of the following parts:
 \begin{description}
   \item[\LaTeX] files are used to provide an Abstract, Introduction, Intended
     Use Requirements, Test Plan Overview, Test Equipment, Configuration
     Item Validation, Conclusion, and Change Summary.  \LaTeX\ files are converted
-    assembled into PDF documents.  PDF documents are routed using the Company's
+    and assembled into PDF documents.  PDF documents are routed using the Company's
     document management system for approval.
 
   \item[Ruby] software is used to run the automated framework to collect test
     evidence.
 
-  \item[Git] is used as the storage repository for \LaTeX\ \& YAML files, a Git
-    pull-request is used to review the \LaTeX\ \& YAML files prior to use.
+  \item[Git] is used as the storage repository for \LaTeX\ \& YAML files, and a Git
+    pull request is used to review the \LaTeX\ \& YAML files prior to use.
 
-  \item[Evidence] Test Plan output includes one Test Suite, Test Plan, and Test
+  \item[Evidence] Test Plan output includes one Test Suite, one Test Plan, one Test
     Step, and Test Evidence.
 
   \item[YAML] files define the Test Plan, Test Suite, and Test Steps that are

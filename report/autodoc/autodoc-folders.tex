@@ -4,8 +4,8 @@
 \section{Folder Structure} 
 This section provides a high-level overview for the autodoc folder structure.
 Strict naming conventions are used throughout Autodoc.  Autodoc has
-a boilerplate and report section, where boilerplate is used to provide standard
-\LaTeX\ definitions, and report is used to demonstrate the boilerplate templates
+a boilerplate section and a report section, where boilerplate is used to provide
+standard \LaTeX\ definitions, and report is used to demonstrate the boilerplate templates
 function correctly. 
 
 \tlcVspace
@@ -18,9 +18,9 @@ function correctly.
 }%
 
 \subsection{boilerplate}
-Subsequent sections expand each boilerplate folder.  A Boilerplate is reusable
-documentation parts like definitions, paragraphs, document layout, terms, and
-phrases, and commands. 
+Subsequent sections expand each boilerplate folder.  Boilerplate consists of
+reusable documentation parts like definitions, paragraphs, document layout,
+terms, phrases, and commands.
 
 \tlcVspace
 
@@ -46,7 +46,7 @@ phrases, and commands.
 \subsection{report}
 Subsequent sections also expand each report folder.  A report is a concrete
 implementation of a boilerplate item.  This document shows the content of each
-file referenced.  Whereas building a autodoc report reveals how the boilerplate
+referenced file.  Building an autodoc report reveals how the boilerplate
 information is typeset. 
 
 \tlcVspace
@@ -73,7 +73,7 @@ information is typeset.
 tlc-article.cls looks for a document/data/additional-layout.tex file.  When
 found, the content is consumed.  Autodoc demonstrates two important concepts in
 this section.  All document types benefit from autodoc definitions defined in
-boilerplate/date folder.  The share folder is used to demonstrate how a project
+boilerplate/data folder.  The shared folder is used to demonstrate how a project
 can hook into autodoc/boilerplate/data folder and then override or add
 additional definitions. 
 
