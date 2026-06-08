@@ -3,7 +3,7 @@
 % Autodoc uses tlc-article to provide consistent document layout.  When present,
 % tlc-article includes data/additional-layout.tex in your document specific
 % folder.  Your document hooks into autodoc by referencing a template/main.tex
-% file.  The template hooks everything autodoc can do into your document.
+% file.  The template hooks everything autodoc can do into you document.
 %
 % These definitions should be changed to customize every document you assemble
 % using autodoc. Autodoc provides a template view for each autodoc type in the
@@ -13,14 +13,12 @@
 % One can override these definitions in a document specific file
 % data/additional-layout.tex
 %
-
 % -------------------------------------------------------------------------- }}}
 % {{{ Your company name and confidential statement.
 
-\newcommand{\autodocCompanyName}{Bracco Medical Technologies (BMT)}%
-\newcommand{\autodocConfidential}{Confidential}%
-\newcommand{\autodocDepartmentName}{Firmware Department}%
-\newcommand{\autodocProductName}{SF90}%
+\newcommand{\autodocCompanyName}{Acme Corporation}%
+\newcommand{\autodocConfidential}{Confidential Document}%
+\newcommand{\autodocDepartmentName}{Department Name}%
 
 % -------------------------------------------------------------------------- }}}
 % {{{ Define your header and footer variables.
@@ -28,10 +26,9 @@
 \newcommand{\autodocHeaderFooterDate}{\today}%
 \newcommand{\autodocHeaderFooterDocType}{Verification and Validation}%
 \newcommand{\autodocHeaderFooterDocNum}{Document number: }%
-\newcommand{\autodocHeaderFooterInstitution}{\autodocConfidential -- Proprietary information of \autodocCompanyName}%
+\newcommand{\autodocHeaderFooterInstitution}{\autodocCompanyName~\autodocConfidential}%
 \newcommand{\autodocHeaderFooterOrigin}{Department Location}%
-
-\newcommand{\autodocHeaderFooterPermission}{This document is maintained in the document control system. Confirm current revision prior to use.}%
+\newcommand{\autodocHeaderFooterPermission}{\autodocDepartmentName}%
 \newcommand{\autodocHeaderFooterRevise}{Revision: }%
 \newcommand{\autodocHeaderFooterRevision}{[A]}%
 \newcommand{\autodocHeaderFooterStatus}{FINAL}%
@@ -40,27 +37,8 @@
 \newcommand{\autodocHeaderFooterHeadRuleWidth}{0.1pt}%
 \newcommand{\autodocHeaderFooterFootRuleWidth}{0.1pt}%
 
-\newcommand{\autodocHeaderFooterHeadHeight}{67.76913pt}%
+\newcommand{\autodocHeaderFooterHeadHeight}{41.99376pt}%
 \newcommand{\autodocHeaderFooterFootSkip}{27.5003pt}%
-
-\newcommand{\autodocHeaderFooterFootLeftLineA}{SOP-700-08}%
-\newcommand{\autodocHeaderFooterFootLeftLineB}{FM0417, Rev 08}%
-\newcommand{\autodocHeaderFooterFootLeftLineC}{CO-07374}%
-
-\newcommand{\autodocHeaderFooterFootRightLineA}{\autodocConfidential -- Proprietary information of \autodocCompanyName}%
-\newcommand{\autodocHeaderFooterFootRightLineB}{This document is maintained in the document control system.}%
-\newcommand{\autodocHeaderFooterFootRightLineC}{Confirm current version prior to use.}%
-
-\newcommand{\autodocHeaderFooterGeometry}{%
-  \geometry{%
-    top=0.50in,%
-    bottom=0.25in,%
-    includehead,includefoot,%
-    headheight=88pt,%
-    headsep=4pt,%
-    footskip=20pt%
-  }%
-}%
 
 % -------------------------------------------------------------------------- }}}
 % {{{ Source Configuration Management URLs
@@ -71,31 +49,11 @@
 % {{{ Abbreviations
 
 \newacronym[description={%
-  Bracco Medical Technologies
- }]{bmt}{BMT}{Bracco Medical Technologies}
-
-\newacronym[description={%
-  At \Gls{bmt}, every employee has an impact on our Mission to empower
-  lifesaving decisions. We create medical devices that give healthcare providers
-  the insights they need to confidently and safely diagnose patients. Our unique
-  line of products includes \Gls{ivus}, \Gls{ffr}, \Gls{cvi}, and CT and MRI contrast
-  delivery system is a global healthcare company that specializes in lifesaving
-  medicines and technologies for infusion, transfusion and clinical nutrition.
-  Our products and services are used to help care for critically and chronically
-  ill patients.
-}]{company}{BMT}{Bracco Medical Technologies}%
-
-\newacronym[description={%
- JAMA Soft is requirements and test management software.
-}]{jama}{JAMA}{JAMA Soft}%
-
-\newacronym[description={%
- Software Systems Report is a report.
-}]{ssr}{ssr}{Software Systems Report}%
-
-
-% TODO: These are example product definitions used throughout autodoc.  Each one
-% should be replaced with your actual product name.
+ Acme Corporation is a global healthcare company that specializes in lifesaving
+ medicines and technologies for infusion, transfusion and clinical nutrition.
+ Our products and services are used to help care for critically and chronically
+ ill patients.
+}]{company}{COMPANY}{Acme Corporation}%
 
 \newacronym[description={%
  Vigilant Software Suite.
@@ -108,7 +66,7 @@
 }]{vssb}{VB}{Vigilant Bridge}%
 
 \newacronym[description={%
-  Vigilant Centerium is a software-only application that is intended to perform the
+  Vigilant Centerium is a software-only application that intended to perform the
   following actions with connected Acme Corporation infusion devices:
   1) Store and distribute data sets;
   2) Report data set distribution status;
@@ -136,15 +94,23 @@
 }]{vssm}{VMM}{Vigilant Master Med}%
 
 \newacronym[description={%
- Vigilant Sentinel is a software-only application that is an infusion
+ Vigilant Sentinel is a software-only application this is an infusion
  visualization system designed to provide qualified healthcare personnel with
  a centrally aggregated view of infusion pumps' status within a hospital or
  a hospital-type setting.
 }]{vsss}{VS}{Vigilant Sentinel}%
 
 \newacronym[description={%
- Verification and Validation Plan defines a plan.
-}]{vvp}{VVO}{Verification and Validation Plan}%ouse>
+ Verification and Validation Plan defines is a plan.
+}]{vvp}{VVO}{Verification and Validation Plan}%
+
+\newacronym[description={%
+ JAMA Soft is a requirement and test management software.
+}]{jama}{JAMA}{JAMA Soft}%
+
+\newacronym[description={%
+ Software Systems Report is a report.
+}]{ssr}{ssr}{Software Systems Report}%
 
 % -------------------------------------------------------------------------- }}}
 % {{{ Definitions
@@ -159,8 +125,8 @@
 }%
 
 \docTerm{device-uploader}{device uploader}{%
- Device Uploader is a software application that uploads new binary images to an
- embedded target.
+ Device Uploader is software application that uploades new binary images to an
+ embeded targer.
 }%
 
 
