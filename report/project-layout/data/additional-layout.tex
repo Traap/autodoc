@@ -1,0 +1,92 @@
+% ------------------------------------------------------------------------------
+% You must define UseAutodocGlossaries prior to hooking into autodoc.
+\newboolean{UseAutodocGlossaries}\setboolean{UseAutodocGlossaries}{true}%
+
+% ------------------------------------------------------------------------------
+% Hook into this document's document layout information.
+\input{../shared/data/additional-layout.tex}%
+
+% ------------------------------------------------------------------------------
+% Your additional layout, packages, etc. are declared now.
+\usepackage{dirtree}
+
+% ------------------------------------------------------------------------------
+% Command definitions that make designing and writing this document simple.
+\newcommand{\fk}{\gls{company}}
+\newcommand{\team}{\autodocDepartmentName}
+
+% Project folders
+\newcommand{\pfRoot}{your-repo-root}
+\newcommand{\pfRepo}{repo-name}
+\newcommand{\pfBin}{bin}
+\newcommand{\pfLib}{lib}
+\newcommand{\pfLog}{log}
+\newcommand{\pfPkg}{pkg}
+\newcommand{\pfSpec}{spec}
+\newcommand{\pfReport}{report}
+\newcommand{\pfData}{data}
+\newcommand{\pfIgnore}{.gitignore}
+\newcommand{\pfRspec}{.rspec}
+\newcommand{\pfCov}{.simplecov}
+\newcommand{\pfCOC}{CODE\_OF\_CONDUCT}
+\newcommand{\pfRead}{README.md}
+\newcommand{\pfApp}{\tlcDarkblue{appname}}
+\newcommand{\pfAppGem}{\pfApp.gemspec}
+\newcommand{\pfGem}{Gemfile}
+\newcommand{\pfGemLock}{Gemfile.lock}
+\newcommand{\pfLicense}{LICENSE}
+
+% Report names.
+\newcommand{\raName}{nnn-aaa-nnnnn1}
+\newcommand{\rbName}{nnn-aaa-nnnnn2}
+
+% Document header, footer, and version information.
+\newcommand{\faName}{additional-layout.tex}
+\newcommand{\fbName}{header-footer.tex}
+\newcommand{\fcName}{version.tex}
+
+% Factory items
+\newcommand{\tfFactory}{factory}
+\newcommand{\tfCase}{case}
+\newcommand{\tfConfig}{config}
+\newcommand{\tfLog}{log}
+\newcommand{\tfPlan}{plan}
+\newcommand{\tfSuite}{suite}
+\newcommand{\tfUI}{ui}
+
+% Configuration item names.
+\newcommand{\caName}{app\_config.yaml}
+\newcommand{\cbName}{teleport.spn}
+
+% Test case names that are not derived from report names.
+\newcommand{\taName}{About}
+\newcommand{\tbName}{AnotherCase}
+\newcommand{\tcName}{YetAnotherCase}
+
+% Repositories, packages, and programs.
+\newcommand{\af}{\tlcDarkblue{Automation Framework}}
+\newcommand{\ahf}{\tlcDarkblue{Autodoc Header Footer}}
+\newcommand{\amber}{\tlcDarkblue{amber}}
+\newcommand{\autodoc}{\tlcDarkblue{autodoc}}
+\newcommand{\bb}{\tlcDarkblue{source control}}
+\newcommand{\docControl}{\tlcDarkblue{Document Control System}}
+\newcommand{\docbld}{\tlcDarkblue{docbld}}
+\newcommand{\tlcarticle}{\tlcDarkblue{tlc-article}}
+\newcommand{\required}{\tlcDarkblue{Required}}
+\newcommand{\suggested}{\tlcDarkblue{Suggested}}
+\newcommand{\sameas}{\tlcDarkblue{Same as \pfLib\ folder}}
+
+% Ruby application folder names.
+\newcommand{\apName}{appname}
+\newcommand{\apCli}{cli}
+\newcommand{\apUtil}{utility}
+\newcommand{\apTif}{tif}
+\newcommand{\apTof}{tof}
+\newcommand{\apSpec}{spec}
+
+% Logfile names.
+\newcommand{\logDebug}{debug.log}
+\newcommand{\logError}{error.log}
+\newcommand{\logInfo}{info.log}
+
+% ------------------------------------------------------------------------------

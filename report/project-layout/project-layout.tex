@@ -1,0 +1,60 @@
+\documentclass[11pt]{tlc-article}%
+
+\begin{document}%
+
+\tlcTitlePageAndTableOfContents%
+  {\af\ \\ Project Directory Structure}%
+  {\autodocDepartmentName}%
+  {This document describes the required \gls{document-structure} for project
+  implementations that use the \af. The convention is rigid and is aligned
+  with future code generation, \gls{configuration-management}, and repeatable
+  \gls{testing}.}%
+
+\section{Purpose}
+This document describes the directory constraints and implementation rules used
+by automation projects. These rules establish a predictable project layout so
+source files, \glspl{report}, test input data, and Ruby software components can
+be found consistently by people and automation.
+
+\tlcVspace%
+
+\section{Scope}
+This document is limited to \fk's \team\ automation project layout. It does not
+provide governance or guidance for manufacturing systems, nor does it replace
+the \gls{qms}. The scope is limited to the repository, report, factory, and Ruby
+software organization used by projects that adopt the \af.
+
+\tlcVspace%
+
+\section{Project Structure}
+The following sections describe the overall project structure, the report
+structures used to create \docControl\ reports and records, the test input
+factory that is used to test the application, and the Ruby software
+organization that implements the \af.
+
+\tlcVspace%
+
+The project structure is presented first as a complete tree and then as focused
+subsections. Each subsection explains one part of the tree and identifies which
+folders are required, which are conventions, and which provide supporting
+\gls{configuration-item} content for automated execution.
+
+\tlcVspace%
+
+\todo[inline, color=blue!20]{\af\ prefers lowercase folder names. Avoid spaces
+in file names. \af\ uses Linux folder naming conventions. Exceptions should be
+discussed with the automation team leader.}
+
+\tlcVspace%
+
+% I'll show the standard organization tree twice.  The first use provides
+% a visual overview.  The second use describes the major tree elements.
+\input{tree/standard-organization.tex}%
+\input{standard-organization.tex}%
+\input{report-structure.tex}%
+\input{test-input-factory.tex}%
+\input{automation-software.tex}%
+\printGlossaries%
+\input{change-summary.tex}%
+%
+\end{document}%

@@ -1,0 +1,231 @@
+\documentclass[11pt]{tlc-article}
+\begin{document}
+% {{{ Document Title, Author, and Abstract
+  \tlcTitlePageAndTableOfContents
+  {Document Header and Footer Design}
+  {\autodocDepartmentName}
+  {This document describes the design used by the Automated Documentation
+    Framework to produce consistent headers and footers for all documents. The
+    header and footer reserve layout space for the \gls{company} logo,
+    document title, document number, document date, and other fields required by
+    the \gls{qms}. The implementation details describe the steps needed to
+    satisfy the design objectives.}
+
+% -------------------------------------------------------------------------- }}}
+% {{{ File names
+
+\section{File names}
+This section defines the symbolic names used by the directory tree and matrices.
+The file symbols identify the document customization files, and the superscript
+symbols identify where each file is located. Defining these terms first keeps
+the later transformation rules compact and repeatable while supporting
+\gls{configuration-identification}.
+
+\tlcVspace\
+
+\begin{description}
+  \item[\fa] = additional-layout.tex
+  \item[\fb] = header-footer.tex
+  \item[\fc] = logo.png
+  \item[\fd] = version.tex
+\end{description}
+
+\begin{description}
+  \item[\ra] = \raName
+  \item[\rb] = \rbName
+  \item[\rc] = \rcName
+  \item[\rd] = \rdName
+  \item[\re] = autoheaderfooter
+\end{description}
+
+% -------------------------------------------------------------------------- }}}
+% {{{ Directory Structure
+
+\section{Directory Structure}
+This section defines the \gls{document-structure} used to resolve reusable
+header and footer assets. Each report can provide local data files, reports
+inside \texttt{project-core} can also inherit shared data files, and all reports
+can fall back to autoheaderfooter defaults. Given the directory structure below,
+transform matrix \ref{tab:src} to matrix \ref{tab:dst}.
+
+\tlcVspace\
+
+\dirtree{%
+.1 repo-root.
+.2 autoheaderfooter~\re.
+.3 data.
+.4 \faName~\fea.
+.4 \fbName~\feb.
+.4 \fcName~\fec.
+.4 \fdName~\fed.
+.2 project-report~\ra.
+.3 data.
+.4 \faName~\faa.
+.4 \fbName~\fab.
+.4 \fcName~\fac.
+.4 \fdName~\fad.
+.2 project-core.
+.3 reports.
+.4 shared.
+.5 data.
+.6 \faName~\fba.
+.6 \fbName~\fbb.
+.6 \fcName~\fbc.
+.6 \fdName~\fbd.
+.4 test-report.
+.5 data.
+.6 \faName~\fca.
+.6 \fbName~\fcb.
+.6 \fcName~\fcc.
+.6 \fdName~\fcd.
+.4 verification-report.
+.5 data.
+.6 \faName~\fda.
+.6 \fbName~\fdb.
+.6 \fcName~\fdc.
+.6 \fdName~\fdd.
+}
+
+% -------------------------------------------------------------------------- }}}
+% {{{ Source and Transformed Matrix
+
+\section{Source Matrix}
+This section maps the directory tree to a compact matrix form. Each row
+represents a \gls{report} or shared/default data location, and each column
+represents one file type. The symbols in this matrix are source inputs before
+inheritance and fallback rules are applied.
+
+\tlcVspace\
+
+\begin{table}[ht]
+  \begin{center}
+    \begin{tabular}{l|c|c|c|c}
+              & \fa  & \fb  & \fc  & \fd  \\ \hline
+      \raName & \faa & \fab & \fac & \fad \\ \hline
+      \rbName & \fba & \fbb & \fbc & \fbd \\ \hline
+      \rcName & \fca & \fcb & \fcc & \fcd \\ \hline
+      \rdName & \fda & \fdb & \fdc & \fdd \\ \hline
+    \end{tabular}
+    \caption{Source Matrix}\label{tab:src}
+  \end{center}
+\end{table}
+
+\section{Transformed Matrix}
+This section shows the matrix after the composition rules are applied. Each
+\gls{report} output cell lists the files that participate in the resolved value
+for that report and file type. The \rbName\ row is marked \nota\ because shared
+files are inputs to report-specific compositions, not a standalone report
+output.
+
+\tlcVspace\
+
+\begin{table}[ht]
+  \begin{center}
+    \begin{tabular}{l|c|c|c|c}
+              & \fa   & \fb   & \fc   & \fd   \\ \hline
+      \raName & \faaa & \faab & \faac & \faad \\ \hline
+      \rbName & \nota & \notb & \notc & \notd \\ \hline
+      \rcName & \fcca & \fccb & \fccc & \fccd \\ \hline
+      \rdName & \fdda & \fddb & \fddc & \fddd \\ \hline
+    \end{tabular}
+    \caption{Transformed Matrix}\label{tab:dst}
+  \end{center}
+\end{table}
+
+% -------------------------------------------------------------------------- }}}
+% {{{ Transformation Explained
+
+\section{Transformation Explained}
+
+This section explains how the source matrix is converted into the transformed
+matrix. The same rule is applied independently to each file type, so
+\faName, \fbName, \fcName, and \fdName\ each compose with the matching shared
+and default file when those files are applicable.
+
+\tlcVspace\
+
+Each report-specific data file is resolved by looking first in the report's
+local data folder, then in the shared report data folder when the report belongs
+to \texttt{project-core}, and finally in the autoheaderfooter defaults. This is
+a \gls{configuration-management} rule for document layout inputs. The \raName\
+\gls{report} is outside \texttt{project-core}, so its local files compose
+directly with autoheaderfooter defaults. The \rbName\ row is not transformed
+into a standalone output because shared files only participate in other reports'
+compositions.
+
+\tlcVspace\
+
+Using \faName=\fdda~ as the example, one can trace the potential path from the
+\rdName\ report file, to the shared report file, to the autoheaderfooter default
+file. The \faName~ file specializes customizations that are shared by documents.
+Similarly, \fdName~ represents the header and footer for each document. The
+\gls{design-verification} goal is to define it once and reuse it across
+reports.
+
+\section{Example \rdName~ report using a composite \fdName}
+\subsection{Default Version Information}
+
+This example follows the \rdName\ report's \fdName\ cell in the transformed
+matrix. The example is representative because it includes all three levels:
+report-local data, shared report data, and the autoheaderfooter default.
+
+\tlcVspace\
+
+\faName~ has an initial implementation that is consistent with the default
+layout provided by tlc-article. The header and footer use the following
+placement rules to complete the document layout specification.
+
+\begin{description}
+  \item[lhead] The company logo is written to the left-side header.
+  \item[chead] The document title is written to the center header.
+  \item[rhead] The document status, date, and version is written to the right
+    side of the header.
+  \item[lfoot] The institution name is written to the left-side footer.
+  \item[cfoot] Permission for use is written to the center footer.
+  \item[rfoot] Page \# of Pages \# is written to the right-side footer.
+\end{description}
+
+\subsection{\fdName}
+This subsection identifies the version and status fields that flow into
+\fdName. The default implementation reuses attributes known to tlc-article, and
+report-specific files override only the values that need to differ for a
+particular \gls{report}.
+
+\tlcVspace\
+
+\begin{description}
+  \item[hfVersion] \hfVersion
+  \item[hfDate] \hfDate
+  \item[hfStatus] \hfStatus
+  \item[hfInstitution] \hfInstitution
+  \item[hfPermission] \hfPermission
+\end{description}
+
+\subsection{Composition}
+This subsection lists the include order for the \fddd\ composition. Reading the
+chain from local to default shows which file has the final opportunity to
+specialize each value and which file provides the baseline when no override is
+present.
+
+\tlcVspace\
+
+Given \fddd:
+\begin{description}
+  \item[\fdd] includes \fbd~ first and overrides hfVersion.
+  \item[\fbd] includes \fed~ first and may override hfDate and hfStatus.
+  \item[\fed] defines defaults for hfVersion, hfDate, hfStatus,
+    hfInstitution, and hfPermission.
+\end{description}
+
+% -------------------------------------------------------------------------- }}}
+% {{{ Print acronyms and glossaries
+
+\printGlossaries%
+
+% -------------------------------------------------------------------------- }}}
+% {{{ Change summary
+
+\input{change-summary.tex}
+
+% -------------------------------------------------------------------------- }}}
+\end{document}

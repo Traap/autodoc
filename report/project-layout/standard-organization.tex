@@ -1,0 +1,61 @@
+\clearpage
+\subsection{Standard Organization}
+\input{tree/standard-organization.tex}
+
+\tlcVspace%
+
+This subsection defines the top-level repository layout. The structure separates
+runtime programs, reusable Ruby source, generated packages, unit-test source,
+\gls{report} evidence, and test input data. Keeping these concerns in
+predictable folders supports \gls{configuration-identification} and reduces the
+amount of project-specific discovery required by automation.
+
+\tlcVspace%
+
+\begin{description}
+  \item[\pfRoot] The top-level directory where all source control repositories
+    are cloned.
+
+  \item[\pfRepo] The repository name of the application you are controlling with
+    the \af.
+
+  \item[\pfBin] Program and utilities used to test the application. Typically
+    these are Ruby and Bash scripts.
+
+  \item[\pfLib] Ruby application software.
+
+  \item[\pfPkg] The resultant gems that are produced when you compile the
+    application.
+
+  \item[\pfSpec] Unit test software written in Ruby. This software is used to
+    test the Ruby files located in the \pfLib\ folder.
+
+  \item[\pfReport] \docControl\ \gls{quality-record} evidence.
+
+  \item[\pfData] is a folder used to customize the \docControl\ documents.
+
+  \item[\tfFactory] is the test input factory. This folder defines the test
+    plans, test suites, test cases, and configuration information needed to
+    test the application and support \gls{software-verification}.
+
+  \item[\tfConfig] Application \gls{configuration} information.
+
+  \item[\tfLog] The \logDebug, \logError, and \logInfo files are written to the
+    Test Output Factory. They are not part of the Test Input Factory.
+
+  \item[\tfPlan] Test plans are saved in this folder.
+
+  \item[\tfSuite] Test suites are stored here.
+
+  \item[\tfCase] Test cases are saved in this folder.
+
+  \item[\pfIgnore] The files Git should ignore.
+
+  \item[\pfRspec] Options RSpec uses.
+
+  \item[\pfCOC] Principles you follow when you are a development team member
+    assigned to work on this project.
+
+  \item[\pfRead] Describes how to set up and use this project.
+
+\end{description}

@@ -1,0 +1,39 @@
+\clearpage
+\subsection{Automation Software}
+\input{tree/automation-software.tex}
+
+\tlcVspace%
+
+This subsection defines the Ruby software layout used by the automation
+application. Production source and RSpec source use matching sub-folder names so
+implementation code and verification code remain easy to compare. This
+convention supports \gls{software-verification} by making test coverage easier
+to trace back to the code it exercises.
+
+\tlcVspace%
+
+\begin{description}
+
+  \item[\apName] \required. The Ruby gem name.
+    \begin{description}
+      \item[\apCli] \suggested. Command line interfaces classes and modules.
+      \item[\apUtil] \suggested. Utility classes and modules.
+      \item[\apTif] \suggested. Test Input Factory classes and modules.
+      \item[\apTof] \suggested. Test Output Factory classes and modules.
+    \end{description}
+
+  \item[\apSpec] \required. RSpec classes and modules.
+    \begin{description}
+      \item[\apCli] \sameas. Command line interfaces classes and modules.
+      \item[\apUtil] \sameas. Utility classes and modules.
+      \item[\apTif] \sameas. Test Input Factory classes and modules.
+      \item[\apTof] \sameas. Test Output Factory classes and modules.
+    \end{description}
+
+\end{description}
+
+\tlcVspace%
+
+The \apName\ and \apSpec\ sub-folder names are for illustration purposes.
+Each \apName\ sub-folder should have a corresponding \apSpec\ sub-folder. The
+\apName\ folder name is replaced with your Ruby gem name.

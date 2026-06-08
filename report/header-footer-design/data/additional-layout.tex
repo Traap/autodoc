@@ -1,0 +1,95 @@
+% ------------------------------------------------------------------------------
+% You must define UseAutodocGlossaries prior to hooking into autodoc.
+\newboolean{UseAutodocGlossaries}\setboolean{UseAutodocGlossaries}{true}%
+
+% ------------------------------------------------------------------------------
+% Hook into this document's document layout information.
+\input{../shared/data/additional-layout.tex}%
+
+% ------------------------------------------------------------------------------
+% Your additional layout, packages, etc. are declared now.
+\usepackage{dirtree}
+
+% ------------------------------------------------------------------------------
+% Command definitions that make designing and writing this document simple.
+\newcommand{\fk}{\gls{company}}
+\newcommand{\team}{\autodocDepartmentName}
+
+% File names.
+\newcommand{\faName}{additional-layout.tex}
+\newcommand{\fbName}{header-footer.tex}
+\newcommand{\fcName}{logo.png}
+\newcommand{\fdName}{version.tex}
+
+% File subscript number.
+\newcommand{\fa}{$f_{0}$}
+\newcommand{\fb}{$f_{1}$}
+\newcommand{\fc}{$f_{2}$}
+\newcommand{\fd}{$f_{3}$}
+
+% Report names.
+\newcommand{\raName}{project-report}
+\newcommand{\rbName}{shared}
+\newcommand{\rcName}{test-report}
+\newcommand{\rdName}{verification-report}
+
+% Report superscript number.
+\newcommand{\ra}{$^{0}$}
+\newcommand{\rb}{$^{1}$}
+\newcommand{\rc}{$^{2}$}
+\newcommand{\rd}{$^{3}$}
+\newcommand{\re}{$^{4}$}
+
+% matrix to transform from
+\newcommand{\faa}{\fa\ra}
+\newcommand{\fab}{\fb\ra}
+\newcommand{\fac}{\fc\ra}
+\newcommand{\fad}{\fd\ra}
+
+\newcommand{\fba}{\fa\rb}
+\newcommand{\fbb}{\fb\rb}
+\newcommand{\fbc}{\fc\rb}
+\newcommand{\fbd}{\fd\rb}
+
+\newcommand{\fca}{\fa\rc}
+\newcommand{\fcb}{\fb\rc}
+\newcommand{\fcc}{\fc\rc}
+\newcommand{\fcd}{\fd\rc}
+
+\newcommand{\fda}{\fa\rd}
+\newcommand{\fdb}{\fb\rd}
+\newcommand{\fdc}{\fc\rd}
+\newcommand{\fdd}{\fd\rd}
+
+\newcommand{\fea}{\fa\re}
+\newcommand{\feb}{\fb\re}
+\newcommand{\fec}{\fc\re}
+\newcommand{\fed}{\fd\re}
+
+% matrix to transform to
+\newcommand{\faaa}{\faa + \fea }
+\newcommand{\faab}{\fab + \feb }
+\newcommand{\faac}{\fac + \fec }
+\newcommand{\faad}{\fad + \fed }
+
+\newcommand{\fbba}{\fba + \fea }
+\newcommand{\fbbb}{\fbb + \feb }
+\newcommand{\fbbc}{\fbc + \fec }
+\newcommand{\fbbd}{\fbd + \fed }
+
+\newcommand{\fcca}{\fca + \fba + \fea }
+\newcommand{\fccb}{\fcb + \fbb + \feb }
+\newcommand{\fccc}{\fcc + \fbc + \fec }
+\newcommand{\fccd}{\fcd + \fbd + \fed }
+
+\newcommand{\fdda}{\fda + \fba + \fea }
+\newcommand{\fddb}{\fdb + \fbb + \feb }
+\newcommand{\fddc}{\fdc + \fbc + \fec }
+\newcommand{\fddd}{\fdd + \fbd + \fed }
+
+% Not applicable
+\newcommand{\nota}{N/A}
+\newcommand{\notb}{N/A}
+\newcommand{\notc}{N/A}
+\newcommand{\notd}{N/A}
+% ------------------------------------------------------------------------------

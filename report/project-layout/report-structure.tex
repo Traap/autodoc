@@ -1,0 +1,51 @@
+\clearpage
+\subsection{Report Structure}
+\input{tree/report-structure.tex}
+
+\tlcVspace%
+
+This subsection defines the files required to build \docControl\ reports and
+records. Each \gls{report} has a TeX source file, a texx entry point, and local
+data files that specialize layout, header/footer content, and version
+information. The layout mirrors the header/footer design so report-specific
+customizations remain separate from shared defaults.
+
+\tlcVspace%
+
+\begin{description}
+  \item[\raName] \raName[texx|tex] and \rbName[texx|tex] are two different
+    reports that share one or more test case items. Each report has a
+    corresponding test plan and test suite. Each report name represents a
+    \docControl\ document control number. The report files \faName\ and
+    \fbName\ must adhere to \tlcarticle, \autodoc, and \docbld\ conventions.
+
+  \item[\faName] has an initial implementation that is consistent with the
+    default layout provided by tlc-article. \faName\ is used to add
+    definitions that are custom to your report. These definitions occur before
+    the begin document \LaTeX\ directive.
+
+  \item[\fbName] The header and footer use the following placement to complete
+    the document layout specification.
+
+  \begin{description}
+    \item[lhead] The \gls{company} logo is written to the left-side header.
+    \item[chead] The document title is written to the center header.
+    \item[rhead] The document status, date, and version is written to the right
+      side of the header.
+    \item[lfoot] The institution name is written to the left-side footer.
+    \item[cfoot] Permission for use is written to the center footer.
+    \item[rfoot] Page \# of Pages \# is written to the right-side footer.
+  \end{description}
+
+  \item[\fcName] The convention is to use \ahf\ constructs that are known to
+    \tlcarticle\ to coordinate \docControl\ revision information. The following
+    \ahf\ variables are overridden to customize revision information.
+
+  \begin{description}
+    \item[hfVersion] \hfVersion% 
+    \item[hfDate] \hfDate%
+    \item[hfStatus] \hfStatus%
+    \item[hfInstitution] \hfInstitution% 
+    \item[hfPermission] \hfPermission%
+  \end{description}
+\end{description}

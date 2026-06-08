@@ -1,0 +1,48 @@
+\clearpage
+\subsection{Test Input Factory}
+\input{tree/test-input-factory.tex}
+
+\tlcVspace%
+
+This subsection defines the test input hierarchy consumed by \amber. The
+factory groups configuration, test plans, test suites, and test cases so
+automated \gls{testing} can resolve each artifact by convention. The folder and
+yaml names intentionally match because the matching names form the contract
+between the project layout and the test runner.
+
+\tlcVspace%
+
+\begin{description}
+  \item[\tfFactory] \required. The hierarchy and file name conventions used
+    below are rigid. \amber\ consumes a test input factory, which is
+    a collection of test plans, test suites, and test cases. Each folder name
+    must contain a yaml file with the same name as the folder. \taName\
+    and \taName.yaml depict the contract.
+
+  \begin{description}
+   \item[\tfConfig] \required. \caName\ and \cbName\ must be located in this
+     folder. \\ \caName\ has information that is specific to the application
+     being tested, such as IP address, server name, URL, and user name.
+     \cbName\ is a navigational construct that is used by the Automation
+     Framework.
+
+   \item[\tfPlan] \required. \raName\ must be located in this folder, and it is
+     the name of a test plan. \raName.yaml has a reference to the \raName\ test
+     suite; the same is true for \rbName. A test plan may reference one or more
+     test suites.
+
+   \item[\tfSuite] \required. \raName\ must be located in this folder, and it is
+     the name of a test suite. \raName.yaml has references to one or more test
+     cases; the same is true for \rbName.
+
+   \item[\tfCase] \required. \taName\ must be located in this folder, and it is
+     the name of a test case. \taName.yaml has one or more test steps that are
+     executed to challenge the test case.
+
+   \item[\taName] \amber\ does not check for an \taName\ test case. Good test
+     design should always define the system under test. The \taName\ test case
+     is intended to be that hook. \taName\ should be referenced as the first
+     test case for the first test suite in any given test plan.
+
+  \end{description}
+\end{description}
