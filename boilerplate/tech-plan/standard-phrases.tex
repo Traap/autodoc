@@ -1,16 +1,20 @@
 % ------------------------------------------------------------------------------
-% Standard Test Record Abstract.
+% Standard Technical Plan Abstract.
 % ------------------------------------------------------------------------------
 \newcommand{\stdTechPlan}{Software Development Plan}
 \newcommand{\stdTechPlanTitle}[1]{#1 \stdTechPlan}
 
 \newcommand{\stdTechPlanAbstract}[1]{%
-  This is \stdTechPlanTitle{#1}.  This document is stored in \Gls{company}
-  \stdQMS\ after #1 has been approved.
+  This document defines the #1 \stdTechPlan\ for the identified software product
+  or project.  It describes the planned lifecycle activities, deliverables,
+  tools, responsibilities, and quality controls used to satisfy applicable
+  \Gls{company} software development procedures.  After approval, the plan is
+  retained in the \Gls{company} \stdQMS\ as the controlled basis for execution
+  and project oversight.
 }%
 
 % ------------------------------------------------------------------------------
-% Standard Test Record document generator command.
+% Standard Technical Plan document generator command.
 % ------------------------------------------------------------------------------
 \newcommand{\stdTechPlanDoc}[1]{%
   \stdAutoDocLayout{\stdTechPlanTitle{#1}}%

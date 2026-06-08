@@ -5,14 +5,15 @@
 \newcommand{\stdTestRecordTitle}[1]{#1}
 
 \newcommand{\stdTestRecordAbstract}[1]{%
- #1 is an item in \Gls{dhf}, and stored in \Gls{company} \Gls{dms} after #1 has
- been verified.
+  #1 is a controlled \stdTestRecord\ that supports the \Gls{dhf}.  It identifies
+  the \stdCfgItem\ under test, the applicable \stdRptPkg, the executed test
+  reports, and the objective evidence used to determine whether the referenced
+  requirements were satisfied.
 
-  #1 is the \stdCfgItem\ being verified and \stdRptPkg\ is the #1 \stdRptPkg.
-
-  #1 is verified after this \stdRptPkg\ has been executed, test evidence has
-  been obtained, and test evidence supports the conclusion \stdSyRS\ are
-  satisfied.
+  The record is verified when the \stdRptPkg\ has been executed, required test
+  evidence has been obtained, deviations have been dispositioned, and the
+  evidence supports the conclusion that the applicable \stdSyRS\ are satisfied.
+  After verification, #1 is retained in the \Gls{company} \Gls{dms}.
 }%
 
 % ------------------------------------------------------------------------------
