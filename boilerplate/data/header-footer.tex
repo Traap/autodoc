@@ -1,49 +1,30 @@
 % Header applied to all documents.
 \input{data/version.tex}%
 
-% Adjust page geometry for custom header and footder.  Count header/footer in
-% the text block.
+% Count header and footer in the text block.
 \autodocHeaderFooterGeometry%
 
-% Header
-% NOTE: Bracco's header contains a tables with borders enabled.
-\fancyhead{}
-\renewcommand{\headrule}{}
+% Clear header and footer.
+\fancyhf{}%
+
+% Header applied to this document.
+\lhead{\useLogo}%
+\chead{\thetitle}%
+\rhead{%
+  \tiny{%
+    \hfStatus\\%
+    \hfDate\\%
+    \hfVersion\hfRevision%
+ }%
+}%
 \renewcommand{\headrulewidth}{\autodocHeaderFooterHeadRuleWidth}%
-
-\chead{%
-  \begin{longtable}[ht]{|L{2.5cm}|C{5.5cm}|C{2.2cm}|C{1.5cm}|C{2.0cm}|}\hline%
-    \multirow{2}{*}{\useLogo}
-      & \rule{0pt}{5mm}Description & Number & Revision & Pages\\ \cline{2-5}
-  \endhead%
-      & \parbox[t][1cm][t]{5.5cm}{\centering \thetitle}%
-      & \hfVersion
-      & \hfRevision
-      & \thepage~of~\pageref{LastPage}\ER%
-  \end{longtable}%
-}%
-
-% Footer
-\fancyfoot{}
 \renewcommand{\footrulewidth}{\autodocHeaderFooterFootRuleWidth}%
-\cfoot{%
-   \scriptsize{%
-    \noindent\makebox[\textwidth][c]{%
-      \begin{tabular*}%
-        {0.98\textwidth}%
-        {@{}L{0.38\textwidth}@{\extracolsep{\fill}}R{0.58\textwidth}@{}}%
 
-        \autodocHeaderFooterFootLeftLineA \newline%
-        \autodocHeaderFooterFootLeftLineB \newline%
-        \autodocHeaderFooterFootLeftLineC%
+% Adjust header and footer heights.
+\setlength\headheight{\autodocHeaderFooterHeadHeight}%
+\setlength\footskip{\autodocHeaderFooterFootSkip}%
 
-        &% Column separator
-
-        \autodocHeaderFooterFootRightLineA \newline%
-        \autodocHeaderFooterFootRightLineB \newline%
-        \autodocHeaderFooterFootRightLineC%
-
-      \end{tabular*}%
-    }%
-  }%
-}%
+% Footer applied to this document.
+\cfoot{\tiny{\hfPermission}}%
+\lfoot{\tiny{\hfInstitution}}%
+\rfoot{\tiny{Page \thepage~of~\pageref{LastPage}}}%
